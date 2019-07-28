@@ -1,0 +1,1974 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="in.co.sattamaster.ui.PlayMatka.PlayMatkaActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:focusableInTouchMode="true"
+        android:layout_height="match_parent">
+
+        <include
+            layout="@layout/include_toolbar" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/balance_layout"
+            app:layout_constraintTop_toBottomOf="@+id/include_toolbar"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:background="@color/toolbar_color"
+            android:padding="10dp" >
+
+
+            <TextView
+                android:id="@+id/balance_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:text="Wallet Balance"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/include_toolbar" />
+
+            <TextView
+                android:id="@+id/balance_amount_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:text="Rs. 10000"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@+id/balance_amount"
+                app:layout_constraintLeft_toLeftOf="@+id/balance_amount"
+                app:layout_constraintRight_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/balance_amount" />
+
+            <TextView
+                android:id="@+id/user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:text="username"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/include_toolbar" />
+
+            <TextView
+                android:id="@+id/moderator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:text="Moderator"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/user_name" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/satta_heading_01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Dhai / Andar / Open"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/balance_layout" />
+
+        <TextView
+            android:id="@+id/andar_00_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="0"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintRight_toLeftOf="@+id/andar_01_view"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/satta_heading_01" />
+
+        <EditText
+            android:id="@+id/andar_00_edittext"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            style="@style/MyButton"
+            app:layout_constraintLeft_toLeftOf="@+id/andar_00_view"
+            app:layout_constraintRight_toRightOf="@+id/andar_00_view"
+            app:layout_constraintTop_toBottomOf="@+id/andar_00_view" />
+
+
+        <TextView
+            android:id="@+id/andar_01_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="1"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintLeft_toRightOf="@+id/andar_00_view"
+            app:layout_constraintRight_toLeftOf="@+id/andar_02_view"
+            app:layout_constraintTop_toBottomOf="@+id/satta_heading_01" />
+
+        <EditText
+            android:id="@+id/andar_01_edittext"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            style="@style/MyButton"
+            app:layout_constraintLeft_toLeftOf="@+id/andar_01_view"
+            app:layout_constraintRight_toRightOf="@+id/andar_01_view"
+            app:layout_constraintTop_toBottomOf="@+id/andar_01_view" />
+
+
+        <TextView
+            android:id="@+id/andar_02_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="2"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/satta_heading_01" />
+
+        <EditText
+            android:id="@+id/andar_02_edittext"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            style="@style/MyButton"
+            app:layout_constraintLeft_toLeftOf="@+id/andar_02_view"
+            app:layout_constraintRight_toRightOf="@+id/andar_02_view"
+            app:layout_constraintTop_toBottomOf="@+id/andar_02_view" />
+
+
+        <TextView
+            android:id="@+id/andar_03_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="3"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintLeft_toRightOf="@+id/andar_02_view"
+            app:layout_constraintRight_toLeftOf="@+id/andar_04_view"
+            app:layout_constraintTop_toBottomOf="@+id/satta_heading_01" />
+
+        <EditText
+            android:id="@+id/andar_03_edittext"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            style="@style/MyButton"
+
+            app:layout_constraintLeft_toLeftOf="@+id/andar_03_view"
+            app:layout_constraintRight_toRightOf="@+id/andar_03_view"
+            app:layout_constraintTop_toBottomOf="@+id/andar_03_view" />
+
+
+        <TextView
+            android:id="@+id/andar_04_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="4"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintLeft_toRightOf="@+id/andar_03_view"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/satta_heading_01" />
+
+        <EditText
+            android:id="@+id/andar_04_edittext"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            style="@style/MyButton"
+            app:layout_constraintLeft_toLeftOf="@+id/andar_04_view"
+            app:layout_constraintRight_toRightOf="@+id/andar_04_view"
+            app:layout_constraintTop_toBottomOf="@+id/andar_04_view" />
+
+
+
+        <TextView
+            android:id="@+id/andar_05_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="5"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintRight_toLeftOf="@+id/andar_06_view"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/andar_04_edittext" />
+
+        <EditText
+            android:id="@+id/andar_05_edittext"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            style="@style/MyButton"
+            app:layout_constraintLeft_toLeftOf="@+id/andar_05_view"
+            app:layout_constraintRight_toRightOf="@+id/andar_05_view"
+            app:layout_constraintTop_toBottomOf="@+id/andar_05_view" />
+
+
+        <TextView
+            android:id="@+id/andar_06_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="6"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintLeft_toRightOf="@+id/andar_05_view"
+            app:layout_constraintRight_toLeftOf="@+id/andar_07_view"
+            app:layout_constraintTop_toBottomOf="@+id/andar_04_edittext" />
+
+        <EditText
+            android:id="@+id/andar_06_edittext"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            style="@style/MyButton"
+            app:layout_constraintLeft_toLeftOf="@+id/andar_06_view"
+            app:layout_constraintRight_toRightOf="@+id/andar_06_view"
+            app:layout_constraintTop_toBottomOf="@+id/andar_06_view" />
+
+
+        <TextView
+            android:id="@+id/andar_07_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="7"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/andar_04_edittext" />
+
+        <EditText
+            android:id="@+id/andar_07_edittext"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            style="@style/MyButton"
+
+            app:layout_constraintLeft_toLeftOf="@+id/andar_07_view"
+            app:layout_constraintRight_toRightOf="@+id/andar_07_view"
+            app:layout_constraintTop_toBottomOf="@+id/andar_07_view" />
+
+
+        <TextView
+            android:id="@+id/andar_08_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="8"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintLeft_toRightOf="@+id/andar_07_view"
+            app:layout_constraintRight_toLeftOf="@+id/andar_09_view"
+            app:layout_constraintTop_toBottomOf="@+id/andar_04_edittext" />
+
+        <EditText
+            android:id="@+id/andar_08_edittext"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            style="@style/MyButton"
+
+            app:layout_constraintLeft_toLeftOf="@+id/andar_08_view"
+            app:layout_constraintRight_toRightOf="@+id/andar_08_view"
+            app:layout_constraintTop_toBottomOf="@+id/andar_08_view" />
+
+
+        <TextView
+            android:id="@+id/andar_09_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="9"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintLeft_toRightOf="@+id/andar_08_view"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/andar_04_edittext" />
+
+        <EditText
+            android:id="@+id/andar_09_edittext"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            style="@style/MyButton"
+            app:layout_constraintLeft_toLeftOf="@+id/andar_09_view"
+            app:layout_constraintRight_toRightOf="@+id/andar_09_view"
+            app:layout_constraintTop_toBottomOf="@+id/andar_09_view" />
+
+
+
+        <TextView
+            android:id="@+id/satta_heading_01_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="Total Andar"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/satta_heading_01_total_value"
+            app:layout_constraintTop_toBottomOf="@+id/andar_09_edittext" />
+
+        <TextView
+            android:id="@+id/satta_heading_01_total_value"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:gravity="center"
+            app:layout_constraintLeft_toRightOf="@+id/satta_heading_01_total"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/andar_09_edittext" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:id="@+id/below_andar"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/black"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/satta_heading_01_total_value"
+            />
+
+        <TextView
+            android:id="@+id/satta_heading_02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp"
+            android:text="Harap / Bahar / Close"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/below_andar" />
+
+        <TextView
+            android:id="@+id/bahar_00_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="0"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintRight_toLeftOf="@+id/bahar_01_view"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/satta_heading_02" />
+
+        <EditText
+            android:id="@+id/bahar_00_edittext"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            style="@style/MyButton"
+            app:layout_constraintLeft_toLeftOf="@+id/bahar_00_view"
+            app:layout_constraintRight_toRightOf="@+id/bahar_00_view"
+            app:layout_constraintTop_toBottomOf="@+id/bahar_00_view" />
+
+
+        <TextView
+            android:id="@+id/bahar_01_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="1"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintLeft_toRightOf="@+id/bahar_00_view"
+            app:layout_constraintRight_toLeftOf="@+id/bahar_02_view"
+            app:layout_constraintTop_toBottomOf="@+id/satta_heading_02" />
+
+        <EditText
+            android:id="@+id/bahar_01_edittext"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            style="@style/MyButton"
+            app:layout_constraintLeft_toLeftOf="@+id/bahar_01_view"
+            app:layout_constraintRight_toRightOf="@+id/bahar_01_view"
+            app:layout_constraintTop_toBottomOf="@+id/bahar_01_view" />
+
+
+        <TextView
+            android:id="@+id/bahar_02_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="2"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/satta_heading_02" />
+
+        <EditText
+            android:id="@+id/bahar_02_edittext"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            style="@style/MyButton"
+            app:layout_constraintLeft_toLeftOf="@+id/bahar_02_view"
+            app:layout_constraintRight_toRightOf="@+id/bahar_02_view"
+            app:layout_constraintTop_toBottomOf="@+id/bahar_02_view" />
+
+
+        <TextView
+            android:id="@+id/bahar_03_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="3"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintLeft_toRightOf="@+id/bahar_02_view"
+            app:layout_constraintRight_toLeftOf="@+id/bahar_04_view"
+            app:layout_constraintTop_toBottomOf="@+id/satta_heading_02" />
+
+        <EditText
+            android:id="@+id/bahar_03_edittext"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            style="@style/MyButton"
+            app:layout_constraintLeft_toLeftOf="@+id/bahar_03_view"
+            app:layout_constraintRight_toRightOf="@+id/bahar_03_view"
+            app:layout_constraintTop_toBottomOf="@+id/bahar_03_view" />
+
+
+        <TextView
+            android:id="@+id/bahar_04_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="4"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintLeft_toRightOf="@+id/bahar_03_view"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/satta_heading_02" />
+
+        <EditText
+            android:id="@+id/bahar_04_edittext"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            style="@style/MyButton"
+            app:layout_constraintLeft_toLeftOf="@+id/bahar_04_view"
+            app:layout_constraintRight_toRightOf="@+id/bahar_04_view"
+            app:layout_constraintTop_toBottomOf="@+id/bahar_04_view" />
+
+
+
+
+        <TextView
+            android:id="@+id/bahar_05_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="5"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintRight_toLeftOf="@+id/bahar_06_view"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bahar_04_edittext" />
+
+        <EditText
+            android:id="@+id/bahar_05_edittext"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            style="@style/MyButton"
+            app:layout_constraintLeft_toLeftOf="@+id/bahar_05_view"
+            app:layout_constraintRight_toRightOf="@+id/bahar_05_view"
+            app:layout_constraintTop_toBottomOf="@+id/bahar_05_view" />
+
+
+        <TextView
+            android:id="@+id/bahar_06_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="6"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintLeft_toRightOf="@+id/bahar_05_view"
+            app:layout_constraintRight_toLeftOf="@+id/bahar_07_view"
+            app:layout_constraintTop_toBottomOf="@+id/bahar_04_edittext" />
+
+        <EditText
+            android:id="@+id/bahar_06_edittext"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            style="@style/MyButton"
+            app:layout_constraintLeft_toLeftOf="@+id/bahar_06_view"
+            app:layout_constraintRight_toRightOf="@+id/bahar_06_view"
+            app:layout_constraintTop_toBottomOf="@+id/bahar_06_view" />
+
+
+        <TextView
+            android:id="@+id/bahar_07_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="7"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bahar_04_edittext" />
+
+        <EditText
+            android:id="@+id/bahar_07_edittext"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            style="@style/MyButton"
+            app:layout_constraintLeft_toLeftOf="@+id/bahar_07_view"
+            app:layout_constraintRight_toRightOf="@+id/bahar_07_view"
+            app:layout_constraintTop_toBottomOf="@+id/bahar_07_view" />
+
+
+        <TextView
+            android:id="@+id/bahar_08_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="8"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintLeft_toRightOf="@+id/bahar_07_view"
+            app:layout_constraintRight_toLeftOf="@+id/bahar_09_view"
+            app:layout_constraintTop_toBottomOf="@+id/bahar_04_edittext" />
+
+        <EditText
+            android:id="@+id/bahar_08_edittext"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            style="@style/MyButton"
+            app:layout_constraintLeft_toLeftOf="@+id/bahar_08_view"
+            app:layout_constraintRight_toRightOf="@+id/bahar_08_view"
+            app:layout_constraintTop_toBottomOf="@+id/bahar_08_view" />
+
+
+        <TextView
+            android:id="@+id/bahar_09_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="9"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintLeft_toRightOf="@+id/bahar_08_view"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bahar_04_edittext" />
+
+        <EditText
+            android:id="@+id/bahar_09_edittext"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            style="@style/MyButton"
+            app:layout_constraintLeft_toLeftOf="@+id/bahar_09_view"
+            app:layout_constraintRight_toRightOf="@+id/bahar_09_view"
+            app:layout_constraintTop_toBottomOf="@+id/bahar_09_view" />
+
+        <TextView
+            android:id="@+id/satta_heading_02_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="Total Bahar"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/satta_heading_02_total_value"
+            app:layout_constraintTop_toBottomOf="@+id/bahar_09_edittext" />
+
+        <TextView
+            android:id="@+id/satta_heading_02_total_value"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:inputType="number"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:textSize="18sp"
+            app:layout_constraintLeft_toRightOf="@+id/satta_heading_01_total"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bahar_09_edittext" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:id="@+id/below_bahar"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/black"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/satta_heading_02_total_value"
+            />
+
+        <TextView
+            android:id="@+id/satta_heading_03"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp"
+            android:text="Combination"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/below_bahar" />
+
+
+        <TextView
+            android:id="@+id/comb_00_edittext"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:text="0"
+            style="@style/MyButton"
+            app:layout_constraintRight_toLeftOf="@+id/comb_01_edittext"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/satta_heading_03" />
+
+
+        <TextView
+            android:id="@+id/comb_01_edittext"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:text="1"
+            style="@style/MyButton"
+            app:layout_constraintLeft_toRightOf="@+id/comb_00_edittext"
+            app:layout_constraintRight_toLeftOf="@+id/comb_02_edittext"
+            app:layout_constraintTop_toBottomOf="@+id/satta_heading_03" />
+
+
+        <TextView
+            android:id="@+id/comb_02_edittext"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            style="@style/MyButton"
+            android:text="2"
+
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/satta_heading_03" />
+
+        <TextView
+            android:id="@+id/comb_03_edittext"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            style="@style/MyButton"
+            android:text="3"
+            app:layout_constraintLeft_toRightOf="@+id/comb_02_edittext"
+            app:layout_constraintRight_toLeftOf="@+id/comb_04_edittext"
+            app:layout_constraintTop_toBottomOf="@+id/satta_heading_03" />
+
+        <TextView
+            android:id="@+id/comb_04_edittext"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            style="@style/MyButton"
+            android:text="4"
+            app:layout_constraintLeft_toRightOf="@+id/comb_03_edittext"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/satta_heading_03" />
+
+
+        <TextView
+            android:id="@+id/comb_05_edittext"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            style="@style/MyButton"
+            android:text="5"
+            app:layout_constraintRight_toLeftOf="@+id/comb_06_edittext"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/comb_04_edittext" />
+
+
+        <TextView
+            android:id="@+id/comb_06_edittext"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            style="@style/MyButton"
+            android:text="6"
+            app:layout_constraintLeft_toRightOf="@+id/comb_05_edittext"
+            app:layout_constraintRight_toLeftOf="@+id/comb_07_edittext"
+            app:layout_constraintTop_toBottomOf="@+id/comb_04_edittext" />
+
+
+        <TextView
+            android:id="@+id/comb_07_edittext"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            style="@style/MyButton"
+            android:text="7"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/comb_04_edittext" />
+
+        <TextView
+            android:id="@+id/comb_08_edittext"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            style="@style/MyButton"
+            android:text="8"
+            app:layout_constraintLeft_toRightOf="@+id/comb_07_edittext"
+            app:layout_constraintRight_toLeftOf="@+id/comb_09_edittext"
+            app:layout_constraintTop_toBottomOf="@+id/comb_04_edittext" />
+
+        <TextView
+            android:id="@+id/comb_09_edittext"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            style="@style/MyButton"
+            android:text="9"
+            app:layout_constraintLeft_toRightOf="@+id/comb_08_edittext"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/comb_04_edittext" />
+
+
+        <TextView
+            android:id="@+id/satta_heading_03_bid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="@string/bid_amount"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/satta_heading_03_bid_value"
+            app:layout_constraintTop_toBottomOf="@+id/comb_09_edittext" />
+
+        <EditText
+            android:id="@+id/satta_heading_03_bid_value"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:inputType="number"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:background="@drawable/rectangle"
+            android:textSize="18sp"
+            app:layout_constraintLeft_toRightOf="@+id/satta_heading_03_bid"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/comb_09_edittext" />
+
+        <TextView
+            android:id="@+id/satta_heading_03_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="Total Combination"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/satta_heading_03_total_value"
+            app:layout_constraintTop_toBottomOf="@+id/satta_heading_03_bid_value" />
+
+        <TextView
+            android:id="@+id/satta_heading_03_total_value"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:inputType="number"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintLeft_toLeftOf="@+id/satta_heading_03_bid_value"
+            app:layout_constraintRight_toRightOf="@+id/satta_heading_03_bid_value"
+            app:layout_constraintTop_toBottomOf="@+id/satta_heading_03_bid_value" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:id="@+id/below_com"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/black"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/satta_heading_03_total_value"
+            />
+
+        <TextView
+            android:id="@+id/satta_heading_04"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Single Select"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/below_com" />
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/value01"
+    app:layout_constraintTop_toBottomOf="@+id/satta_heading_04"
+    app:layout_constraintLeft_toLeftOf="parent"
+    android:orientation="horizontal" >
+
+
+    <EditText
+        android:id="@+id/single_00_edittext"
+        android:layout_width="70dp"
+        android:layout_height="40dp"
+        style="@style/MyButtonSingle"
+        android:layout_marginLeft="30dp"
+        android:hint="@string/bid_no"
+        app:layout_constraintRight_toLeftOf="@+id/single_01_edittext"
+        app:layout_constraintLeft_toLeftOf="@+id/comb_00_edittext"
+        app:layout_constraintTop_toBottomOf="@+id/satta_heading_04" />
+
+    <EditText
+        android:id="@+id/single_01_edittext"
+        android:layout_width="70dp"
+        android:layout_height="40dp"
+        style="@style/MyButtonSingle"
+        android:hint="@string/bid_amount"
+        app:layout_constraintLeft_toRightOf="@+id/single_00_edittext"
+        app:layout_constraintTop_toBottomOf="@+id/satta_heading_04" />
+
+    <EditText
+        android:id="@+id/single_02_edittext"
+        android:layout_width="70dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="40dp"
+        style="@style/MyButtonSingle"
+        android:hint="@string/bid_no"
+        app:layout_constraintRight_toLeftOf="@+id/single_03_edittext"
+        app:layout_constraintLeft_toRightOf="@+id/single_01_edittext"
+        app:layout_constraintTop_toBottomOf="@+id/satta_heading_04" />
+
+    <EditText
+        android:id="@+id/single_03_edittext"
+        android:layout_width="70dp"
+        android:layout_height="40dp"
+        android:hint="@string/bid_amount"
+        style="@style/MyButtonSingle"
+        app:layout_constraintLeft_toRightOf="@+id/single_02_edittext"
+        app:layout_constraintTop_toBottomOf="@+id/satta_heading_04" />
+
+</LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/value02"
+            app:layout_constraintTop_toBottomOf="@+id/value01"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/single_04_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="30dp"
+
+                style="@style/MyButtonSingle"
+                android:hint="@string/bid_no"
+                app:layout_constraintRight_toLeftOf="@+id/single_05_edittext"
+                app:layout_constraintLeft_toLeftOf="@+id/comb_00_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/value01" />
+
+            <EditText
+                android:id="@+id/single_05_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:hint="@string/bid_amount"
+                app:layout_constraintLeft_toRightOf="@+id/single_04_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/value01" />
+
+            <EditText
+                android:id="@+id/single_06_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:layout_marginLeft="40dp"
+                android:hint="@string/bid_no"
+                app:layout_constraintRight_toLeftOf="@+id/single_07_edittext"
+                app:layout_constraintLeft_toRightOf="@+id/single_05_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/value01" />
+
+            <EditText
+                android:id="@+id/single_07_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:hint="@string/bid_amount"
+                app:layout_constraintLeft_toRightOf="@+id/single_06_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/value01" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/value03"
+            app:layout_constraintTop_toBottomOf="@+id/value02"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/single_08_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="30dp"
+
+                style="@style/MyButtonSingle"
+                android:hint="@string/bid_no"
+                app:layout_constraintRight_toLeftOf="@+id/single_09_edittext"
+                app:layout_constraintLeft_toLeftOf="@+id/comb_00_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_07_edittext" />
+
+            <EditText
+                android:id="@+id/single_09_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:hint="@string/bid_amount"
+                app:layout_constraintLeft_toRightOf="@+id/single_08_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_07_edittext" />
+
+            <EditText
+                android:id="@+id/single_10_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:hint="@string/bid_no"
+                android:layout_marginLeft="40dp"
+                app:layout_constraintRight_toLeftOf="@+id/single_11_edittext"
+                app:layout_constraintLeft_toRightOf="@+id/single_09_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_07_edittext" />
+
+            <EditText
+                android:id="@+id/single_11_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:hint="@string/bid_amount"
+                app:layout_constraintLeft_toRightOf="@+id/single_10_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_07_edittext" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/value04"
+            app:layout_constraintTop_toBottomOf="@+id/value03"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/single_12_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="30dp"
+
+                style="@style/MyButtonSingle"
+                android:hint="@string/bid_no"
+                app:layout_constraintRight_toLeftOf="@+id/single_13_edittext"
+                app:layout_constraintLeft_toLeftOf="@+id/comb_00_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_11_edittext" />
+
+            <EditText
+                android:id="@+id/single_13_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:hint="@string/bid_amount"
+                app:layout_constraintLeft_toRightOf="@+id/single_12_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_11_edittext" />
+
+            <EditText
+                android:id="@+id/single_14_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:layout_marginLeft="40dp"
+                android:hint="@string/bid_no"
+                app:layout_constraintRight_toLeftOf="@+id/single_15_edittext"
+                app:layout_constraintLeft_toRightOf="@+id/single_13_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_11_edittext" />
+
+            <EditText
+                android:id="@+id/single_15_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:hint="@string/bid_amount"
+                app:layout_constraintLeft_toRightOf="@+id/single_14_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_11_edittext" />
+
+
+        </LinearLayout>
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/value05"
+            app:layout_constraintTop_toBottomOf="@+id/value04"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/single_16_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="30dp"
+
+                android:hint="@string/bid_no"
+                style="@style/MyButtonSingle"
+                app:layout_constraintRight_toLeftOf="@+id/single_17_edittext"
+                app:layout_constraintLeft_toLeftOf="@+id/comb_00_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_15_edittext" />
+
+            <EditText
+                android:id="@+id/single_17_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:hint="@string/bid_amount"
+                app:layout_constraintLeft_toRightOf="@+id/single_16_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_15_edittext" />
+
+            <EditText
+                android:id="@+id/single_18_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                android:hint="@string/bid_no"
+                style="@style/MyButtonSingle"
+                android:layout_marginLeft="40dp"
+                app:layout_constraintRight_toLeftOf="@+id/single_19_edittext"
+                app:layout_constraintLeft_toRightOf="@+id/single_17_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_15_edittext" />
+
+            <EditText
+                android:id="@+id/single_19_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:hint="@string/bid_amount"
+                app:layout_constraintLeft_toRightOf="@+id/single_18_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_15_edittext" />
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/value06"
+            app:layout_constraintTop_toBottomOf="@+id/value05"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:orientation="horizontal" >
+
+
+            <EditText
+                android:id="@+id/single_20_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="30dp"
+
+                style="@style/MyButtonSingle"
+                android:hint="@string/bid_no"
+                app:layout_constraintRight_toLeftOf="@+id/single_21_edittext"
+                app:layout_constraintLeft_toLeftOf="@+id/comb_00_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_19_edittext" />
+
+            <EditText
+                android:id="@+id/single_21_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:hint="@string/bid_amount"
+                app:layout_constraintLeft_toRightOf="@+id/single_20_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_19_edittext" />
+
+            <EditText
+                android:id="@+id/single_22_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:hint="@string/bid_no"
+                android:layout_marginLeft="40dp"
+                app:layout_constraintRight_toLeftOf="@+id/single_23_edittext"
+                app:layout_constraintLeft_toRightOf="@+id/single_21_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_19_edittext" />
+
+            <EditText
+                android:id="@+id/single_23_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:hint="@string/bid_amount"
+                app:layout_constraintLeft_toRightOf="@+id/single_22_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_19_edittext" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/value07"
+            app:layout_constraintTop_toBottomOf="@+id/value06"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/single_24_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="30dp"
+
+                style="@style/MyButtonSingle"
+                android:hint="@string/bid_no"
+                app:layout_constraintRight_toLeftOf="@+id/single_25_edittext"
+                app:layout_constraintLeft_toLeftOf="@+id/comb_00_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/value06" />
+
+            <EditText
+                android:id="@+id/single_25_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:hint="@string/bid_amount"
+                app:layout_constraintLeft_toRightOf="@+id/single_24_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/value06" />
+
+            <EditText
+                android:id="@+id/single_26_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:layout_marginLeft="40dp"
+                android:hint="@string/bid_no"
+                app:layout_constraintRight_toLeftOf="@+id/single_27_edittext"
+                app:layout_constraintLeft_toRightOf="@+id/single_25_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/value06" />
+
+            <EditText
+                android:id="@+id/single_27_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                android:hint="@string/bid_amount"
+                style="@style/MyButtonSingle"
+                app:layout_constraintLeft_toRightOf="@+id/single_26_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/value06" />
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/value08"
+            app:layout_constraintTop_toBottomOf="@+id/value07"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:orientation="horizontal" >
+
+
+            <EditText
+                android:id="@+id/single_28_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:layout_marginLeft="30dp"
+
+                android:hint="@string/bid_no"
+                app:layout_constraintRight_toLeftOf="@+id/single_29_edittext"
+                app:layout_constraintLeft_toLeftOf="@+id/comb_00_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_27_edittext" />
+
+            <EditText
+                android:id="@+id/single_29_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:hint="@string/bid_amount"
+                app:layout_constraintLeft_toRightOf="@+id/single_28_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_27_edittext" />
+
+            <EditText
+                android:id="@+id/single_30_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:layout_marginLeft="40dp"
+                android:hint="@string/bid_no"
+                app:layout_constraintRight_toLeftOf="@+id/single_31_edittext"
+                app:layout_constraintLeft_toRightOf="@+id/single_25_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_27_edittext" />
+
+            <EditText
+                android:id="@+id/single_31_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:hint="@string/bid_amount"
+                app:layout_constraintLeft_toRightOf="@+id/single_30_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_27_edittext" />
+
+
+
+        </LinearLayout>
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/value09"
+            app:layout_constraintTop_toBottomOf="@+id/value08"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/single_32_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:layout_marginLeft="30dp"
+
+                android:hint="@string/bid_no"
+                app:layout_constraintRight_toLeftOf="@+id/single_33_edittext"
+                app:layout_constraintLeft_toLeftOf="@+id/comb_00_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_31_edittext" />
+
+            <EditText
+                android:id="@+id/single_33_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:hint="@string/bid_amount"
+                app:layout_constraintLeft_toRightOf="@+id/single_32_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_31_edittext" />
+
+            <EditText
+                android:id="@+id/single_34_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:layout_marginLeft="40dp"
+                android:hint="@string/bid_no"
+                app:layout_constraintRight_toLeftOf="@+id/single_35_edittext"
+                app:layout_constraintLeft_toRightOf="@+id/single_25_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_31_edittext" />
+
+            <EditText
+                android:id="@+id/single_35_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:hint="@string/bid_amount"
+                app:layout_constraintLeft_toRightOf="@+id/single_34_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_31_edittext" />
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/value10"
+            app:layout_constraintTop_toBottomOf="@+id/value09"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/single_36_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="30dp"
+
+                style="@style/MyButtonSingle"
+                android:hint="@string/bid_no"
+                app:layout_constraintRight_toLeftOf="@+id/single_37_edittext"
+                app:layout_constraintLeft_toLeftOf="@+id/comb_00_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_35_edittext" />
+
+            <EditText
+                android:id="@+id/single_37_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:hint="@string/bid_amount"
+                app:layout_constraintLeft_toRightOf="@+id/single_36_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_35_edittext" />
+
+            <EditText
+                android:id="@+id/single_38_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:layout_marginLeft="40dp"
+                android:hint="@string/bid_no"
+                app:layout_constraintRight_toLeftOf="@+id/single_39_edittext"
+                app:layout_constraintLeft_toRightOf="@+id/single_25_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_35_edittext" />
+
+            <EditText
+                android:id="@+id/single_39_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:hint="@string/bid_amount"
+                app:layout_constraintLeft_toRightOf="@+id/single_38_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_35_edittext" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/value11"
+            app:layout_constraintTop_toBottomOf="@+id/value10"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/single_40_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:layout_marginLeft="30dp"
+
+                android:hint="@string/bid_no"
+                app:layout_constraintRight_toLeftOf="@+id/single_41_edittext"
+                app:layout_constraintLeft_toLeftOf="@+id/comb_00_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_39_edittext" />
+
+            <EditText
+                android:id="@+id/single_41_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:hint="@string/bid_amount"
+                app:layout_constraintLeft_toRightOf="@+id/single_40_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_39_edittext" />
+
+            <EditText
+                android:id="@+id/single_42_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:layout_marginLeft="40dp"
+                android:hint="@string/bid_no"
+                app:layout_constraintRight_toLeftOf="@+id/single_43_edittext"
+                app:layout_constraintLeft_toRightOf="@+id/single_25_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_39_edittext" />
+
+            <EditText
+                android:id="@+id/single_43_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:hint="@string/bid_amount"
+                app:layout_constraintLeft_toRightOf="@+id/single_42_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_39_edittext" />
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/value12"
+            app:layout_constraintTop_toBottomOf="@+id/value11"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:orientation="horizontal" >
+
+
+            <EditText
+                android:id="@+id/single_44_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:layout_marginLeft="30dp"
+
+                android:hint="@string/bid_no"
+                app:layout_constraintRight_toLeftOf="@+id/single_45_edittext"
+                app:layout_constraintLeft_toLeftOf="@+id/comb_00_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_43_edittext" />
+
+            <EditText
+                android:id="@+id/single_45_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:hint="@string/bid_amount"
+                app:layout_constraintLeft_toRightOf="@+id/single_44_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_43_edittext" />
+
+            <EditText
+                android:id="@+id/single_46_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:hint="@string/bid_no"
+
+                android:layout_marginLeft="40dp"
+                app:layout_constraintRight_toLeftOf="@+id/single_47_edittext"
+                app:layout_constraintLeft_toRightOf="@+id/single_25_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_43_edittext" />
+
+            <EditText
+                android:id="@+id/single_47_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:hint="@string/bid_amount"
+                app:layout_constraintLeft_toRightOf="@+id/single_46_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_43_edittext" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/value13"
+            app:layout_constraintTop_toBottomOf="@+id/value12"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/single_48_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="30dp"
+
+                style="@style/MyButtonSingle"
+                android:hint="@string/bid_no"
+                app:layout_constraintRight_toLeftOf="@+id/single_49_edittext"
+                app:layout_constraintLeft_toLeftOf="@+id/comb_00_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/value11" />
+
+            <EditText
+                android:id="@+id/single_49_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:hint="@string/bid_amount"
+                app:layout_constraintLeft_toRightOf="@+id/single_48_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/value11" />
+
+            <EditText
+                android:id="@+id/single_50_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:layout_marginLeft="40dp"
+                android:hint="@string/bid_no"
+                app:layout_constraintRight_toLeftOf="@+id/single_51_edittext"
+                app:layout_constraintLeft_toRightOf="@+id/single_25_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/value11" />
+
+            <EditText
+                android:id="@+id/single_51_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:hint="@string/bid_amount"
+                app:layout_constraintLeft_toRightOf="@+id/single_50_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/value11" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/value14"
+            app:layout_constraintTop_toBottomOf="@+id/value13"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:orientation="horizontal" >
+
+
+            <EditText
+                android:id="@+id/single_52_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="30dp"
+
+                style="@style/MyButtonSingle"
+                android:hint="@string/bid_no"
+                app:layout_constraintRight_toLeftOf="@+id/single_53_edittext"
+                app:layout_constraintLeft_toLeftOf="@+id/comb_00_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_51_edittext" />
+
+            <EditText
+                android:id="@+id/single_53_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:hint="@string/bid_amount"
+                app:layout_constraintLeft_toRightOf="@+id/single_52_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_51_edittext" />
+
+            <EditText
+                android:id="@+id/single_54_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:layout_marginLeft="40dp"
+                android:hint="@string/bid_no"
+                app:layout_constraintRight_toLeftOf="@+id/single_55_edittext"
+                app:layout_constraintLeft_toRightOf="@+id/single_25_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_51_edittext" />
+
+            <EditText
+                android:id="@+id/single_55_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:hint="@string/bid_amount"
+                app:layout_constraintLeft_toRightOf="@+id/single_54_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_51_edittext" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/value15"
+            app:layout_constraintTop_toBottomOf="@+id/value14"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/single_56_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="30dp"
+
+                style="@style/MyButtonSingle"
+                android:hint="@string/bid_no"
+                app:layout_constraintRight_toLeftOf="@+id/single_57_edittext"
+                app:layout_constraintLeft_toLeftOf="@+id/comb_00_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_55_edittext" />
+
+            <EditText
+                android:id="@+id/single_57_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:hint="@string/bid_amount"
+                app:layout_constraintLeft_toRightOf="@+id/single_56_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_55_edittext" />
+
+            <EditText
+                android:id="@+id/single_58_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:layout_marginLeft="40dp"
+                android:hint="@string/bid_no"
+                app:layout_constraintRight_toLeftOf="@+id/single_59_edittext"
+                app:layout_constraintLeft_toRightOf="@+id/single_25_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_55_edittext" />
+
+            <EditText
+                android:id="@+id/single_59_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:hint="@string/bid_amount"
+                app:layout_constraintLeft_toRightOf="@+id/single_58_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_55_edittext" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/value16"
+            app:layout_constraintTop_toBottomOf="@+id/value15"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/single_60_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:layout_marginLeft="30dp"
+
+                android:hint="@string/bid_no"
+                app:layout_constraintRight_toLeftOf="@+id/single_61_edittext"
+                app:layout_constraintLeft_toLeftOf="@+id/comb_00_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_59_edittext" />
+
+            <EditText
+                android:id="@+id/single_61_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:hint="@string/bid_amount"
+                app:layout_constraintLeft_toRightOf="@+id/single_60_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_59_edittext" />
+
+            <EditText
+                android:id="@+id/single_62_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                android:hint="@string/bid_no"
+                style="@style/MyButtonSingle"
+                android:layout_marginLeft="40dp"
+                app:layout_constraintRight_toLeftOf="@+id/single_63_edittext"
+                app:layout_constraintLeft_toRightOf="@+id/single_25_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_59_edittext" />
+
+            <EditText
+                android:id="@+id/single_63_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:hint="@string/bid_amount"
+                app:layout_constraintLeft_toRightOf="@+id/single_62_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_59_edittext" />
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/value17"
+            app:layout_constraintTop_toBottomOf="@+id/value16"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/single_64_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                android:hint="@string/bid_no"
+                android:layout_marginLeft="30dp"
+
+                style="@style/MyButtonSingle"
+                app:layout_constraintRight_toLeftOf="@+id/single_65_edittext"
+                app:layout_constraintLeft_toLeftOf="@+id/comb_00_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_63_edittext" />
+
+            <EditText
+                android:id="@+id/single_65_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:hint="@string/bid_amount"
+                app:layout_constraintLeft_toRightOf="@+id/single_64_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_63_edittext" />
+
+            <EditText
+                android:id="@+id/single_66_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:layout_marginLeft="40dp"
+                android:hint="@string/bid_no"
+                app:layout_constraintRight_toLeftOf="@+id/single_67_edittext"
+                app:layout_constraintLeft_toRightOf="@+id/single_25_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_63_edittext" />
+
+            <EditText
+                android:id="@+id/single_67_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:hint="@string/bid_amount"
+                app:layout_constraintLeft_toRightOf="@+id/single_66_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_63_edittext" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/value18"
+            app:layout_constraintTop_toBottomOf="@+id/value17"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/single_68_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="30dp"
+
+                style="@style/MyButtonSingle"
+                android:hint="@string/bid_no"
+                app:layout_constraintRight_toLeftOf="@+id/single_69_edittext"
+                app:layout_constraintLeft_toLeftOf="@+id/comb_00_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_67_edittext" />
+
+            <EditText
+                android:id="@+id/single_69_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:hint="@string/bid_amount"
+                app:layout_constraintLeft_toRightOf="@+id/single_68_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_67_edittext" />
+
+            <EditText
+                android:id="@+id/single_70_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:hint="@string/bid_no"
+
+                android:layout_marginLeft="40dp"
+                app:layout_constraintRight_toLeftOf="@+id/single_71_edittext"
+                app:layout_constraintLeft_toRightOf="@+id/single_25_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_67_edittext" />
+
+            <EditText
+                android:id="@+id/single_71_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:hint="@string/bid_amount"
+                app:layout_constraintLeft_toRightOf="@+id/single_70_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_67_edittext" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/value19"
+            app:layout_constraintTop_toBottomOf="@+id/value18"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/single_72_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:layout_marginLeft="30dp"
+
+                android:hint="@string/bid_no"
+                app:layout_constraintRight_toLeftOf="@+id/single_73_edittext"
+                app:layout_constraintLeft_toLeftOf="@+id/comb_00_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_71_edittext" />
+
+            <EditText
+                android:id="@+id/single_73_edittext"
+                android:layout_width="70dp"
+                android:hint="@string/bid_amount"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                app:layout_constraintLeft_toRightOf="@+id/single_72_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_71_edittext" />
+
+            <EditText
+                android:id="@+id/single_74_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                android:hint="@string/bid_no"
+                style="@style/MyButtonSingle"
+                android:layout_marginLeft="40dp"
+                app:layout_constraintRight_toLeftOf="@+id/single_75_edittext"
+                app:layout_constraintLeft_toRightOf="@+id/single_25_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_71_edittext" />
+
+            <EditText
+                android:id="@+id/single_75_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:hint="@string/bid_amount"
+
+                android:inputType="number"
+                app:layout_constraintLeft_toRightOf="@+id/single_74_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_71_edittext" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/value20"
+            app:layout_constraintTop_toBottomOf="@+id/value19"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/single_76_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:hint="@string/bid_no"
+                android:layout_marginLeft="30dp"
+
+                app:layout_constraintRight_toLeftOf="@+id/single_77_edittext"
+                app:layout_constraintLeft_toLeftOf="@+id/comb_00_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_75_edittext" />
+
+            <EditText
+                android:id="@+id/single_77_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:hint="@string/bid_amount"
+                app:layout_constraintLeft_toRightOf="@+id/single_76_edittext"
+                android:background="@drawable/rectangle_without_round"
+                app:layout_constraintTop_toBottomOf="@+id/single_75_edittext" />
+
+            <EditText
+                android:id="@+id/single_78_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:hint="@string/bid_no"
+
+                android:layout_marginLeft="40dp"
+                app:layout_constraintRight_toLeftOf="@+id/single_79_edittext"
+                app:layout_constraintLeft_toRightOf="@+id/single_25_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_75_edittext" />
+
+            <EditText
+                android:id="@+id/single_79_edittext"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                style="@style/MyButtonSingle"
+                android:hint="@string/bid_amount"
+                android:textColor="@color/black"
+                app:layout_constraintLeft_toRightOf="@+id/single_78_edittext"
+                app:layout_constraintTop_toBottomOf="@+id/single_75_edittext" />
+
+        </LinearLayout>
+
+
+
+
+        <TextView
+        android:id="@+id/satta_heading_04_total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="Total Single"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/satta_heading_04_total_value"
+        app:layout_constraintTop_toBottomOf="@+id/value20" />
+
+        <TextView
+            android:id="@+id/satta_heading_04_total_value"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:inputType="number"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintLeft_toRightOf="@+id/satta_heading_04_total"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/value20" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:id="@+id/below_single"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/black"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/satta_heading_04_total_value"
+            />
+
+        <TextView
+            android:id="@+id/satta_net_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="50dp"
+            android:text="Net Total"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/satta_net_total_value"
+            app:layout_constraintTop_toBottomOf="@+id/below_single" />
+
+        <TextView
+            android:id="@+id/satta_net_total_value"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="50dp"
+            android:layout_marginTop="15dp"
+            android:inputType="number"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintLeft_toRightOf="@+id/satta_net_total"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/below_single" />
+
+
+
+        <Button
+            android:id="@+id/place_bid_button"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:padding="10dp"
+            android:layout_marginBottom="50dp"
+            android:gravity="center"
+            android:text="Place Bid"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:background="@drawable/rectangle_color"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/satta_net_total_value" />
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
