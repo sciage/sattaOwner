@@ -3,21 +3,27 @@ package in.co.sattamaster.owner.ui.Homepage;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.GridView;
 
-import in.co.sattamaster.R;
+import butterknife.BindView;
+import in.co.sattamaster.owner.R;
 import in.co.sattamaster.owner.ui.base.BaseActivity;
 
 import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 
-public class LocationPageActivity extends BaseActivity implements LocationPageMvpView {
+public class AddModeratorActivity extends BaseActivity implements AddModeratorMvpView {
     Button place_bid;
-    LocationGridAdapter locationGridAdapter;
+    AddModeratorAdapter addModeratorAdapter;
+
+    @BindView(R.id.moderator_name_value) EditText moderator_name_value;
+    @BindView(R.id.moderator_address_value) EditText moderator_address_value;
+    @BindView(R.id.moderator_mobile_value) EditText moderator_mobile_value;
 
     @Inject
-    LocationPageMvpPresenter<LocationPageMvpView> mPresenter;
+    AddModeratorMvpPresenter<AddModeratorMvpView> mPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +31,7 @@ public class LocationPageActivity extends BaseActivity implements LocationPageMv
         setContentView(R.layout.activity_main);
 
       /*  if (!isLoggedIn){
-            Intent intent = new Intent(LocationPageActivity.this, LoginScreenActivity.class);
+            Intent intent = new Intent(AddModeratorActivity.this, LoginScreenActivity.class);
             startActivity(intent);
         }
        */
@@ -34,7 +40,7 @@ public class LocationPageActivity extends BaseActivity implements LocationPageMv
 
         setUnBinder(ButterKnife.bind(this));
 
-        mPresenter.onAttach(LocationPageActivity.this);
+        mPresenter.onAttach(AddModeratorActivity.this);
 
         toolbar.setNavigationIcon(R.drawable.ic_clear_black_24dp);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -45,12 +51,6 @@ public class LocationPageActivity extends BaseActivity implements LocationPageMv
         });
         getSupportActionBar().setTitle("Satta");
 
-        GridView view = (GridView) findViewById(R.id.grid);
-
-
-        locationGridAdapter = new LocationGridAdapter(getBaseContext());
-        view.setAdapter(locationGridAdapter);
-        view.setFocusable(false);
     }
 
     @Override

@@ -19,10 +19,10 @@ package in.co.sattamaster.owner.di.component;
 import in.co.sattamaster.owner.di.PerActivity;
 import in.co.sattamaster.owner.di.module.ActivityModule;
 import in.co.sattamaster.owner.ui.History.HistoryActivity;
-import in.co.sattamaster.owner.ui.Homepage.LocationPageActivity;
+import in.co.sattamaster.owner.ui.Homepage.AddModeratorActivity;
 import in.co.sattamaster.owner.ui.Homepage.LoginScreenActivity;
 import in.co.sattamaster.owner.ui.Homepage.MainActivity;
-import in.co.sattamaster.owner.ui.PlayMatka.PlayMatkaActivity;
+import in.co.sattamaster.owner.ui.PlayMatka.AllUsersActivity;
 import in.co.sattamaster.owner.ui.Result.ResultActivity;
 import in.co.sattamaster.owner.ui.Withdraw.WithdrawActivity;
 
@@ -38,9 +38,9 @@ public interface ActivityComponent {
 
     void inject(LoginScreenActivity activity);
     void inject(MainActivity activity);
-    void inject(PlayMatkaActivity activity);
+    void inject(AllUsersActivity activity);
     void inject(HistoryActivity activity);
-    void inject(LocationPageActivity activity);
+    void inject(AddModeratorActivity activity);
     void inject(ResultActivity activity);
     void inject(WithdrawActivity activity);
 

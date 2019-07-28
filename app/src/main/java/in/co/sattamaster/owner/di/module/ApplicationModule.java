@@ -18,7 +18,7 @@ package in.co.sattamaster.owner.di.module;
 import android.app.Application;
 import android.content.Context;
 
-import in.co.sattamaster.BuildConfig;
+import in.co.sattamaster.owner.BuildConfig;
 import in.co.sattamaster.owner.data.AppDataManager;
 import in.co.sattamaster.owner.data.DataManager;
 import in.co.sattamaster.owner.data.network.ApiHeader;

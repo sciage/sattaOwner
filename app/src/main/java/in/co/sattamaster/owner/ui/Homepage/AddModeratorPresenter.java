@@ -8,11 +8,11 @@ import javax.inject.Inject;
 
 import io.reactivex.disposables.CompositeDisposable;
 
-public class LocationPagePresenter <V extends LocationPageMvpView> extends BasePresenter<V>
-        implements LocationPageMvpPresenter<V> {
+public class AddModeratorPresenter<V extends AddModeratorMvpView> extends BasePresenter<V>
+        implements AddModeratorMvpPresenter<V> {
 
     @Inject
-    public LocationPagePresenter(DataManager dataManager,
+    public AddModeratorPresenter(DataManager dataManager,
                                  SchedulerProvider schedulerProvider,
                                  CompositeDisposable compositeDisposable) {
         super(dataManager, schedulerProvider, compositeDisposable);

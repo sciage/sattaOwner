@@ -6,7 +6,7 @@ import android.view.View;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import in.co.sattamaster.R;
+import in.co.sattamaster.owner.R;
 import in.co.sattamaster.owner.ui.base.BaseActivity;
 
 import java.util.ArrayList;

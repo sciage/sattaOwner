@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.GridView;
 
-import in.co.sattamaster.R;
+import in.co.sattamaster.owner.R;
 import in.co.sattamaster.owner.data.DataManager;
 import in.co.sattamaster.owner.ui.base.BaseActivity;
 
@@ -25,9 +25,13 @@ public class MainActivity extends BaseActivity implements MainActivityMvpView{
         setContentView(R.layout.activity_main_launcher);
 
 
+        Intent intent = getIntent();
+
+        isLoggedIn = intent.getBooleanExtra("isLoggedIn", false);
+
         if (!isLoggedIn){
-            Intent intent = new Intent(MainActivity.this, LoginScreenActivity.class);
-            startActivity(intent);
+            Intent intent02 = new Intent(MainActivity.this, LoginScreenActivity.class);
+            startActivity(intent02);
         }
 
         getActivityComponent().inject(this);

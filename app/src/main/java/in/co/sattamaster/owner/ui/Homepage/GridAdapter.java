@@ -8,11 +8,10 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import in.co.sattamaster.R;
+import in.co.sattamaster.owner.R;
 import in.co.sattamaster.owner.SquareLayout;
 import in.co.sattamaster.owner.ui.Contact.ContactUsActivity;
 import in.co.sattamaster.owner.ui.History.HistoryActivity;
-import in.co.sattamaster.owner.ui.Result.ResultActivity;
 import in.co.sattamaster.owner.ui.Withdraw.WithdrawActivity;
 
 import java.util.ArrayList;
@@ -29,33 +28,33 @@ public class GridAdapter extends BaseAdapter{
     public GridAdapter(Context context) {
 
         Item object = new Item();
-        object.text = "Play Matka";
+        object.text = "Add Moderator";
         mItems.add(object);
         notifyDataSetChanged();
 
 
         Item object02 = new Item();
-        object02.text = "Contact Us";
+        object02.text = "All Users";
         mItems.add(object02);
         notifyDataSetChanged();
 
 
         Item object03 = new Item();
-        object03.text = "Withdraw Balance";
+        object03.text = "Add Coins";
         mItems.add(object03);
         notifyDataSetChanged();
 
 
         Item object04 = new Item();
-        object04.text = "History";
+        object04.text = "Send Money";
         mItems.add(object04);
         notifyDataSetChanged();
 
 
-        Item object05 = new Item();
+     /*   Item object05 = new Item();
         object05.text = "Result chart";
         mItems.add(object05);
-        notifyDataSetChanged();
+        notifyDataSetChanged(); */
 
         mContext = context;
     }
@@ -91,7 +90,7 @@ public class GridAdapter extends BaseAdapter{
             box_back.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(v.getContext(), LocationPageActivity.class);
+                    Intent intent = new Intent(v.getContext(), AddModeratorActivity.class);
                     v.getContext().startActivity(intent);
                 }
             });
@@ -119,7 +118,9 @@ public class GridAdapter extends BaseAdapter{
                     v.getContext().startActivity(intent);
                 }
             });
-        } else if (position == 4){
+        }
+
+        /*else if (position == 4){
             box_back.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -127,7 +128,7 @@ public class GridAdapter extends BaseAdapter{
                     v.getContext().startActivity(intent);
                 }
             });
-        }
+        } */
 
 
       //  ImageView image = (ImageView) convertView.findViewById(R.id.icon);

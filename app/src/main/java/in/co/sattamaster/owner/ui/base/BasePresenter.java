@@ -24,7 +24,7 @@ import android.util.Log;
 import com.androidnetworking.common.ANConstants;
 import com.androidnetworking.error.ANError;
 
-import in.co.sattamaster.R;
+import in.co.sattamaster.owner.R;
 import in.co.sattamaster.owner.data.DataManager;
 import in.co.sattamaster.owner.data.network.model.ApiError;
 import in.co.sattamaster.owner.utils.AppConstants;

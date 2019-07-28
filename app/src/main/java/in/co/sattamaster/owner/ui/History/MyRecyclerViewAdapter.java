@@ -11,7 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import in.co.sattamaster.R;
+import in.co.sattamaster.owner.R;
+
 
 public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAdapter.ViewHolder> {
     private List<HistoryPojo> mData;

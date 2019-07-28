@@ -22,7 +22,7 @@ import android.graphics.drawable.Drawable;
 
 import androidx.core.content.ContextCompat;
 
-import in.co.sattamaster.R;
+import in.co.sattamaster.owner.R;
 
 /**
  * Created by janisharali on 27/01/17.

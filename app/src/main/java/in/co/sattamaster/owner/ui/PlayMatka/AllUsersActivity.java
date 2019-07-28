@@ -12,7 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import in.co.sattamaster.R;
+import in.co.sattamaster.owner.R;
 import in.co.sattamaster.owner.dto.Bid;
 import in.co.sattamaster.owner.ui.base.BaseActivity;
 
@@ -32,11 +32,11 @@ import in.co.sattamaster.owner.ui.base.Constants;
 import in.co.sattamaster.owner.ui.base.MySharedPreferences;
 import timber.log.Timber;
 
-public class PlayMatkaActivity extends BaseActivity implements PlayMatkaActivityMvpView, View.OnClickListener {
+public class AllUsersActivity extends BaseActivity implements AllUsersMvpView, View.OnClickListener {
 
 
     @Inject
-    PlayMatkaActivityMvpPresenter<PlayMatkaActivityMvpView> mPresenter;
+    AllUsersMvpPresenter<AllUsersMvpView> mPresenter;
 
     @BindView(R.id.andar_00_view) TextView andar_00_view;
 
@@ -221,7 +221,7 @@ public class PlayMatkaActivity extends BaseActivity implements PlayMatkaActivity
 
         setUnBinder(ButterKnife.bind(this));
 
-        mPresenter.onAttach(PlayMatkaActivity.this);
+        mPresenter.onAttach(AllUsersActivity.this);
 
         single_keys = new ArrayList<>();
         single_values = new ArrayList<>();
@@ -1707,7 +1707,7 @@ public class PlayMatkaActivity extends BaseActivity implements PlayMatkaActivity
     @Override
     public void receiveBidSetResult(Bid response) {
 
-        Toast.makeText(PlayMatkaActivity.this, response.getStatus().toString(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(AllUsersActivity.this, response.getStatus().toString(), Toast.LENGTH_SHORT).show();
 
         Timber.d(response.toString());
     }

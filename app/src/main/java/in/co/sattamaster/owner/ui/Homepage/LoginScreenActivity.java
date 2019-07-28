@@ -7,7 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import in.co.sattamaster.R;
+import in.co.sattamaster.owner.R;
 import in.co.sattamaster.owner.ui.base.BaseActivity;
 import in.co.sattamaster.owner.ui.base.MySharedPreferences;
 import javax.inject.Inject;
@@ -45,13 +45,15 @@ public class LoginScreenActivity extends BaseActivity implements LoginScreenMvpV
                 if (password.getText().toString().isEmpty() || username.getText().toString().isEmpty()){
                     Toast.makeText(LoginScreenActivity.this, "Please enter value", Toast.LENGTH_LONG);
                 } else {
-                  //  isLoggedIn = true;
+                    //  isLoggedIn = true;
                     MySharedPreferences.registerUserId(preferences, "1");
-                    Intent intent = new Intent(LoginScreenActivity.this, LocationPageActivity.class);
+
+                    Intent intent = new Intent(LoginScreenActivity.this, MainActivity.class);
                     startActivity(intent);
                 }
-                Intent intent = new Intent(LoginScreenActivity.this, LocationPageActivity.class);
+                Intent intent = new Intent(LoginScreenActivity.this, MainActivity.class);
                 MySharedPreferences.registerUserId(preferences, "1");
+                intent.putExtra("isLoggedIn", true);
                 startActivity(intent);
             }
         });

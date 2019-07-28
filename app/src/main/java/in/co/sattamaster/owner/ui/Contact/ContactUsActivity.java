@@ -3,7 +3,7 @@ package in.co.sattamaster.owner.ui.Contact;
 import android.os.Bundle;
 import android.view.View;
 
-import in.co.sattamaster.R;
+import in.co.sattamaster.owner.R;
 import in.co.sattamaster.owner.ui.base.BaseActivity;
 
 public class ContactUsActivity extends BaseActivity {

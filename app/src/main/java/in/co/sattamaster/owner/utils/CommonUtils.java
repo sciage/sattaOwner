@@ -31,7 +31,7 @@ import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import in.co.sattamaster.R;
+import in.co.sattamaster.owner.R;
 
 
 /**

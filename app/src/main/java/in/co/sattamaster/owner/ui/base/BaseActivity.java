@@ -17,7 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 
-import in.co.sattamaster.R;
+import in.co.sattamaster.owner.R;
 import in.co.sattamaster.owner.di.component.ActivityComponent;
 import in.co.sattamaster.owner.di.component.DaggerActivityComponent;
 import in.co.sattamaster.owner.di.module.ActivityModule;

@@ -15,13 +15,13 @@ import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
 
-public class PlayMatkaActivityPresenter <V extends PlayMatkaActivityMvpView> extends BasePresenter<V>
-        implements PlayMatkaActivityMvpPresenter<V> {
+public class AllUsersPresenter<V extends AllUsersMvpView> extends BasePresenter<V>
+        implements AllUsersMvpPresenter<V> {
 
     @Inject
-    public PlayMatkaActivityPresenter(DataManager dataManager,
-                                      SchedulerProvider schedulerProvider,
-                                      CompositeDisposable compositeDisposable) {
+    public AllUsersPresenter(DataManager dataManager,
+                             SchedulerProvider schedulerProvider,
+                             CompositeDisposable compositeDisposable) {
         super(dataManager, schedulerProvider, compositeDisposable);
     }
 

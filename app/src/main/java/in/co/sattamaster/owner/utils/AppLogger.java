@@ -16,7 +16,7 @@
 package in.co.sattamaster.owner.utils;
 
 
-import in.co.sattamaster.BuildConfig;
+import in.co.sattamaster.owner.BuildConfig;
 import timber.log.Timber;
 
 /**

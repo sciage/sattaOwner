@@ -11,7 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import in.co.sattamaster.R;
+import in.co.sattamaster.owner.R;
+
 
 public class TableViewAdapter extends RecyclerView.Adapter {
     List<ResultPojo> movieList;

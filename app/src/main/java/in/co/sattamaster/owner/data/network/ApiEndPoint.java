@@ -16,7 +16,7 @@
 package in.co.sattamaster.owner.data.network;
 
 
-import in.co.sattamaster.BuildConfig;
+import in.co.sattamaster.owner.BuildConfig;
 
 /**
  * Created by amitshekhar on 01/02/17.

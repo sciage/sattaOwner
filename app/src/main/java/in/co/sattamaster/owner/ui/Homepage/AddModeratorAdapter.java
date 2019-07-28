@@ -13,11 +13,11 @@ import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import in.co.sattamaster.R;
-import in.co.sattamaster.owner.ui.PlayMatka.PlayMatkaActivity;
+import in.co.sattamaster.owner.R;
+import in.co.sattamaster.owner.ui.PlayMatka.AllUsersActivity;
 import in.co.sattamaster.owner.ui.base.Constants;
 
-public class LocationGridAdapter extends BaseAdapter{
+public class AddModeratorAdapter extends BaseAdapter{
     public static class Item{
         public String text;
         public String time;
@@ -25,17 +25,17 @@ public class LocationGridAdapter extends BaseAdapter{
 
     private List<Item> mItems = new ArrayList<Item>();
     private Context mContext;
-    public LocationGridAdapter(Context context) {
+    public AddModeratorAdapter(Context context) {
 
 
-        LocationGridAdapter.Item object = new LocationGridAdapter.Item();
+        AddModeratorAdapter.Item object = new AddModeratorAdapter.Item();
         object.text = "Faridabad";
         object.time = "06:30 pm";
         mItems.add(object);
         notifyDataSetChanged();
 
 
-        LocationGridAdapter.Item object02 = new LocationGridAdapter.Item();
+        AddModeratorAdapter.Item object02 = new AddModeratorAdapter.Item();
         object02.text = "Disawar";
         object02.time = "05:30 am";
 
@@ -43,7 +43,7 @@ public class LocationGridAdapter extends BaseAdapter{
         notifyDataSetChanged();
 
 
-        LocationGridAdapter.Item object03 = new LocationGridAdapter.Item();
+        AddModeratorAdapter.Item object03 = new AddModeratorAdapter.Item();
         object03.text = "Gaziabad";
         object03.time = "08:00 pm";
 
@@ -51,7 +51,7 @@ public class LocationGridAdapter extends BaseAdapter{
         notifyDataSetChanged();
 
 
-        LocationGridAdapter.Item object04 = new LocationGridAdapter.Item();
+        AddModeratorAdapter.Item object04 = new AddModeratorAdapter.Item();
         object04.text = "Gali";
         object04.time = "11:00 pm";
 
@@ -59,7 +59,7 @@ public class LocationGridAdapter extends BaseAdapter{
         notifyDataSetChanged();
 
 
-        LocationGridAdapter.Item object05 = new LocationGridAdapter.Item();
+        AddModeratorAdapter.Item object05 = new AddModeratorAdapter.Item();
         object05.text = "Rewari";
         object05.time = "10:00 am";
 
@@ -105,7 +105,7 @@ public class LocationGridAdapter extends BaseAdapter{
             location_back.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(v.getContext(), PlayMatkaActivity.class);
+                    Intent intent = new Intent(v.getContext(), AllUsersActivity.class);
                     intent.putExtra(Constants.LOCATION, "1");
                     v.getContext().startActivity(intent);
                 }
@@ -114,7 +114,7 @@ public class LocationGridAdapter extends BaseAdapter{
             location_back.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(v.getContext(), PlayMatkaActivity.class);
+                    Intent intent = new Intent(v.getContext(), AllUsersActivity.class);
                     intent.putExtra(Constants.LOCATION, "1");
 
                     v.getContext().startActivity(intent);
@@ -124,7 +124,7 @@ public class LocationGridAdapter extends BaseAdapter{
             location_back.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(v.getContext(), PlayMatkaActivity.class);
+                    Intent intent = new Intent(v.getContext(), AllUsersActivity.class);
                     intent.putExtra(Constants.LOCATION, "1");
 
                     v.getContext().startActivity(intent);
@@ -134,7 +134,7 @@ public class LocationGridAdapter extends BaseAdapter{
             location_back.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(v.getContext(), PlayMatkaActivity.class);
+                    Intent intent = new Intent(v.getContext(), AllUsersActivity.class);
                     intent.putExtra(Constants.LOCATION, "1");
 
                     v.getContext().startActivity(intent);
@@ -144,7 +144,7 @@ public class LocationGridAdapter extends BaseAdapter{
             location_back.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(v.getContext(), PlayMatkaActivity.class);
+                    Intent intent = new Intent(v.getContext(), AllUsersActivity.class);
                     intent.putExtra(Constants.LOCATION, "1");
 
                     v.getContext().startActivity(intent);

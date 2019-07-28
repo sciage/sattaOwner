@@ -23,18 +23,18 @@ import in.co.sattamaster.owner.di.ActivityContext;
 import in.co.sattamaster.owner.ui.History.HistoryActivityMvpPresenter;
 import in.co.sattamaster.owner.ui.History.HistoryActivityMvpView;
 import in.co.sattamaster.owner.ui.History.HistoryActivityPresenter;
-import in.co.sattamaster.owner.ui.Homepage.LocationPageMvpPresenter;
-import in.co.sattamaster.owner.ui.Homepage.LocationPageMvpView;
-import in.co.sattamaster.owner.ui.Homepage.LocationPagePresenter;
+import in.co.sattamaster.owner.ui.Homepage.AddModeratorMvpPresenter;
+import in.co.sattamaster.owner.ui.Homepage.AddModeratorMvpView;
+import in.co.sattamaster.owner.ui.Homepage.AddModeratorPresenter;
 import in.co.sattamaster.owner.ui.Homepage.LoginScreenMvpPresenter;
 import in.co.sattamaster.owner.ui.Homepage.LoginScreenMvpView;
 import in.co.sattamaster.owner.ui.Homepage.LoginScreenPresenter;
 import in.co.sattamaster.owner.ui.Homepage.MainActivityMvpPresenter;
 import in.co.sattamaster.owner.ui.Homepage.MainActivityMvpView;
 import in.co.sattamaster.owner.ui.Homepage.MainActivityPresenter;
-import in.co.sattamaster.owner.ui.PlayMatka.PlayMatkaActivityMvpPresenter;
-import in.co.sattamaster.owner.ui.PlayMatka.PlayMatkaActivityMvpView;
-import in.co.sattamaster.owner.ui.PlayMatka.PlayMatkaActivityPresenter;
+import in.co.sattamaster.owner.ui.PlayMatka.AllUsersMvpPresenter;
+import in.co.sattamaster.owner.ui.PlayMatka.AllUsersMvpView;
+import in.co.sattamaster.owner.ui.PlayMatka.AllUsersPresenter;
 import in.co.sattamaster.owner.ui.Result.ResultActivityMvpPresenter;
 import in.co.sattamaster.owner.ui.Result.ResultActivityMvpView;
 import in.co.sattamaster.owner.ui.Result.ResultActivityPresenter;
@@ -96,8 +96,8 @@ public class ActivityModule {
     }
 
     @Provides
-    LocationPageMvpPresenter<LocationPageMvpView> provideLocationPageMvpPresenter(
-            LocationPagePresenter<LocationPageMvpView> presenter) {
+    AddModeratorMvpPresenter<AddModeratorMvpView> provideLocationPageMvpPresenter(
+            AddModeratorPresenter<AddModeratorMvpView> presenter) {
         return presenter;
     }
 
@@ -108,8 +108,8 @@ public class ActivityModule {
     }
 
     @Provides
-    PlayMatkaActivityMvpPresenter<PlayMatkaActivityMvpView> providePlayMatkaMvpPresenter(
-            PlayMatkaActivityPresenter<PlayMatkaActivityMvpView> presenter) {
+    AllUsersMvpPresenter<AllUsersMvpView> providePlayMatkaMvpPresenter(
+            AllUsersPresenter<AllUsersMvpView> presenter) {
         return presenter;
     }
 

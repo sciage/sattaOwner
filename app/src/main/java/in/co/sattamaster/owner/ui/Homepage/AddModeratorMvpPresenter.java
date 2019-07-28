@@ -4,5 +4,5 @@ import in.co.sattamaster.owner.di.PerActivity;
 import in.co.sattamaster.owner.ui.base.MvpPresenter;
 
 @PerActivity
-public interface LocationPageMvpPresenter <V extends LocationPageMvpView> extends MvpPresenter<V> {
+public interface AddModeratorMvpPresenter<V extends AddModeratorMvpView> extends MvpPresenter<V> {
 }

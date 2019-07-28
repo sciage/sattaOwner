@@ -19,7 +19,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 
-import in.co.sattamaster.R;
+import in.co.sattamaster.owner.R;
+
 
 /**
  * Created by janisharali on 24/05/17.

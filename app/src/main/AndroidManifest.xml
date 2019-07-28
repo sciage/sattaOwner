@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ui.Result.PastResultActivity"></activity>
-        <activity android:name=".ui.PlayMatka.PlayMatkaActivity" />
+        <activity android:name=".ui.PlayMatka.AllUsersActivity" />
         <activity android:name=".ui.Result.ResultActivity" />
         <activity android:name=".ui.History.HistoryActivity" />
         <activity android:name=".ui.Withdraw.WithdrawActivity" />
@@ -28,7 +28,7 @@
         <activity android:name=".ui.SingleLocationPage" />
         <activity android:name=".ui.CreateGroupTagActivity" />
         <activity android:name=".ui.Homepage.LoginScreenActivity" />
-        <activity android:name=".ui.Homepage.LocationPageActivity" />
+        <activity android:name=".ui.Homepage.AddModeratorActivity" />
 
         <meta-data
             android:name="io.fabric.ApiKey"
