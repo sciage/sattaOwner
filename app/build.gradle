@@ -18,7 +18,7 @@ repositories {
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "in.co.sattamaster"
+        applicationId "in.co.sattamaster.owner"
         minSdkVersion 19
         targetSdkVersion 28
         versionCode 1
