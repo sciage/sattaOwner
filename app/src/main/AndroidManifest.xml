@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="in.co.sattamaster.owner">
+    package="in.co.sattamaster">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -12,8 +12,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.Result.PastResultActivity"></activity>
-        <activity android:name=".ui.PlayMatka.AllUsersActivity" />
+        <activity android:name=".ui.AddCoins.AddCoinsActivity"></activity>
+        <activity android:name=".ui.AllUsers.AllUsersActivity" />
+        <activity android:name=".ui.AddModerator.ListOfModeratorActivity" />
+        <activity android:name=".ui.AddModerator.AddModeratorActivity" />
+        <activity
+            android:name=".ui.login.RegisterActivity"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity android:name=".ui.Result.PastResultActivity" />
+        <activity android:name=".ui.PlayMatka.PlayMatkaActivity" />
         <activity android:name=".ui.Result.ResultActivity" />
         <activity android:name=".ui.History.HistoryActivity" />
         <activity android:name=".ui.Withdraw.WithdrawActivity" />
@@ -27,8 +34,10 @@
         </activity>
         <activity android:name=".ui.SingleLocationPage" />
         <activity android:name=".ui.CreateGroupTagActivity" />
-        <activity android:name=".ui.Homepage.LoginScreenActivity" />
-        <activity android:name=".ui.Homepage.AddModeratorActivity" />
+        <activity
+            android:name=".ui.login.LoginScreenActivity"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity android:name=".ui.Homepage.LocationPageActivity" />
 
         <meta-data
             android:name="io.fabric.ApiKey"

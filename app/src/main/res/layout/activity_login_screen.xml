@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.login.RegisterActivity">
+
+
+<ScrollView
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-tools:context=".ui.Homepage.LoginScreenActivity">
+    android:fillViewport="true"
+tools:context="in.co.sattamaster.ui.login.LoginScreenActivity">
 
 <LinearLayout
     android:layout_width="match_parent"
-    android:layout_gravity="center"
     android:background="@color/secondPage"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -25,7 +32,6 @@ tools:context=".ui.Homepage.LoginScreenActivity">
         />
 
 
-
     <EditText
         android:layout_width="300dp"
         android:layout_height="56dp"
@@ -33,9 +39,9 @@ tools:context=".ui.Homepage.LoginScreenActivity">
         android:layout_marginTop="92dp"
         android:background="@drawable/bubble"
         android:gravity="center_vertical"
-        android:hint="username"
+        android:hint="Phone Number"
         android:inputType="text"
-        android:id="@+id/username"
+        android:id="@+id/phone_number"
         android:paddingStart="32dp"
         android:paddingEnd="32dp"
         android:textColor="#ffffff"
@@ -82,6 +88,56 @@ tools:context=".ui.Homepage.LoginScreenActivity">
         android:layout_height="wrap_content"
         />
 
+    <Button
+        android:id="@+id/registerbutton"
+        android:textColor="#ffffff"
+        android:paddingLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:paddingRight="10dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/bubble"
+        android:text="Register"
+        android:textSize="20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
 
 </LinearLayout>
-</FrameLayout>
+</ScrollView>
+
+    <FrameLayout
+        android:id="@+id/login_progressbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="70dp"
+            android:text="Loading"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="40dp"
+            android:text="Please Wait..."
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminate="true" />
+    </FrameLayout>
+
+
+</RelativeLayout>

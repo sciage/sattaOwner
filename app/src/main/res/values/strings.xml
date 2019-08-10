@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SattaApp</string>
+    <string name="app_name">Satta Owner</string>
 
     <!--App Message-->
     <string name="api_retry_error">Please retry!</string>
