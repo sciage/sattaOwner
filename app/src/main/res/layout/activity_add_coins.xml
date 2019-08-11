@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:orientation="vertical"
-tools:context="in.co.sattamaster.ui.AddCoins.AddCoinsActivity">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="in.co.sattamaster.ui.AddCoins.AddCoinsActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
 <include
     layout="@layout/include_toolbar" />
@@ -71,14 +82,26 @@ tools:context="in.co.sattamaster.ui.AddCoins.AddCoinsActivity">
     android:textSize="18sp" />
 
 <EditText
-    android:layout_width="200dp"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:hint="Enter Amount Here"
+    android:hint="Enter User Mobile Here"
     android:layout_gravity="center_horizontal"
     android:layout_marginTop="10dp"
     android:background="@drawable/rectangle"
     android:padding="10dp"
-    android:id="@+id/user_coins" />
+    android:id="@+id/user_mobile" />
+
+    <EditText
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:hint="Enter Amount Here"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rectangle"
+        android:padding="10dp"
+        android:id="@+id/user_coins" />
+
+
 
 
 <Button
@@ -102,6 +125,16 @@ tools:context="in.co.sattamaster.ui.AddCoins.AddCoinsActivity">
     android:layout_marginTop="20dp"
     android:textSize="18sp" />
 
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Enter Moderator Mobile Here"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/rectangle"
+                android:padding="10dp"
+                android:id="@+id/moderator_mobile" />
+
 <EditText
     android:layout_width="200dp"
     android:layout_height="wrap_content"
@@ -111,6 +144,8 @@ tools:context="in.co.sattamaster.ui.AddCoins.AddCoinsActivity">
     android:background="@drawable/rectangle"
     android:padding="10dp"
     android:id="@+id/enter_moderator_coins" />
+
+
 
 
 <Button
@@ -160,5 +195,40 @@ tools:context="in.co.sattamaster.ui.AddCoins.AddCoinsActivity">
     android:background="@drawable/rectangle_color"
     />
 
+        </LinearLayout>
 
-</LinearLayout>
+    </ScrollView>
+
+    <FrameLayout
+        android:id="@+id/addcoins_progressbar"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="70dp"
+            android:text="Loading"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="40dp"
+            android:text="Please Wait..."
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminate="true" />
+    </FrameLayout>
+
+</RelativeLayout>

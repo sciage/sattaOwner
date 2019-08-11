@@ -129,6 +129,17 @@ public class AppApiHelper implements ApiHelper {
     }
 
     @Override
+    public Single<List<UserProfile>> getAllUsers() {
+        return Rx2AndroidNetworking.get(ApiEndPoint.GET_ALL_USERS)
+                //  .addHeaders(mApiHeader.getProtectedApiHeader())
+                .setOkHttpClient(getUnsafeOkHttpClient())
+                //   .addBodyParameter("user_id", user_id)
+                //  .addBodyParameter("centre_id", centre_id)
+                .build()
+                .getObjectListSingle(UserProfile.class);
+    }
+
+    @Override
     public Single<UserObject> getUserProfile(String token) {
         return Rx2AndroidNetworking.get(ApiEndPoint.GET_USER_PROFILE)
             //    .addHeaders("Authorization", "Bearer" + " " + token)

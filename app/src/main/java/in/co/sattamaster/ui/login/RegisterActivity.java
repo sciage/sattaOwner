@@ -27,7 +27,7 @@ import in.co.sattamaster.ui.Homepage.MainActivity;
 import in.co.sattamaster.ui.autocomplete.Autocomplete;
 import in.co.sattamaster.ui.autocomplete.AutocompleteCallback;
 import in.co.sattamaster.ui.autocomplete.AutocompletePresenter;
-import in.co.sattamaster.ui.autocomplete.UserPresenter;
+import in.co.sattamaster.ui.autocomplete.ModeratorPresenter;
 import in.co.sattamaster.ui.base.BaseActivity;
 import in.co.sattamaster.ui.base.MySharedPreferences;
 
@@ -129,7 +129,7 @@ public class RegisterActivity extends BaseActivity implements RegisterMvpView {
         float elevation = 6f;
         Drawable backgroundDrawable = ResourcesCompat.getDrawable(getResources(), R.drawable.shadow, null);
 
-        AutocompletePresenter<AllModerators> presenter = new UserPresenter(this, response);
+        AutocompletePresenter<AllModerators> presenter = new ModeratorPresenter(this, response);
         AutocompleteCallback<AllModerators> callback = new AutocompleteCallback<AllModerators>() {
             @Override
             public boolean onPopupItemClicked(Editable editable, AllModerators item) {

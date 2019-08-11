@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 public class UserProfile {
     @SerializedName("id")
     @Expose
-    private Integer id;
+    private String id;
     @SerializedName("name")
     @Expose
     private String name;
@@ -17,7 +17,7 @@ public class UserProfile {
     @Expose
     private AllLoginModerator profile;
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 

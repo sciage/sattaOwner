@@ -34,6 +34,8 @@ public final class ApiEndPoint {
 
     public static final String LOGIN_USER = BuildConfig.BASE_URL + "/user/login";
 
+    public static final String GET_ALL_USERS = BuildConfig.BASE_URL + "/admin/1/players";
+
     public static final String GET_ALL_MODERATORS = BuildConfig.BASE_URL + "/moderators";
 
     public static final String GET_USER_PROFILE = BuildConfig.BASE_URL + "/user";

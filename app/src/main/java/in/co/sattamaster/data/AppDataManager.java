@@ -102,6 +102,11 @@ public class AppDataManager implements DataManager {
         return mApiHelper.newLocation(object);
     }
 
+    @Override
+    public Single<List<UserProfile>> getAllUsers() {
+        return mApiHelper.getAllUsers();
+    }
+
  /*   @Override
     public Single<List<PostsModel>> getImagePosts(String user_id, String onlyImages, String page) {
         return mApiHelper.getImagePosts(user_id, onlyImages, page);

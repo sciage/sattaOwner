@@ -45,6 +45,7 @@ public interface ApiHelper {
     Single<UserObject> getUserProfile(String token);
     Single<List<LocationPojo>> getCentres(String token);
     Single<LocationStatus> newLocation(JSONObject object);
+    Single<List<UserProfile>> getAllUsers();
 
 
   //  Single<List<PostsModel>> getImagePosts(String user_id, String onlyImages, String page);

@@ -15,15 +15,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.co.sattamaster.R;
-import in.co.sattamaster.ui.login.UserProfile;
-import in.co.sattamaster.ui.login.UserProfile;
+import in.co.sattamaster.ui.login.AllModerators;
 
-public class UserPresenter extends RecyclerViewPresenter<UserProfile> {
+public class ModeratorPresenter extends RecyclerViewPresenter<AllModerators> {
 
     protected Adapter adapter;
-    List<UserProfile> groups_joined;
+    List<AllModerators> groups_joined;
 
-    public UserPresenter(Context context, List<UserProfile> groups_joined) {
+    public ModeratorPresenter(Context context, List<AllModerators> groups_joined) {
         super(context);
         this.groups_joined = groups_joined;
     }
@@ -48,8 +47,8 @@ public class UserPresenter extends RecyclerViewPresenter<UserProfile> {
             adapter.setData(groups_joined);
         } else {
             query = query.toString().toLowerCase();
-            List<UserProfile> list = new ArrayList<>();
-            for (UserProfile u : groups_joined) {
+            List<AllModerators> list = new ArrayList<>();
+            for (AllModerators u : groups_joined) {
                 try {
                     if (u.getPhone().toLowerCase().contains(query) ||
                             u.getName().toLowerCase().contains(query)) {
@@ -68,7 +67,7 @@ public class UserPresenter extends RecyclerViewPresenter<UserProfile> {
 
     class Adapter extends RecyclerView.Adapter<Adapter.Holder> {
 
-        private List<UserProfile> data;
+        private List<AllModerators> data;
 
         public class Holder extends RecyclerView.ViewHolder {
             private View root;
@@ -82,7 +81,7 @@ public class UserPresenter extends RecyclerViewPresenter<UserProfile> {
             }
         }
 
-        public void setData(List<UserProfile> data) {
+        public void setData(List<AllModerators> data) {
             this.data = data;
         }
 
@@ -108,7 +107,7 @@ public class UserPresenter extends RecyclerViewPresenter<UserProfile> {
                 holder.root.setOnClickListener(null);
                 return;
             }
-            final UserProfile GroupUser = data.get(position);
+            final AllModerators GroupUser = data.get(position);
             holder.fullname.setText(GroupUser.getName());
             holder.GroupUsername.setText("@" + GroupUser.getPhone());
             holder.root.setOnClickListener(new View.OnClickListener() {

@@ -14,7 +14,8 @@
         android:theme="@style/AppTheme">
         <activity android:name=".ui.Location.AddLocationActivity"
             android:windowSoftInputMode="stateAlwaysHidden" ></activity>
-        <activity android:name=".ui.AddCoins.AddCoinsActivity" />
+        <activity android:name=".ui.AddCoins.AddCoinsActivity"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity android:name=".ui.AllUsers.AllUsersActivity" />
         <activity android:name=".ui.AddModerator.ListOfModeratorActivity" />
         <activity android:name=".ui.AddModerator.AddModeratorActivity" />

@@ -6,4 +6,8 @@ import in.co.sattamaster.ui.base.MvpPresenter;
 
 @PerActivity
 public interface AddCoinsMvpPresenter<V extends AddCoinsMvpView> extends MvpPresenter<V> {
+
+    void getAllUsers();
+    void getAllModerator();
+
 }
