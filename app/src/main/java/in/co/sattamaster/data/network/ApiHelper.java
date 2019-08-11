@@ -23,6 +23,7 @@ import java.util.List;
 import in.co.sattamaster.dto.Bid;
 import in.co.sattamaster.ui.Homepage.LocationPojo;
 import in.co.sattamaster.ui.Homepage.UserObject;
+import in.co.sattamaster.ui.Location.LocationStatus;
 import in.co.sattamaster.ui.login.AllModerators;
 import in.co.sattamaster.ui.login.LoginResponse;
 import in.co.sattamaster.ui.login.RegisterResponse;
@@ -43,6 +44,7 @@ public interface ApiHelper {
     Single<LoginResponse> loginUser(JSONObject bids);
     Single<UserObject> getUserProfile(String token);
     Single<List<LocationPojo>> getCentres(String token);
+    Single<LocationStatus> newLocation(JSONObject object);
 
 
   //  Single<List<PostsModel>> getImagePosts(String user_id, String onlyImages, String page);

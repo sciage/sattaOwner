@@ -30,6 +30,8 @@ public final class ApiEndPoint {
 
     public static final String REGISTER_USER = BuildConfig.BASE_URL + "/admin/1/players";
 
+    public static final String NEW_LOCATION = BuildConfig.BASE_URL + "/centres";
+
     public static final String LOGIN_USER = BuildConfig.BASE_URL + "/user/login";
 
     public static final String GET_ALL_MODERATORS = BuildConfig.BASE_URL + "/moderators";

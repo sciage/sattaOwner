@@ -8,6 +8,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.Calendar;
 
@@ -38,6 +42,7 @@ public class AddLocationActivity extends BaseActivity implements AddLocationMvpV
     @BindView(R.id.reveal_time_hourly) Button reveal_time_hourly;
     @BindView(R.id.reveal_time_hourly_last) Button reveal_time_hourly_last;
     @BindView(R.id.add_hourly_location) Button add_hourly_location;
+
 
     String reveal_time_daily_value;
     String reveal_time_daily_last_value;
@@ -165,6 +170,40 @@ public class AddLocationActivity extends BaseActivity implements AddLocationMvpV
     }
 
 
+    private JSONObject createDailyBid(){
+        JSONObject dailyBid = new JSONObject();
+        try {
+            dailyBid.put("name", location_daily.getText().toString());
+            dailyBid.put("number_reveal_time", reveal_time_daily_value);
+            dailyBid.put("last_bid_time", reveal_time_daily_last_value);
+            dailyBid.put("is_hourly", false);
+
+        } catch (JSONException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        return dailyBid;
+    }
+
+
+    private JSONObject createHourlyBid(){
+        JSONObject dailyBid = new JSONObject();
+        try {
+            dailyBid.put("name", location_hour_name.getText().toString());
+            dailyBid.put("number_reveal_time", hourly_reveal_time_value);
+            dailyBid.put("last_bid_time", hourly_reveal_time_last_value);
+            dailyBid.put("is_hourly", true);
+
+        } catch (JSONException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        return dailyBid;
+    }
+
+
     @Override
     public void onClick(View v) {
         switch (v.getId()){
@@ -180,6 +219,23 @@ public class AddLocationActivity extends BaseActivity implements AddLocationMvpV
 
                 break;
             case R.id.add_daily_number:
+
+
+                if(location_daily.getText().toString().isEmpty()){
+                    Toast.makeText(this, "Please enter location name", Toast.LENGTH_SHORT).show();
+                } else if (reveal_time_daily_value == null || reveal_time_daily_last_value==null){
+                    Toast.makeText(this, "Please enter location timings", Toast.LENGTH_SHORT).show();
+
+                } else {
+                    try {
+                        mPresenter.sendLocation(createDailyBid());
+                    } catch (Exception ex){
+                        Toast.makeText(this, "error", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+
+
 
 
                 break;
@@ -199,10 +255,30 @@ public class AddLocationActivity extends BaseActivity implements AddLocationMvpV
             case R.id.add_hourly_location:
 
 
+                if(location_daily.getText().toString().isEmpty()){
+                    Toast.makeText(this, "Please enter location name", Toast.LENGTH_SHORT).show();
+                } else if (reveal_time_daily_value == null || reveal_time_daily_last_value==null){
+                    Toast.makeText(this, "Please enter location timings", Toast.LENGTH_SHORT).show();
+
+                } else {
+                    try {
+                        mPresenter.sendLocation(createHourlyBid());
+                    } catch (Exception ex){
+                        Toast.makeText(this, "error", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
                 break;
 
 
         }
 
+    }
+
+    @Override
+    public void receiveLocation(LocationStatus response) {
+        if (response.getStatus()){
+            Toast.makeText(this, "Successfully created location", Toast.LENGTH_SHORT).show();
+        }
     }
 }

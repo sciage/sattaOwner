@@ -16,14 +16,13 @@ public class Converter {
 
         int hour = time.get(Calendar.HOUR_OF_DAY);
         int min = time.get(Calendar.MINUTE);
-        int sec = time.get(Calendar.SECOND);
         boolean pm = false;
 
-        if(hour>12){
+      /*  if(hour>12){
             pm = true;
-            hour = hour - 12;
-        }
+            hour = hour + 12;
+        } */
 
-        return pm ? hour +":"+min+":"+sec+" PM" : hour +":"+min+":"+sec+" AM";
+        return pm ? hour +":"+min : hour +":"+min;
     }
 }

@@ -35,6 +35,7 @@ import javax.net.ssl.X509TrustManager;
 import in.co.sattamaster.dto.Bid;
 import in.co.sattamaster.ui.Homepage.LocationPojo;
 import in.co.sattamaster.ui.Homepage.UserObject;
+import in.co.sattamaster.ui.Location.LocationStatus;
 import in.co.sattamaster.ui.base.MySharedPreferences;
 import in.co.sattamaster.ui.login.AllModerators;
 import in.co.sattamaster.ui.login.LoginResponse;
@@ -90,6 +91,18 @@ public class AppApiHelper implements ApiHelper {
                 .addJSONObjectBody(bids)
                 .build()
                 .getObjectSingle(RegisterResponse.class);
+    }
+
+    @Override
+    public Single<LocationStatus> newLocation(JSONObject object) {
+        return Rx2AndroidNetworking.post(ApiEndPoint.NEW_LOCATION)
+                //  .addHeaders(mApiHeader.getProtectedApiHeader())
+                .setOkHttpClient(getUnsafeOkHttpClient())
+                //   .addBodyParameter("user_id", user_id)
+                //  .addBodyParameter("centre_id", centre_id)
+                .addJSONObjectBody(object)
+                .build()
+                .getObjectSingle(LocationStatus.class);
     }
 
     @Override
