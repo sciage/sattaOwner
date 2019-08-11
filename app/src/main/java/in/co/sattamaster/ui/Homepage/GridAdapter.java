@@ -15,6 +15,7 @@ import in.co.sattamaster.ui.AddModerator.AddModeratorActivity;
 import in.co.sattamaster.ui.AllUsers.AllUsersActivity;
 import in.co.sattamaster.ui.Contact.ContactUsActivity;
 import in.co.sattamaster.ui.History.HistoryActivity;
+import in.co.sattamaster.ui.Location.AddLocationActivity;
 import in.co.sattamaster.ui.Result.ResultActivity;
 import in.co.sattamaster.ui.Withdraw.WithdrawActivity;
 
@@ -142,7 +143,7 @@ public class GridAdapter extends BaseAdapter{
             box_back.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(v.getContext(), HistoryActivity.class);
+                    Intent intent = new Intent(v.getContext(), AddLocationActivity.class);
                     v.getContext().startActivity(intent);
                 }
             });

@@ -35,6 +35,9 @@ import in.co.sattamaster.ui.History.HistoryActivityPresenter;
 import in.co.sattamaster.ui.Homepage.LocationPageMvpPresenter;
 import in.co.sattamaster.ui.Homepage.LocationPageMvpView;
 import in.co.sattamaster.ui.Homepage.LocationPagePresenter;
+import in.co.sattamaster.ui.Location.AddLocationMvpPresenter;
+import in.co.sattamaster.ui.Location.AddLocationMvpView;
+import in.co.sattamaster.ui.Location.AddLocationPresenter;
 import in.co.sattamaster.ui.login.LoginScreenMvpPresenter;
 import in.co.sattamaster.ui.login.LoginScreenMvpView;
 import in.co.sattamaster.ui.login.LoginScreenPresenter;
@@ -134,6 +137,12 @@ public class ActivityModule {
     @Provides
     AddCoinsMvpPresenter<AddCoinsMvpView> provideAddCoinsMvpPresenter(
             AddCoinsPresenter<AddCoinsMvpView> presenter) {
+        return presenter;
+    }
+
+    @Provides
+    AddLocationMvpPresenter<AddLocationMvpView> provideAddLocationMvpPresenter(
+            AddLocationPresenter<AddLocationMvpView> presenter) {
         return presenter;
     }
 
