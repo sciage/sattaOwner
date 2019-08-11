@@ -21,6 +21,8 @@ import org.json.JSONObject;
 import java.util.List;
 
 import in.co.sattamaster.dto.Bid;
+import in.co.sattamaster.ui.AddCoins.AddModeratorCoinsResponse;
+import in.co.sattamaster.ui.AddCoins.AddUserCoinsResponse;
 import in.co.sattamaster.ui.Homepage.LocationPojo;
 import in.co.sattamaster.ui.Homepage.UserObject;
 import in.co.sattamaster.ui.Location.LocationStatus;
@@ -46,6 +48,9 @@ public interface ApiHelper {
     Single<List<LocationPojo>> getCentres(String token);
     Single<LocationStatus> newLocation(JSONObject object);
     Single<List<UserProfile>> getAllUsers();
+    Single<AddUserCoinsResponse> addUserCoin(String userId, JSONObject coinBalance);
+    Single<AddModeratorCoinsResponse> addModeratorCoin(String moderator_id, JSONObject coinBalance);
+    Single<AddModeratorCoinsResponse> addOwnerCoin(JSONObject ownerCoins);
 
 
   //  Single<List<PostsModel>> getImagePosts(String user_id, String onlyImages, String page);

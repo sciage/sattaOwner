@@ -33,10 +33,11 @@ import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
 import in.co.sattamaster.dto.Bid;
+import in.co.sattamaster.ui.AddCoins.AddModeratorCoinsResponse;
+import in.co.sattamaster.ui.AddCoins.AddUserCoinsResponse;
 import in.co.sattamaster.ui.Homepage.LocationPojo;
 import in.co.sattamaster.ui.Homepage.UserObject;
 import in.co.sattamaster.ui.Location.LocationStatus;
-import in.co.sattamaster.ui.base.MySharedPreferences;
 import in.co.sattamaster.ui.login.AllModerators;
 import in.co.sattamaster.ui.login.LoginResponse;
 import in.co.sattamaster.ui.login.RegisterResponse;
@@ -115,6 +116,44 @@ public class AppApiHelper implements ApiHelper {
                 .addJSONObjectBody(bids)
                 .build()
                 .getObjectSingle(LoginResponse.class);
+    }
+
+    @Override
+    public Single<AddUserCoinsResponse> addUserCoin(String userId, JSONObject coinBalance) {
+        return Rx2AndroidNetworking.post(ApiEndPoint.ADD_USER_COIN)
+                .addPathParameter("user_id", userId)
+                //  .addHeaders(mApiHeader.getProtectedApiHeader())
+                .setOkHttpClient(getUnsafeOkHttpClient())
+                //   .addBodyParameter("user_id", user_id)
+                //  .addBodyParameter("centre_id", centre_id)
+                .addJSONObjectBody(coinBalance)
+                .build()
+                .getObjectSingle(AddUserCoinsResponse.class);
+    }
+
+    @Override
+    public Single<AddModeratorCoinsResponse> addModeratorCoin(String moderator_id, JSONObject coinBalance) {
+        return Rx2AndroidNetworking.post(ApiEndPoint.ADD_MODERATOR_COIN)
+                .addPathParameter("moderator_id", moderator_id)
+                //  .addHeaders(mApiHeader.getProtectedApiHeader())
+                .setOkHttpClient(getUnsafeOkHttpClient())
+                //   .addBodyParameter("user_id", user_id)
+                //  .addBodyParameter("centre_id", centre_id)
+                .addJSONObjectBody(coinBalance)
+                .build()
+                .getObjectSingle(AddModeratorCoinsResponse.class);
+    }
+
+    @Override
+    public Single<AddModeratorCoinsResponse> addOwnerCoin(JSONObject ownerCoins) {
+        return Rx2AndroidNetworking.post(ApiEndPoint.ADD_OWNER_COIN)
+                //  .addHeaders(mApiHeader.getProtectedApiHeader())
+                .setOkHttpClient(getUnsafeOkHttpClient())
+                //   .addBodyParameter("user_id", user_id)
+                //  .addBodyParameter("centre_id", centre_id)
+                .addJSONObjectBody(ownerCoins)
+                .build()
+                .getObjectSingle(AddModeratorCoinsResponse.class);
     }
 
     @Override

@@ -27,6 +27,8 @@ import in.co.sattamaster.data.network.ApiHelper;
 import in.co.sattamaster.data.prefs.PreferencesHelper;
 import in.co.sattamaster.di.ApplicationContext;
 import in.co.sattamaster.dto.Bid;
+import in.co.sattamaster.ui.AddCoins.AddModeratorCoinsResponse;
+import in.co.sattamaster.ui.AddCoins.AddUserCoinsResponse;
 import in.co.sattamaster.ui.Homepage.LocationPojo;
 import in.co.sattamaster.ui.Homepage.UserObject;
 import in.co.sattamaster.ui.Location.LocationStatus;
@@ -105,6 +107,21 @@ public class AppDataManager implements DataManager {
     @Override
     public Single<List<UserProfile>> getAllUsers() {
         return mApiHelper.getAllUsers();
+    }
+
+    @Override
+    public Single<AddUserCoinsResponse> addUserCoin(String userId, JSONObject coinBalance) {
+        return mApiHelper.addUserCoin(userId, coinBalance);
+    }
+
+    @Override
+    public Single<AddModeratorCoinsResponse> addModeratorCoin(String moderator_id, JSONObject coinBalance) {
+        return mApiHelper.addModeratorCoin(moderator_id, coinBalance);
+    }
+
+    @Override
+    public Single<AddModeratorCoinsResponse> addOwnerCoin(JSONObject ownerCoins) {
+        return mApiHelper.addOwnerCoin(ownerCoins);
     }
 
  /*   @Override

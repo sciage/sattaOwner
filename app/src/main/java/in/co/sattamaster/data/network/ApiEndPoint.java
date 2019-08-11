@@ -42,6 +42,12 @@ public final class ApiEndPoint {
 
     public static final String GET_CENTRES = BuildConfig.BASE_URL + "/centres";
 
+    public static final String ADD_USER_COIN = BuildConfig.BASE_URL + "/admin/1/players/{user_id}/add-coin-balance";
+
+    public static final String ADD_MODERATOR_COIN = BuildConfig.BASE_URL + "/admin/1/moderators/{moderator_id}/add-coin-balance";
+
+    public static final String ADD_OWNER_COIN = BuildConfig.BASE_URL + "/admin/1/add-coin-balance";
+
     public static final String ENDPOINT_GOOGLE_LOGIN = BuildConfig.BASE_URL
             + "/588d14f4100000a9072d2943";
 

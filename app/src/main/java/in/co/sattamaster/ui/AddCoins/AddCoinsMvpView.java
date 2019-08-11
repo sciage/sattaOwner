@@ -11,5 +11,7 @@ public interface AddCoinsMvpView extends MvpView {
 
     void getAllUsers(List<UserProfile> response);
     void getListAllGroups(List<AllModerators> response);
+    void AddUserCoinResponse(AddUserCoinsResponse response);
+    void AddModeratorCoinResponse(AddModeratorCoinsResponse response);
 
 }

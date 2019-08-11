@@ -8,6 +8,10 @@ import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.List;
 
@@ -22,6 +26,7 @@ import in.co.sattamaster.ui.autocomplete.AutocompletePresenter;
 import in.co.sattamaster.ui.autocomplete.ModeratorPresenter;
 import in.co.sattamaster.ui.autocomplete.UserPresenter;
 import in.co.sattamaster.ui.base.BaseActivity;
+import in.co.sattamaster.ui.base.MySharedPreferences;
 import in.co.sattamaster.ui.login.AllModerators;
 import in.co.sattamaster.ui.login.UserProfile;
 import timber.log.Timber;
@@ -162,12 +167,21 @@ public class AddCoinsActivity extends BaseActivity implements AddCoinsMvpView, V
             case R.id.send_user_coin:
 
                 progressFrame.setVisibility(View.VISIBLE);
+                mPresenter.addUserCoin(userId, balanceJson(user_coins.getText().toString()));
 
                 break;
             case R.id.send_moderator_coin:
+
+                progressFrame.setVisibility(View.VISIBLE);
+                mPresenter.addModeratorCoin(moderator_id, balanceJson(enter_moderator_coins.getText().toString()));
+
                 break;
 
             case R.id.send_owner_coin:
+
+                progressFrame.setVisibility(View.VISIBLE);
+                mPresenter.addOwnerCoin(balanceJson(enter_moderator_coins.getText().toString()));
+
                 break;
         }
 
@@ -183,6 +197,46 @@ public class AddCoinsActivity extends BaseActivity implements AddCoinsMvpView, V
     public void getListAllGroups(List<AllModerators> response) {
         setupModeratorAutocomplete(response);
 
+        progressFrame.setVisibility(View.INVISIBLE);
+
+    }
+
+    private JSONObject balanceJson(String balanceAmount){
+        JSONObject balance = new JSONObject();
+        try {
+            balance.put("amount", balanceAmount);
+
+        } catch (JSONException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        return balance;
+    }
+
+    @Override
+    public void AddUserCoinResponse(AddUserCoinsResponse response) {
+
+        if (response.isStatus()){
+            Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show();
+
+        }
+        progressFrame.setVisibility(View.INVISIBLE);
+
+
+    }
+
+    @Override
+    public void AddModeratorCoinResponse(AddModeratorCoinsResponse response) {
+
+        if (response.isStatus()){
+            Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show();
+
+        }
         progressFrame.setVisibility(View.INVISIBLE);
 
     }
