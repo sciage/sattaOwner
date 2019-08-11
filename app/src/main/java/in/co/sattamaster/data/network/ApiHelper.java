@@ -51,6 +51,7 @@ public interface ApiHelper {
     Single<AddUserCoinsResponse> addUserCoin(String userId, JSONObject coinBalance);
     Single<AddModeratorCoinsResponse> addModeratorCoin(String moderator_id, JSONObject coinBalance);
     Single<AddModeratorCoinsResponse> addOwnerCoin(JSONObject ownerCoins);
+    Single<AddModeratorCoinsResponse> addModerator(JSONObject moderator);
 
 
   //  Single<List<PostsModel>> getImagePosts(String user_id, String onlyImages, String page);

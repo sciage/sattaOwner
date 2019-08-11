@@ -124,6 +124,11 @@ public class AppDataManager implements DataManager {
         return mApiHelper.addOwnerCoin(ownerCoins);
     }
 
+    @Override
+    public Single<AddModeratorCoinsResponse> addModerator(JSONObject moderator) {
+        return mApiHelper.addModerator(moderator);
+    }
+
  /*   @Override
     public Single<List<PostsModel>> getImagePosts(String user_id, String onlyImages, String page) {
         return mApiHelper.getImagePosts(user_id, onlyImages, page);

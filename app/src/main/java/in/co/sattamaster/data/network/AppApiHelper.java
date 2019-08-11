@@ -145,6 +145,18 @@ public class AppApiHelper implements ApiHelper {
     }
 
     @Override
+    public Single<AddModeratorCoinsResponse> addModerator(JSONObject moderator) {
+        return Rx2AndroidNetworking.post(ApiEndPoint.ADD_MODERATOR)
+                //  .addHeaders(mApiHeader.getProtectedApiHeader())
+                .setOkHttpClient(getUnsafeOkHttpClient())
+                //   .addBodyParameter("user_id", user_id)
+                //  .addBodyParameter("centre_id", centre_id)
+                .addJSONObjectBody(moderator)
+                .build()
+                .getObjectSingle(AddModeratorCoinsResponse.class);
+    }
+
+    @Override
     public Single<AddModeratorCoinsResponse> addOwnerCoin(JSONObject ownerCoins) {
         return Rx2AndroidNetworking.post(ApiEndPoint.ADD_OWNER_COIN)
                 //  .addHeaders(mApiHeader.getProtectedApiHeader())
