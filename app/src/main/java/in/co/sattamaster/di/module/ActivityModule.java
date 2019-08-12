@@ -29,6 +29,9 @@ import in.co.sattamaster.ui.AddModerator.AddModeratorPresenter;
 import in.co.sattamaster.ui.AddModerator.ListOfModeratorMvpPresenter;
 import in.co.sattamaster.ui.AddModerator.ListOfModeratorMvpView;
 import in.co.sattamaster.ui.AddModerator.ListOfModeratorPresenter;
+import in.co.sattamaster.ui.AllUsers.AllUsersMvpPresenter;
+import in.co.sattamaster.ui.AllUsers.AllUsersMvpView;
+import in.co.sattamaster.ui.AllUsers.AllUsersPresenter;
 import in.co.sattamaster.ui.History.HistoryActivityMvpPresenter;
 import in.co.sattamaster.ui.History.HistoryActivityMvpView;
 import in.co.sattamaster.ui.History.HistoryActivityPresenter;
@@ -119,6 +122,11 @@ public class ActivityModule {
     @Provides
     MainActivityMvpPresenter<MainActivityMvpView> provideMainActivityMvpPresenter(
             MainActivityPresenter<MainActivityMvpView> presenter) {
+        return presenter;
+    }
+    @Provides
+    AllUsersMvpPresenter<AllUsersMvpView> provideAllUsersMvpPresenter(
+            AllUsersPresenter<AllUsersMvpView> presenter) {
         return presenter;
     }
 

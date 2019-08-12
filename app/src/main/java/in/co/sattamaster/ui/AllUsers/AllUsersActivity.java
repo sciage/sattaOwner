@@ -13,9 +13,14 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import in.co.sattamaster.R;
+import in.co.sattamaster.ui.AddModerator.ListOfModeratorActivity;
+import in.co.sattamaster.ui.AddModerator.ListOfModeratorAdapter;
 import in.co.sattamaster.ui.History.HistoryPojo;
 import in.co.sattamaster.ui.base.BaseActivity;
+import in.co.sattamaster.ui.login.UserProfile;
 
 public class AllUsersActivity extends BaseActivity implements AllUsersMvpView, AllUsersAdapter.ItemClickListener {
 
@@ -25,10 +30,22 @@ public class AllUsersActivity extends BaseActivity implements AllUsersMvpView, A
     private Button search_bid_button;
     private AllUsersAdapter adapter;
 
+    RecyclerView recyclerView;
+
+    @BindView(R.id.listUser_progressbar) View progressFrame;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_users);
+
+        getActivityComponent().inject(this);
+
+        setUnBinder(ButterKnife.bind(this));
+
+        mPresenter.onAttach(AllUsersActivity.this);
 
         toolbar.setNavigationIcon(R.drawable.ic_clear_black_24dp);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -39,18 +56,23 @@ public class AllUsersActivity extends BaseActivity implements AllUsersMvpView, A
         });
         getSupportActionBar().setTitle("All Users");
 
-        List<HistoryPojo> animalNames = new ArrayList<>();
-        animalNames.add(new HistoryPojo("Faridabad", "Andar", "17-07-2019", "1,2,3,4,5", "1000"));
-        animalNames.add(new HistoryPojo("Faridabad", "Andar", "17-07-2019", "1,2,3,4,5", "1000"));
-        animalNames.add(new HistoryPojo("Faridabad", "Andar", "17-07-2019", "1,2,3,4,5", "1000"));
-        animalNames.add(new HistoryPojo("Faridabad", "Andar", "17-07-2019", "1,2,3,4,5", "1000"));
-
         // set up the RecyclerView
-        RecyclerView recyclerView = findViewById(R.id.allusers_recyclerview);
+        recyclerView = findViewById(R.id.allusers_recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new AllUsersAdapter(this, animalNames);
-        adapter.setClickListener(this);
+        recyclerView.setHasFixedSize(true);
+        adapter = new AllUsersAdapter(this);
+
         recyclerView.setAdapter(adapter);
+
+        adapter.setClickListener(this);
+
+
+        try {
+            progressFrame.setVisibility(View.VISIBLE);
+            mPresenter.getAllUsers();
+        } catch (Exception ex){
+            ex.printStackTrace();
+        }
     }
 
     @Override
@@ -58,19 +80,17 @@ public class AllUsersActivity extends BaseActivity implements AllUsersMvpView, A
 
     }
 
-    private List<ResultPojo> getMovieList() {
-        List<ResultPojo> movieList = new ArrayList<>();
-        // src Wikipedia
-        movieList.add(new ResultPojo("harish", "8800128259", "1000"));
-        movieList.add(new ResultPojo("Ravi Rao", "8800128259", "1000"));
-        movieList.add(new ResultPojo("Devesh", "8800128259", "1000"));
+    @Override
+    public void onItemClick(View view, int position) {
 
-
-        return movieList;
     }
 
     @Override
-    public void onItemClick(View view, int position) {
+    public void getAllUsers(List<UserProfile> response) {
+
+        adapter.addAll(response);
+
+        progressFrame.setVisibility(View.INVISIBLE);
 
     }
 }

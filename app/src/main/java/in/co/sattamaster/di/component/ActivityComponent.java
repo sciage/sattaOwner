@@ -21,6 +21,7 @@ import in.co.sattamaster.di.module.ActivityModule;
 import in.co.sattamaster.ui.AddCoins.AddCoinsActivity;
 import in.co.sattamaster.ui.AddModerator.AddModeratorActivity;
 import in.co.sattamaster.ui.AddModerator.ListOfModeratorActivity;
+import in.co.sattamaster.ui.AllUsers.AllUsersActivity;
 import in.co.sattamaster.ui.History.HistoryActivity;
 import in.co.sattamaster.ui.Homepage.LocationPageActivity;
 import in.co.sattamaster.ui.Location.AddLocationActivity;
@@ -53,6 +54,7 @@ public interface ActivityComponent {
     void inject(ListOfModeratorActivity activity);
     void inject(AddCoinsActivity activity);
     void inject(AddLocationActivity activity);
+    void inject(AllUsersActivity activity);
 
 
 

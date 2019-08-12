@@ -8,21 +8,39 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import in.co.sattamaster.R;
-import in.co.sattamaster.ui.History.HistoryPojo;
+import in.co.sattamaster.ui.login.AllModerators;
+import in.co.sattamaster.ui.login.UserProfile;
 
 
 public class AllUsersAdapter extends RecyclerView.Adapter<AllUsersAdapter.ViewHolder> {
-    private List<HistoryPojo> mData;
+    private List<UserProfile> mData;
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
 
     // data is passed into the constructor
-    AllUsersAdapter(Context context, List<HistoryPojo> data) {
+    AllUsersAdapter(Context context) {
         this.mInflater = LayoutInflater.from(context);
-        this.mData = data;
+        mData = new ArrayList<>();
+
+    }
+
+    public void addAll(List<UserProfile> moveResults) {
+        for (UserProfile result : moveResults) {
+            add(result);
+        }
+
+
+    }
+
+    public void add(UserProfile r) {
+        mData.add(r);
+        notifyItemInserted(mData.size() - 1);
+
+
     }
 
     // inflates the row layout from xml when needed
@@ -36,17 +54,17 @@ public class AllUsersAdapter extends RecyclerView.Adapter<AllUsersAdapter.ViewHo
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
-        holder.bid_location.setText(mData.get(position).getLocation());
-        holder.bid_type.setText(mData.get(position).getBid_type());
-        holder.bid_time.setText(mData.get(position).getBid_time());
-        holder.bid_number.setText(mData.get(position).getBid_number());
-        holder.bid_value.setText(mData.get(position).getBid_amount());
+        holder.bid_location.setText(mData.get(position).getName());
+        holder.bid_type.setText(mData.get(position).getPhone());
+        holder.bid_time.setText(mData.get(position).getProfile().getModerator().getName());
+        holder.bid_number.setText(mData.get(position).getProfile().getModerator().getProfile().getAddress());
+        holder.bid_value.setText(mData.get(position).getProfile().getCoinBalance());
     }
 
     // total number of rows
     @Override
     public int getItemCount() {
-        return mData.size();
+        return mData == null ? 0 : mData.size();
     }
 
     // stores and recycles views as they are scrolled off screen

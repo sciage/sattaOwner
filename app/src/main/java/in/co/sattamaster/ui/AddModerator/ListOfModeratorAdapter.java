@@ -25,7 +25,6 @@ public class ListOfModeratorAdapter extends RecyclerView.Adapter<ListOfModerator
     ListOfModeratorAdapter(Context context) {
         this.mInflater = LayoutInflater.from(context);
         mData = new ArrayList<>();
-
     }
 
 
