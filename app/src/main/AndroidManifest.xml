@@ -18,7 +18,8 @@
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity android:name=".ui.AllUsers.AllUsersActivity" />
         <activity android:name=".ui.AddModerator.ListOfModeratorActivity" />
-        <activity android:name=".ui.AddModerator.AddModeratorActivity" />
+        <activity android:name=".ui.AddModerator.AddModeratorActivity"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".ui.login.RegisterActivity"
             android:windowSoftInputMode="stateAlwaysHidden" />
