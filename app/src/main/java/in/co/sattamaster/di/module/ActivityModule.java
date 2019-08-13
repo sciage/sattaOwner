@@ -41,6 +41,9 @@ import in.co.sattamaster.ui.Homepage.LocationPagePresenter;
 import in.co.sattamaster.ui.Location.AddLocationMvpPresenter;
 import in.co.sattamaster.ui.Location.AddLocationMvpView;
 import in.co.sattamaster.ui.Location.AddLocationPresenter;
+import in.co.sattamaster.ui.RevealNumber.RevealNumberMvpPresenter;
+import in.co.sattamaster.ui.RevealNumber.RevealNumberMvpView;
+import in.co.sattamaster.ui.RevealNumber.RevealNumberPresenter;
 import in.co.sattamaster.ui.login.LoginScreenMvpPresenter;
 import in.co.sattamaster.ui.login.LoginScreenMvpView;
 import in.co.sattamaster.ui.login.LoginScreenPresenter;
@@ -127,6 +130,12 @@ public class ActivityModule {
     @Provides
     AllUsersMvpPresenter<AllUsersMvpView> provideAllUsersMvpPresenter(
             AllUsersPresenter<AllUsersMvpView> presenter) {
+        return presenter;
+    }
+
+    @Provides
+    RevealNumberMvpPresenter<RevealNumberMvpView> provideRevealNumberMvpPresenter(
+            RevealNumberPresenter<RevealNumberMvpView> presenter) {
         return presenter;
     }
 

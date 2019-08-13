@@ -40,7 +40,6 @@ public class RegisterActivity extends BaseActivity implements RegisterMvpView {
 
     protected boolean selectedModerator = false;
 
-
     @BindView(R.id.register_spinner) EditText register_spinner;
     private Autocomplete userAutocomplete;
 

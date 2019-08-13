@@ -25,6 +25,7 @@ import in.co.sattamaster.ui.AllUsers.AllUsersActivity;
 import in.co.sattamaster.ui.History.HistoryActivity;
 import in.co.sattamaster.ui.Homepage.LocationPageActivity;
 import in.co.sattamaster.ui.Location.AddLocationActivity;
+import in.co.sattamaster.ui.RevealNumber.RevealNumberActivity;
 import in.co.sattamaster.ui.login.LoginScreenActivity;
 import in.co.sattamaster.ui.Homepage.MainActivity;
 import in.co.sattamaster.ui.PlayMatka.PlayMatkaActivity;
@@ -55,6 +56,7 @@ public interface ActivityComponent {
     void inject(AddCoinsActivity activity);
     void inject(AddLocationActivity activity);
     void inject(AllUsersActivity activity);
+    void inject(RevealNumberActivity activity);
 
 
 

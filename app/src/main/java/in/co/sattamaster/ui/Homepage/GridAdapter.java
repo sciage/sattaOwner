@@ -77,6 +77,16 @@ public class GridAdapter extends BaseAdapter{
         mItems.add(object05);
         notifyDataSetChanged();
 
+        Item object06 = new Item();
+        object06.text = "Reveal Number";
+        mItems.add(object06);
+        notifyDataSetChanged();
+
+        Item object07 = new Item();
+        object07.text = "Withdrawal Request";
+        mItems.add(object07);
+        notifyDataSetChanged();
+
         mContext = context;
     }
 
@@ -106,6 +116,27 @@ public class GridAdapter extends BaseAdapter{
         SquareLayout box_back = (SquareLayout) convertView.findViewById(R.id.mainPageBack);
 
         location_id.setText(mItems.get(position).text);
+
+        switch (position){
+            case 0:
+
+                break;
+            case 1:
+
+                break;
+            case 2:
+
+                break;
+            case 3:
+
+                break;
+            case 4:
+
+                break;
+            case 5:
+
+                break;
+        }
 
         if (position == 0){
             box_back.setOnClickListener(new View.OnClickListener() {
