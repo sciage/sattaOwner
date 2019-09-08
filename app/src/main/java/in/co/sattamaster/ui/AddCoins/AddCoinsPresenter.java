@@ -10,6 +10,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import in.co.sattamaster.data.DataManager;
+import in.co.sattamaster.ui.Homepage.ModeratorProfile;
 import in.co.sattamaster.ui.base.BasePresenter;
 import in.co.sattamaster.ui.login.AllModerators;
 import in.co.sattamaster.ui.login.UserProfile;
@@ -33,9 +34,9 @@ public class AddCoinsPresenter<V extends AddCoinsMvpView> extends BasePresenter<
                 .getAllUsers()
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
-                .subscribe(new Consumer<List<UserProfile>>() {
+                .subscribe(new Consumer<List<ModeratorProfile>>() {
                     @Override
-                    public void accept(List<UserProfile> response) throws Exception {
+                    public void accept(List<ModeratorProfile> response) throws Exception {
 
                         getMvpView().getAllUsers(response);
 

@@ -30,6 +30,7 @@ import in.co.sattamaster.dto.Bid;
 import in.co.sattamaster.ui.AddCoins.AddModeratorCoinsResponse;
 import in.co.sattamaster.ui.AddCoins.AddUserCoinsResponse;
 import in.co.sattamaster.ui.Homepage.LocationPojo;
+import in.co.sattamaster.ui.Homepage.ModeratorProfile;
 import in.co.sattamaster.ui.Homepage.UserObject;
 import in.co.sattamaster.ui.Location.LocationStatus;
 import in.co.sattamaster.ui.login.AllModerators;
@@ -105,7 +106,7 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
-    public Single<List<UserProfile>> getAllUsers() {
+    public Single<List<ModeratorProfile>> getAllUsers() {
         return mApiHelper.getAllUsers();
     }
 

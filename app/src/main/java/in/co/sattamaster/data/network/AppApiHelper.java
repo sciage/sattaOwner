@@ -36,6 +36,7 @@ import in.co.sattamaster.dto.Bid;
 import in.co.sattamaster.ui.AddCoins.AddModeratorCoinsResponse;
 import in.co.sattamaster.ui.AddCoins.AddUserCoinsResponse;
 import in.co.sattamaster.ui.Homepage.LocationPojo;
+import in.co.sattamaster.ui.Homepage.ModeratorProfile;
 import in.co.sattamaster.ui.Homepage.UserObject;
 import in.co.sattamaster.ui.Location.LocationStatus;
 import in.co.sattamaster.ui.login.AllModerators;
@@ -180,14 +181,14 @@ public class AppApiHelper implements ApiHelper {
     }
 
     @Override
-    public Single<List<UserProfile>> getAllUsers() {
+    public Single<List<ModeratorProfile>> getAllUsers() {
         return Rx2AndroidNetworking.get(ApiEndPoint.GET_ALL_USERS)
                 //  .addHeaders(mApiHeader.getProtectedApiHeader())
                 .setOkHttpClient(getUnsafeOkHttpClient())
                 //   .addBodyParameter("user_id", user_id)
                 //  .addBodyParameter("centre_id", centre_id)
                 .build()
-                .getObjectListSingle(UserProfile.class);
+                .getObjectListSingle(ModeratorProfile.class);
     }
 
     @Override

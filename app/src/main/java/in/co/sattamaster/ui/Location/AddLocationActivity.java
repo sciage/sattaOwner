@@ -25,7 +25,6 @@ import in.co.sattamaster.ui.DateTime.codec.Type;
 import in.co.sattamaster.ui.DateTime.helper.PicoListener;
 import in.co.sattamaster.ui.Homepage.MainActivity;
 import in.co.sattamaster.ui.base.BaseActivity;
-import ui.mainong.pop.Pop;
 
 public class AddLocationActivity extends BaseActivity implements AddLocationMvpView, View.OnClickListener {
 

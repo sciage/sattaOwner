@@ -5,6 +5,9 @@ import android.content.Context;
 
 import com.androidnetworking.AndroidNetworking;
 import com.crashlytics.android.Crashlytics;
+
+import java.security.cert.CertificateException;
+
 import in.co.sattamaster.data.DataManager;
 import in.co.sattamaster.di.component.ApplicationComponent;
 import in.co.sattamaster.di.component.DaggerApplicationComponent;
@@ -12,8 +15,15 @@ import in.co.sattamaster.di.module.ApplicationModule;
 import in.co.sattamaster.di.rxbus.RxBus;
 
 import javax.inject.Inject;
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.SSLSocketFactory;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
 
 import io.fabric.sdk.android.Fabric;
+import okhttp3.OkHttpClient;
 
 /**
  * Created by Harish on 7/20/2016.
@@ -186,8 +196,6 @@ public class VoicemeApplication extends Application {
 
         // initDatabase();
     }
-
-
 
 
 

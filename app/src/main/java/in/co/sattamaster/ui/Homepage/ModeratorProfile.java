@@ -1,11 +1,11 @@
-package in.co.sattamaster.ui.login;
+package in.co.sattamaster.ui.Homepage;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import in.co.sattamaster.ui.Homepage.OwnerProfile;
+import in.co.sattamaster.ui.login.AllLoginModerator;
 
-public class UserProfile {
+public class ModeratorProfile {
     @SerializedName("id")
     @Expose
     private String id;
@@ -17,7 +17,7 @@ public class UserProfile {
     private String phone;
     @SerializedName("profile")
     @Expose
-    private OwnerProfile profile;
+    private AllLoginModerator profile;
 
     public String getId() {
         return id;
@@ -31,7 +31,7 @@ public class UserProfile {
         return phone;
     }
 
-    public OwnerProfile getProfile() {
+    public AllLoginModerator getProfile() {
         return profile;
     }
 }

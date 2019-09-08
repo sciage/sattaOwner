@@ -19,6 +19,7 @@ import in.co.sattamaster.R;
 import in.co.sattamaster.ui.AddModerator.ListOfModeratorActivity;
 import in.co.sattamaster.ui.AddModerator.ListOfModeratorAdapter;
 import in.co.sattamaster.ui.History.HistoryPojo;
+import in.co.sattamaster.ui.Homepage.ModeratorProfile;
 import in.co.sattamaster.ui.base.BaseActivity;
 import in.co.sattamaster.ui.login.UserProfile;
 
@@ -86,7 +87,7 @@ public class AllUsersActivity extends BaseActivity implements AllUsersMvpView, A
     }
 
     @Override
-    public void getAllUsers(List<UserProfile> response) {
+    public void getAllUsers(List<ModeratorProfile> response) {
 
         adapter.addAll(response);
 

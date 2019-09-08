@@ -18,31 +18,21 @@ import in.co.sattamaster.ui.History.HistoryActivity;
 import in.co.sattamaster.ui.Location.AddLocationActivity;
 import in.co.sattamaster.ui.Result.ResultActivity;
 import in.co.sattamaster.ui.Withdraw.WithdrawActivity;
+import in.co.sattamaster.ui.base.Constants;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class GridAdapter extends BaseAdapter{
-    private List<LocationPojo> dataSet = new ArrayList<>();
+    private UserObject dataSet;
 
+    public void addAll(UserObject moveResults) {
+        dataSet = moveResults;
+    }
 
     public static class Item{
         public String text;
         public int resId;
-    }
-
-    public void addAll(List<LocationPojo> moveResults) {
-        for (LocationPojo result : moveResults) {
-            add(result);
-            notifyDataSetChanged();
-        }
-
-
-    }
-
-    public void add(LocationPojo r) {
-        dataSet.add(r);
-
     }
 
     private List<Item> mItems = new ArrayList<Item>();
@@ -120,64 +110,78 @@ public class GridAdapter extends BaseAdapter{
         switch (position){
             case 0:
 
+                box_back.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(v.getContext(), AddModeratorActivity.class);
+                        intent.putExtra(Constants.WALLET_BALANCE, dataSet.getUser().getProfile().getCoin_balance());
+
+                        v.getContext().startActivity(intent);
+                    }
+                });
+
                 break;
             case 1:
 
+                box_back.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(v.getContext(), AllUsersActivity.class);
+                        intent.putExtra(Constants.WALLET_BALANCE, dataSet.getUser().getProfile().getCoin_balance());
+
+                        v.getContext().startActivity(intent);
+                    }
+                });
+
                 break;
             case 2:
+                box_back.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(v.getContext(), AddCoinsActivity.class);
+                        intent.putExtra(Constants.WALLET_BALANCE, dataSet.getUser().getProfile().getCoin_balance());
+
+                        v.getContext().startActivity(intent);
+                    }
+                });
 
                 break;
             case 3:
+                box_back.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(v.getContext(), HistoryActivity.class);
+                        intent.putExtra(Constants.WALLET_BALANCE, dataSet.getUser().getProfile().getCoin_balance());
+
+                        v.getContext().startActivity(intent);
+                    }
+                });
 
                 break;
             case 4:
+                box_back.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(v.getContext(), AddLocationActivity.class);
+                        intent.putExtra(Constants.WALLET_BALANCE, dataSet.getUser().getProfile().getCoin_balance());
+
+                        v.getContext().startActivity(intent);
+                    }
+                });
 
                 break;
             case 5:
+                box_back.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(v.getContext(), AddLocationActivity.class);
+                        intent.putExtra(Constants.WALLET_BALANCE, dataSet.getUser().getProfile().getCoin_balance());
+
+                        v.getContext().startActivity(intent);
+                    }
+                });
 
                 break;
-        }
-
-        if (position == 0){
-            box_back.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(v.getContext(), AddModeratorActivity.class);
-                    v.getContext().startActivity(intent);
-                }
-            });
-        } else if (position == 1){
-            box_back.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(v.getContext(), AllUsersActivity.class);
-                    v.getContext().startActivity(intent);
-                }
-            });
-        } else if (position == 2){
-            box_back.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(v.getContext(), AddCoinsActivity.class);
-                    v.getContext().startActivity(intent);
-                }
-            });
-        } else if (position == 3){
-            box_back.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(v.getContext(), HistoryActivity.class);
-                    v.getContext().startActivity(intent);
-                }
-            });
-        } else if (position == 4){
-            box_back.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(v.getContext(), AddLocationActivity.class);
-                    v.getContext().startActivity(intent);
-                }
-            });
         }
 
 

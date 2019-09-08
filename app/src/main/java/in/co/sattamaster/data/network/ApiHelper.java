@@ -24,6 +24,7 @@ import in.co.sattamaster.dto.Bid;
 import in.co.sattamaster.ui.AddCoins.AddModeratorCoinsResponse;
 import in.co.sattamaster.ui.AddCoins.AddUserCoinsResponse;
 import in.co.sattamaster.ui.Homepage.LocationPojo;
+import in.co.sattamaster.ui.Homepage.ModeratorProfile;
 import in.co.sattamaster.ui.Homepage.UserObject;
 import in.co.sattamaster.ui.Location.LocationStatus;
 import in.co.sattamaster.ui.login.AllModerators;
@@ -47,7 +48,7 @@ public interface ApiHelper {
     Single<UserObject> getUserProfile(String token);
     Single<List<LocationPojo>> getCentres(String token);
     Single<LocationStatus> newLocation(JSONObject object);
-    Single<List<UserProfile>> getAllUsers();
+    Single<List<ModeratorProfile>> getAllUsers();
     Single<AddUserCoinsResponse> addUserCoin(String userId, JSONObject coinBalance);
     Single<AddModeratorCoinsResponse> addModeratorCoin(String moderator_id, JSONObject coinBalance);
     Single<AddModeratorCoinsResponse> addOwnerCoin(JSONObject ownerCoins);

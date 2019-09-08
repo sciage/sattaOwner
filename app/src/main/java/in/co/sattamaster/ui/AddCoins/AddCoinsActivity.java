@@ -20,6 +20,7 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import in.co.sattamaster.R;
+import in.co.sattamaster.ui.Homepage.ModeratorProfile;
 import in.co.sattamaster.ui.autocomplete.Autocomplete;
 import in.co.sattamaster.ui.autocomplete.AutocompleteCallback;
 import in.co.sattamaster.ui.autocomplete.AutocompletePresenter;
@@ -97,15 +98,15 @@ public class AddCoinsActivity extends BaseActivity implements AddCoinsMvpView, V
 
     }
 
-    private void setupUserAutocomplete(List<UserProfile> response) {
+    private void setupUserAutocomplete(List<ModeratorProfile> response) {
         // EditText edit = (EditText) findViewById(R.id.single);
         float elevation = 6f;
         Drawable backgroundDrawable = ResourcesCompat.getDrawable(getResources(), R.drawable.shadow, null);
 
-        AutocompletePresenter<UserProfile> presenter = new UserPresenter(this, response);
-        AutocompleteCallback<UserProfile> callback = new AutocompleteCallback<UserProfile>() {
+        AutocompletePresenter<ModeratorProfile> presenter = new UserPresenter(this, response);
+        AutocompleteCallback<ModeratorProfile> callback = new AutocompleteCallback<ModeratorProfile>() {
             @Override
-            public boolean onPopupItemClicked(Editable editable, UserProfile item) {
+            public boolean onPopupItemClicked(Editable editable, ModeratorProfile item) {
                 editable.clear();
                 editable.append(item.getName());
                 setUser(item.getId());
@@ -117,7 +118,7 @@ public class AddCoinsActivity extends BaseActivity implements AddCoinsMvpView, V
             }
         };
 
-        userAutocomplete = Autocomplete.<UserProfile>on(user_mobile)
+        userAutocomplete = Autocomplete.<ModeratorProfile>on(user_mobile)
                 .with(elevation)
                 .with(backgroundDrawable)
                 .with(presenter)
@@ -188,7 +189,7 @@ public class AddCoinsActivity extends BaseActivity implements AddCoinsMvpView, V
     }
 
     @Override
-    public void getAllUsers(List<UserProfile> response) {
+    public void getAllUsers(List<ModeratorProfile> response) {
         setupUserAutocomplete(response);
 
     }

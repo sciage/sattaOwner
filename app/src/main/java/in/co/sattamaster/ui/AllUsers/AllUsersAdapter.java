@@ -12,12 +12,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.co.sattamaster.R;
+import in.co.sattamaster.ui.Homepage.ModeratorProfile;
 import in.co.sattamaster.ui.login.AllModerators;
 import in.co.sattamaster.ui.login.UserProfile;
 
 
 public class AllUsersAdapter extends RecyclerView.Adapter<AllUsersAdapter.ViewHolder> {
-    private List<UserProfile> mData;
+    private List<ModeratorProfile> mData;
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
 
@@ -28,15 +29,15 @@ public class AllUsersAdapter extends RecyclerView.Adapter<AllUsersAdapter.ViewHo
 
     }
 
-    public void addAll(List<UserProfile> moveResults) {
-        for (UserProfile result : moveResults) {
+    public void addAll(List<ModeratorProfile> moveResults) {
+        for (ModeratorProfile result : moveResults) {
             add(result);
         }
 
 
     }
 
-    public void add(UserProfile r) {
+    public void add(ModeratorProfile r) {
         mData.add(r);
         notifyItemInserted(mData.size() - 1);
 

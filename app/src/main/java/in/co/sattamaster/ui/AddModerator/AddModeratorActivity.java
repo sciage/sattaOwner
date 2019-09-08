@@ -19,6 +19,7 @@ import butterknife.ButterKnife;
 import in.co.sattamaster.R;
 import in.co.sattamaster.ui.AddCoins.AddModeratorCoinsResponse;
 import in.co.sattamaster.ui.base.BaseActivity;
+import in.co.sattamaster.ui.base.Constants;
 
 public class AddModeratorActivity extends BaseActivity implements AddModeratorMvpView, View.OnClickListener {
 
@@ -65,6 +66,7 @@ public class AddModeratorActivity extends BaseActivity implements AddModeratorMv
 
         add_button.setOnClickListener(this);
         progressFrame.setVisibility(View.INVISIBLE);
+
 
     }
 
