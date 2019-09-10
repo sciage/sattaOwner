@@ -111,6 +111,12 @@ public class ActivityModule {
     }
 
     @Provides
+    RevealNumberMvpPresenter<RevealNumberMvpView> provideRevealNumberMvpPresenter(
+            RevealNumberPresenter<RevealNumberMvpView> presenter) {
+        return presenter;
+    }
+
+    @Provides
     LoginScreenMvpPresenter<LoginScreenMvpView> provideLoginScreenMvpPresenter(
             LoginScreenPresenter<LoginScreenMvpView> presenter) {
         return presenter;
@@ -130,12 +136,6 @@ public class ActivityModule {
     @Provides
     AllUsersMvpPresenter<AllUsersMvpView> provideAllUsersMvpPresenter(
             AllUsersPresenter<AllUsersMvpView> presenter) {
-        return presenter;
-    }
-
-    @Provides
-    RevealNumberMvpPresenter<RevealNumberMvpView> provideRevealNumberMvpPresenter(
-            RevealNumberPresenter<RevealNumberMvpView> presenter) {
         return presenter;
     }
 

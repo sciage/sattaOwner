@@ -42,6 +42,7 @@ import in.co.sattamaster.ui.Homepage.LocationPojo;
 import in.co.sattamaster.ui.Homepage.ModeratorProfile;
 import in.co.sattamaster.ui.Homepage.UserObject;
 import in.co.sattamaster.ui.Location.LocationStatus;
+import in.co.sattamaster.ui.RevealNumber.RevealStatus;
 import in.co.sattamaster.ui.login.AllModerators;
 import in.co.sattamaster.ui.login.LoginResponse;
 import in.co.sattamaster.ui.login.RegisterResponse;
@@ -248,6 +249,19 @@ public class AppApiHelper implements ApiHelper {
         */
         return  NetworkClient.getRetrofit(sharedPreferences).create(NetworkInterface.class)
                 .getCentres()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+    @Override
+    public Single<RevealStatus> sendRevealNumber(JsonObject revealNumber, SharedPreferences sharedPreferences) {
+       /* return Rx2AndroidNetworking.get(ApiEndPoint.GET_CENTRES)
+                .setOkHttpClient(getUnsafeOkHttpClient())
+                .build()
+                .getObjectListSingle(LocationPojo.class);
+        */
+        return  NetworkClient.getRetrofit(sharedPreferences).create(NetworkInterface.class)
+                .sendNumberReveal(revealNumber)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }

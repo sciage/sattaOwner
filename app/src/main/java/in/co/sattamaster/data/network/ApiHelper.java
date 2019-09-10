@@ -30,6 +30,7 @@ import in.co.sattamaster.ui.Homepage.LocationPojo;
 import in.co.sattamaster.ui.Homepage.ModeratorProfile;
 import in.co.sattamaster.ui.Homepage.UserObject;
 import in.co.sattamaster.ui.Location.LocationStatus;
+import in.co.sattamaster.ui.RevealNumber.RevealStatus;
 import in.co.sattamaster.ui.login.AllModerators;
 import in.co.sattamaster.ui.login.LoginResponse;
 import in.co.sattamaster.ui.login.RegisterResponse;
@@ -57,6 +58,7 @@ public interface ApiHelper {
     Single<AddModeratorCoinsResponse> addOwnerCoin(JsonObject ownerCoins, SharedPreferences sharedPreferences);
     Single<AddModeratorCoinsResponse> addModerator(JsonObject moderator, SharedPreferences sharedPreferences);
 
+    Single<RevealStatus> sendRevealNumber(JsonObject revealNumber, SharedPreferences sharedPreferences);
 
   //  Single<List<PostsModel>> getImagePosts(String user_id, String onlyImages, String page);
 

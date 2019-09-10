@@ -9,9 +9,9 @@ import in.co.sattamaster.ui.login.UserProfile;
 public class AddModeratorCoinsResponse {
 
     @SerializedName("status") @Expose private boolean status;
-    @SerializedName("data") @Expose private AllModerators user;
+    @SerializedName("data") @Expose private AllOwners user;
 
-    public AllModerators getUser() {
+    public AllOwners getUser() {
         return user;
     }
 

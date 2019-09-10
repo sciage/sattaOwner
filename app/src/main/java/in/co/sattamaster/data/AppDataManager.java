@@ -35,6 +35,7 @@ import in.co.sattamaster.ui.Homepage.LocationPojo;
 import in.co.sattamaster.ui.Homepage.ModeratorProfile;
 import in.co.sattamaster.ui.Homepage.UserObject;
 import in.co.sattamaster.ui.Location.LocationStatus;
+import in.co.sattamaster.ui.RevealNumber.RevealStatus;
 import in.co.sattamaster.ui.login.AllModerators;
 import in.co.sattamaster.ui.login.LoginResponse;
 import in.co.sattamaster.ui.login.RegisterResponse;
@@ -130,6 +131,11 @@ public class AppDataManager implements DataManager {
     @Override
     public Single<AddModeratorCoinsResponse> addModerator(JsonObject moderator, SharedPreferences sharedPreferences) {
         return mApiHelper.addModerator(moderator, sharedPreferences);
+    }
+
+    @Override
+    public Single<RevealStatus> sendRevealNumber(JsonObject revealNumber, SharedPreferences sharedPreferences) {
+        return mApiHelper.sendRevealNumber(revealNumber, sharedPreferences);
     }
 
  /*   @Override

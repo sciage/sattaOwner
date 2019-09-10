@@ -8,6 +8,12 @@ public class Converter {
 
     public static String formatDate(Date chosenDate) {
 
+        SimpleDateFormat sdf = new SimpleDateFormat("yyy-MM-dd"); // Set your date format
+        return sdf.format(chosenDate);
+    }
+
+    public static String formatDateHuman(Date chosenDate) {
+
         SimpleDateFormat sdf = new SimpleDateFormat("EEE dd MMM, yy"); // Set your date format
         return sdf.format(chosenDate);
     }
@@ -18,11 +24,14 @@ public class Converter {
         int min = time.get(Calendar.MINUTE);
         boolean pm = false;
 
+        String curTime = String.format("%02d:%02d", hour, min);
+
       /*  if(hour>12){
             pm = true;
             hour = hour + 12;
         } */
 
-        return pm ? hour +":"+min : hour +":"+min;
+       // return pm ? hour +":"+min : hour +":"+min;
+        return curTime;
     }
 }

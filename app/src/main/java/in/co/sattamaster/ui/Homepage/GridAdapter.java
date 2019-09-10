@@ -17,6 +17,7 @@ import in.co.sattamaster.ui.Contact.ContactUsActivity;
 import in.co.sattamaster.ui.History.HistoryActivity;
 import in.co.sattamaster.ui.Location.AddLocationActivity;
 import in.co.sattamaster.ui.Result.ResultActivity;
+import in.co.sattamaster.ui.RevealNumber.RevealNumberActivity;
 import in.co.sattamaster.ui.Withdraw.WithdrawActivity;
 import in.co.sattamaster.ui.base.Constants;
 
@@ -174,7 +175,7 @@ public class GridAdapter extends BaseAdapter{
                 box_back.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(v.getContext(), AddLocationActivity.class);
+                        Intent intent = new Intent(v.getContext(), RevealNumberActivity.class);
                         intent.putExtra(Constants.WALLET_BALANCE, dataSet.getUser().getProfile().getCoin_balance());
 
                         v.getContext().startActivity(intent);

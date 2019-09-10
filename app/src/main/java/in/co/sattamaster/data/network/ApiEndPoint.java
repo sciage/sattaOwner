@@ -48,6 +48,8 @@ public final class ApiEndPoint {
 
     public static final String ADD_OWNER_COIN = BuildConfig.BASE_URL + "admin/1/add-coin-balance";
 
+    public static final String REVEAL_NUMBER = BuildConfig.BASE_URL + "revealed-numbers";
+
     public static final String ADD_MODERATOR = BuildConfig.BASE_URL + "admin/1/moderators";
 
     public static final String ENDPOINT_GOOGLE_LOGIN = BuildConfig.BASE_URL

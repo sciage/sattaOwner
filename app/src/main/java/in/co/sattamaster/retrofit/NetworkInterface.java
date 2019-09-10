@@ -12,6 +12,7 @@ import in.co.sattamaster.ui.Homepage.GetAllUsers;
 import in.co.sattamaster.ui.Homepage.LocationPojo;
 import in.co.sattamaster.ui.Homepage.UserObject;
 import in.co.sattamaster.ui.Location.LocationStatus;
+import in.co.sattamaster.ui.RevealNumber.RevealStatus;
 import in.co.sattamaster.ui.login.AllModerators;
 import in.co.sattamaster.ui.login.LoginResponse;
 import in.co.sattamaster.ui.login.RegisterResponse;
@@ -56,16 +57,18 @@ public interface NetworkInterface {
     @POST(ApiEndPoint.ADD_MODERATOR)
     Single<AddModeratorCoinsResponse> addModerator(@Body JsonObject bids);
 
+
     @POST(ApiEndPoint.ADD_OWNER_COIN)
     Single<AddModeratorCoinsResponse> addOwnerCoin(@Body JsonObject bids);
 
-
+    @POST(ApiEndPoint.REVEAL_NUMBER)
+    Single<RevealStatus> sendNumberReveal(@Body JsonObject bids);
 
 
     @GET(ApiEndPoint.GET_ALL_MODERATORS)
     Single<List<AllModerators>> getAllModerator();
 
-    @GET(ApiEndPoint.GET_ALL_MODERATORS)
+    @GET(ApiEndPoint.GET_ALL_USERS)
     Single<GetAllUsers> getAllUsers();
 
 
