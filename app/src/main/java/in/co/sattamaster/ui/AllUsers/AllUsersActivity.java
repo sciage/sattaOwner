@@ -19,6 +19,7 @@ import in.co.sattamaster.R;
 import in.co.sattamaster.ui.AddModerator.ListOfModeratorActivity;
 import in.co.sattamaster.ui.AddModerator.ListOfModeratorAdapter;
 import in.co.sattamaster.ui.History.HistoryPojo;
+import in.co.sattamaster.ui.Homepage.GetAllUsers;
 import in.co.sattamaster.ui.Homepage.ModeratorProfile;
 import in.co.sattamaster.ui.base.BaseActivity;
 import in.co.sattamaster.ui.login.UserProfile;
@@ -70,7 +71,7 @@ public class AllUsersActivity extends BaseActivity implements AllUsersMvpView, A
 
         try {
             progressFrame.setVisibility(View.VISIBLE);
-            mPresenter.getAllUsers();
+            mPresenter.getAllUsers(preferences);
         } catch (Exception ex){
             ex.printStackTrace();
         }
@@ -87,9 +88,9 @@ public class AllUsersActivity extends BaseActivity implements AllUsersMvpView, A
     }
 
     @Override
-    public void getAllUsers(List<ModeratorProfile> response) {
+    public void getAllUsers(GetAllUsers response) {
 
-        adapter.addAll(response);
+        adapter.addAll(response.getData());
 
         progressFrame.setVisibility(View.INVISIBLE);
 

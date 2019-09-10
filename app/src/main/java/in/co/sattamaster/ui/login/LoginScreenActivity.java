@@ -7,8 +7,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.google.gson.JsonIOException;
+import com.google.gson.JsonObject;
 
 import butterknife.BindView;
 import in.co.sattamaster.R;
@@ -52,7 +52,7 @@ public class LoginScreenActivity extends BaseActivity implements LoginScreenMvpV
                   //  isLoggedIn = true;
 
                     login_progressbar.setVisibility(View.VISIBLE);
-                    mPresenter.sendBidSet(createLogin());
+                    mPresenter.sendBidSet(createLogin(), preferences);
 
 
                 }
@@ -73,13 +73,13 @@ public class LoginScreenActivity extends BaseActivity implements LoginScreenMvpV
 
     }
 
-    private JSONObject createLogin(){
-        JSONObject loginObject = new JSONObject();
+    private JsonObject createLogin(){
+        JsonObject loginObject = new JsonObject();
         try {
-            loginObject.put("phone", phoneNumber.getText().toString());
-            loginObject.put("password", password.getText().toString());
+            loginObject.addProperty("phone", phoneNumber.getText().toString());
+            loginObject.addProperty("password", password.getText().toString());
 
-        } catch (JSONException e) {
+        } catch (JsonIOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }

@@ -9,9 +9,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.google.gson.JsonIOException;
+import com.google.gson.JsonObject;
 
+import org.json.JSONException;
 import javax.inject.Inject;
 
 import butterknife.BindView;
@@ -83,20 +84,20 @@ public class AddModeratorActivity extends BaseActivity implements AddModeratorMv
         } else if (v.getId() == R.id.add_button){
             progressFrame.setVisibility(View.VISIBLE);
 
-            mPresenter.addModerator(addModerator());
+            mPresenter.addModerator(addModerator(), preferences);
         }
     }
 
-    private JSONObject addModerator(){
-        JSONObject balance = new JSONObject();
+    private JsonObject addModerator(){
+        JsonObject balance = new JsonObject();
         try {
-            balance.put("name", moderator_name_value.getText().toString());
-            balance.put("phone", moderator_mobile_value.getText().toString());
-            balance.put("password", moderator_password_value.getText().toString());
-            balance.put("address", moderator_address_value.getText().toString());
-            balance.put("coin_balance", "0");
+            balance.addProperty("name", moderator_name_value.getText().toString());
+            balance.addProperty("phone", moderator_mobile_value.getText().toString());
+            balance.addProperty("password", moderator_password_value.getText().toString());
+            balance.addProperty("address", moderator_address_value.getText().toString());
+            balance.addProperty("coin_balance", "0");
 
-        } catch (JSONException e) {
+        } catch (JsonIOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }

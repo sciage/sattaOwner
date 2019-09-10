@@ -1,12 +1,15 @@
 package in.co.sattamaster.ui.AddModerator;
 
-import com.androidnetworking.error.ANError;
+import android.content.SharedPreferences;
+
+import com.google.gson.JsonObject;
 
 import org.json.JSONObject;
 
 import javax.inject.Inject;
 
 import in.co.sattamaster.data.DataManager;
+import in.co.sattamaster.retrofit.ANError;
 import in.co.sattamaster.ui.AddCoins.AddModeratorCoinsResponse;
 import in.co.sattamaster.ui.base.BasePresenter;
 import in.co.sattamaster.utils.rx.SchedulerProvider;
@@ -24,9 +27,9 @@ public class AddModeratorPresenter<V extends AddModeratorMvpView> extends BasePr
     }
 
     @Override
-    public void addModerator(JSONObject moderator) {
+    public void addModerator(JsonObject moderator, SharedPreferences sharedPreferences) {
         getCompositeDisposable().add(getDataManager()
-                .addModerator(moderator)
+                .addModerator(moderator, sharedPreferences)
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
                 .subscribe(new Consumer<AddModeratorCoinsResponse>() {

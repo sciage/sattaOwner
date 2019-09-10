@@ -2,8 +2,6 @@ package in.co.sattamaster.ui.base;
 
 import android.app.Application;
 import android.content.Context;
-
-import com.androidnetworking.AndroidNetworking;
 import com.crashlytics.android.Crashlytics;
 
 import java.security.cert.CertificateException;
@@ -123,7 +121,7 @@ public class VoicemeApplication extends Application {
                                 .build()))
                 .build()); */
 
-        AndroidNetworking.initialize(getApplicationContext());
+        // AndroidNetworking.initialize(getApplicationContext());
      /*   if (BuildConfig.DEBUG) {
             AndroidNetworking.enableLogging(HttpLoggingInterceptor.Level.BODY);
         }

@@ -1,15 +1,17 @@
 package in.co.sattamaster.ui.AddCoins;
 
 
-import com.androidnetworking.error.ANError;
+import android.content.SharedPreferences;
 
-import org.json.JSONObject;
+import com.google.gson.JsonObject;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
 import in.co.sattamaster.data.DataManager;
+import in.co.sattamaster.retrofit.ANError;
+import in.co.sattamaster.ui.Homepage.GetAllUsers;
 import in.co.sattamaster.ui.Homepage.ModeratorProfile;
 import in.co.sattamaster.ui.base.BasePresenter;
 import in.co.sattamaster.ui.login.AllModerators;
@@ -29,14 +31,14 @@ public class AddCoinsPresenter<V extends AddCoinsMvpView> extends BasePresenter<
     }
 
     @Override
-    public void getAllUsers() {
+    public void getAllUsers(SharedPreferences sharedPreferences) {
         getCompositeDisposable().add(getDataManager()
-                .getAllUsers()
+                .getAllUsers(sharedPreferences)
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
-                .subscribe(new Consumer<List<ModeratorProfile>>() {
+                .subscribe(new Consumer<GetAllUsers>() {
                     @Override
-                    public void accept(List<ModeratorProfile> response) throws Exception {
+                    public void accept(GetAllUsers response) throws Exception {
 
                         getMvpView().getAllUsers(response);
 
@@ -73,11 +75,11 @@ public class AddCoinsPresenter<V extends AddCoinsMvpView> extends BasePresenter<
     }
 
     @Override
-    public void getAllModerator() {
+    public void getAllModerator(SharedPreferences sharedPreferences) {
         //   getMvpView().showLoading();
 
         getCompositeDisposable().add(getDataManager()
-                .getAllModerator()
+                .getAllModerator(sharedPreferences)
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
                 .subscribe(new Consumer<List<AllModerators>>() {
@@ -119,9 +121,9 @@ public class AddCoinsPresenter<V extends AddCoinsMvpView> extends BasePresenter<
     }
 
     @Override
-    public void addUserCoin(String userId, JSONObject coinBalance) {
+    public void addUserCoin(String userId, JsonObject coinBalance, SharedPreferences sharedPreferences) {
         getCompositeDisposable().add(getDataManager()
-                .addUserCoin(userId, coinBalance)
+                .addUserCoin(userId, coinBalance, sharedPreferences)
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
                 .subscribe(new Consumer<AddUserCoinsResponse>() {
@@ -163,9 +165,9 @@ public class AddCoinsPresenter<V extends AddCoinsMvpView> extends BasePresenter<
     }
 
     @Override
-    public void addModeratorCoin(String moderator_id, JSONObject coinBalance) {
+    public void addModeratorCoin(String moderator_id, JsonObject coinBalance, SharedPreferences sharedPreferences) {
         getCompositeDisposable().add(getDataManager()
-                .addModeratorCoin(moderator_id, coinBalance)
+                .addModeratorCoin(moderator_id, coinBalance, sharedPreferences)
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
                 .subscribe(new Consumer<AddModeratorCoinsResponse>() {
@@ -207,9 +209,9 @@ public class AddCoinsPresenter<V extends AddCoinsMvpView> extends BasePresenter<
     }
 
     @Override
-    public void addOwnerCoin(JSONObject ownerCoins) {
+    public void addOwnerCoin(JsonObject ownerCoins, SharedPreferences sharedPreferences) {
         getCompositeDisposable().add(getDataManager()
-                .addOwnerCoin(ownerCoins)
+                .addOwnerCoin(ownerCoins, sharedPreferences)
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
                 .subscribe(new Consumer<AddModeratorCoinsResponse>() {

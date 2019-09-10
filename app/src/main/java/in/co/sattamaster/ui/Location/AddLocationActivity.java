@@ -10,8 +10,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.google.gson.JsonIOException;
+import com.google.gson.JsonObject;
 
 import java.util.Calendar;
 
@@ -169,15 +169,15 @@ public class AddLocationActivity extends BaseActivity implements AddLocationMvpV
     }
 
 
-    private JSONObject createDailyBid(){
-        JSONObject dailyBid = new JSONObject();
+    private JsonObject createDailyBid(){
+        JsonObject dailyBid = new JsonObject();
         try {
-            dailyBid.put("name", location_daily.getText().toString());
-            dailyBid.put("number_reveal_time", reveal_time_daily_value);
-            dailyBid.put("last_bid_time", reveal_time_daily_last_value);
-            dailyBid.put("is_hourly", false);
+            dailyBid.addProperty("name", location_daily.getText().toString());
+            dailyBid.addProperty("number_reveal_time", reveal_time_daily_value);
+            dailyBid.addProperty("last_bid_time", reveal_time_daily_last_value);
+            dailyBid.addProperty("is_hourly", false);
 
-        } catch (JSONException e) {
+        } catch (JsonIOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
@@ -186,15 +186,15 @@ public class AddLocationActivity extends BaseActivity implements AddLocationMvpV
     }
 
 
-    private JSONObject createHourlyBid(){
-        JSONObject dailyBid = new JSONObject();
+    private JsonObject createHourlyBid(){
+        JsonObject dailyBid = new JsonObject();
         try {
-            dailyBid.put("name", location_hour_name.getText().toString());
-            dailyBid.put("number_reveal_time", hourly_reveal_time_value);
-            dailyBid.put("last_bid_time", hourly_reveal_time_last_value);
-            dailyBid.put("is_hourly", true);
+            dailyBid.addProperty("name", location_hour_name.getText().toString());
+            dailyBid.addProperty("number_reveal_time", hourly_reveal_time_value);
+            dailyBid.addProperty("last_bid_time", hourly_reveal_time_last_value);
+            dailyBid.addProperty("is_hourly", true);
 
-        } catch (JSONException e) {
+        } catch (JsonIOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
@@ -227,7 +227,7 @@ public class AddLocationActivity extends BaseActivity implements AddLocationMvpV
 
                 } else {
                     try {
-                        mPresenter.sendLocation(createDailyBid());
+                        mPresenter.sendLocation(createDailyBid(), preferences);
                     } catch (Exception ex){
                         Toast.makeText(this, "error", Toast.LENGTH_SHORT).show();
                     }
@@ -261,7 +261,7 @@ public class AddLocationActivity extends BaseActivity implements AddLocationMvpV
 
                 } else {
                     try {
-                        mPresenter.sendLocation(createHourlyBid());
+                        mPresenter.sendLocation(createHourlyBid(), preferences);
                     } catch (Exception ex){
                         Toast.makeText(this, "error", Toast.LENGTH_SHORT).show();
                     }

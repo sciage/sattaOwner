@@ -1,12 +1,13 @@
 package in.co.sattamaster.ui.AddModerator;
 
-import com.androidnetworking.error.ANError;
+import android.content.SharedPreferences;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
 import in.co.sattamaster.data.DataManager;
+import in.co.sattamaster.retrofit.ANError;
 import in.co.sattamaster.ui.base.BasePresenter;
 import in.co.sattamaster.ui.login.AllModerators;
 import in.co.sattamaster.utils.rx.SchedulerProvider;
@@ -24,11 +25,11 @@ public class ListOfModeratorPresenter <V extends ListOfModeratorMvpView> extends
     }
 
     @Override
-    public void getAllModerator() {
+    public void getAllModerator(SharedPreferences sharedPreferences) {
         //   getMvpView().showLoading();
 
         getCompositeDisposable().add(getDataManager()
-                .getAllModerator()
+                .getAllModerator(sharedPreferences)
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
                 .subscribe(new Consumer<List<AllModerators>>() {

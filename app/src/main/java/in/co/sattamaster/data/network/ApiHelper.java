@@ -16,13 +16,16 @@
 package in.co.sattamaster.data.network;
 
 
-import org.json.JSONObject;
+import android.content.SharedPreferences;
+
+import com.google.gson.JsonObject;
 
 import java.util.List;
 
 import in.co.sattamaster.dto.Bid;
 import in.co.sattamaster.ui.AddCoins.AddModeratorCoinsResponse;
 import in.co.sattamaster.ui.AddCoins.AddUserCoinsResponse;
+import in.co.sattamaster.ui.Homepage.GetAllUsers;
 import in.co.sattamaster.ui.Homepage.LocationPojo;
 import in.co.sattamaster.ui.Homepage.ModeratorProfile;
 import in.co.sattamaster.ui.Homepage.UserObject;
@@ -41,18 +44,18 @@ public interface ApiHelper {
 
     ApiHeader getApiHeader();
 
-    Single<Bid> sendBidset(JSONObject bidset);
-    Single<RegisterResponse> registerUser(JSONObject bids);
-    Single<List<AllModerators>> getAllModerator();
-    Single<LoginResponse> loginUser(JSONObject bids);
-    Single<UserObject> getUserProfile(String token);
-    Single<List<LocationPojo>> getCentres(String token);
-    Single<LocationStatus> newLocation(JSONObject object);
-    Single<List<ModeratorProfile>> getAllUsers();
-    Single<AddUserCoinsResponse> addUserCoin(String userId, JSONObject coinBalance);
-    Single<AddModeratorCoinsResponse> addModeratorCoin(String moderator_id, JSONObject coinBalance);
-    Single<AddModeratorCoinsResponse> addOwnerCoin(JSONObject ownerCoins);
-    Single<AddModeratorCoinsResponse> addModerator(JSONObject moderator);
+    Single<Bid> sendBidset(JsonObject bidset, SharedPreferences sharedPreferences);
+    Single<RegisterResponse> registerUser(JsonObject bids, SharedPreferences sharedPreferences);
+    Single<List<AllModerators>> getAllModerator(SharedPreferences sharedPreferences);
+    Single<LoginResponse> loginUser(JsonObject bids, SharedPreferences sharedPreferences);
+    Single<UserObject> getUserProfile(SharedPreferences sharedPreferences);
+    Single<List<LocationPojo>> getCentres(SharedPreferences sharedPreferences);
+    Single<LocationStatus> newLocation(JsonObject object, SharedPreferences sharedPreferences);
+    Single<GetAllUsers> getAllUsers(SharedPreferences sharedPreferences);
+    Single<AddUserCoinsResponse> addUserCoin(String userId, JsonObject coinBalance, SharedPreferences sharedPreferences);
+    Single<AddModeratorCoinsResponse> addModeratorCoin(String moderator_id, JsonObject coinBalance, SharedPreferences sharedPreferences);
+    Single<AddModeratorCoinsResponse> addOwnerCoin(JsonObject ownerCoins, SharedPreferences sharedPreferences);
+    Single<AddModeratorCoinsResponse> addModerator(JsonObject moderator, SharedPreferences sharedPreferences);
 
 
   //  Single<List<PostsModel>> getImagePosts(String user_id, String onlyImages, String page);

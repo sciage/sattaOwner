@@ -12,13 +12,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonIOException;
+import com.google.gson.JsonObject;
+
 import in.co.sattamaster.R;
 import in.co.sattamaster.dto.Bid;
 import in.co.sattamaster.ui.base.BaseActivity;
 
 import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -53,7 +55,7 @@ public class PlayMatkaActivity extends BaseActivity implements PlayMatkaActivity
     boolean boolean_comb_09_edittext;
 
     private List<Integer> joinComb;
-    private JSONArray jodiBidding;
+    private JsonArray jodiBidding;
 
     @BindView(R.id.andar_00_edittext) EditText andar_00_edittext;
     @BindView(R.id.andar_01_edittext) EditText andar_01_edittext;
@@ -234,7 +236,7 @@ public class PlayMatkaActivity extends BaseActivity implements PlayMatkaActivity
         location_name = intent.getStringExtra(Constants.LOCATION_NAME);
 
         joinComb = new ArrayList<Integer>();
-        jodiBidding = new JSONArray();
+        jodiBidding = new JsonArray();
 
         andar_hash_map = new LinkedHashMap<String, String>();
         bahar_hash_map = new LinkedHashMap<String, String>();
@@ -547,7 +549,7 @@ public class PlayMatkaActivity extends BaseActivity implements PlayMatkaActivity
             public void onClick(View v) {
                 try {
                    // writeJsonSimpleDemo();
-                    mPresenter.sendBidSet(writeJsonSimpleDemo());
+                    mPresenter.sendBidSet(writeJsonSimpleDemo(), preferences);
                 } catch (Exception ex){
                     ex.printStackTrace();
                 }
@@ -558,58 +560,58 @@ public class PlayMatkaActivity extends BaseActivity implements PlayMatkaActivity
     }
 
 
-    public JSONObject writeJsonSimpleDemo() throws Exception {
+    public JsonObject writeJsonSimpleDemo() throws Exception {
 
-        JSONObject object = new JSONObject();
-        object.put("user_id", MySharedPreferences.getUserId(preferences));
-        object.put("centre_id", location_id);
+        JsonObject object = new JsonObject();
+        object.addProperty("user_id", MySharedPreferences.getUserId(preferences));
+        object.addProperty("centre_id", location_id);
 
-        JSONArray array = new JSONArray();
+        JsonArray array = new JsonArray();
 
-        JSONObject locationOne = getLocationObject("ANDAR"); // enter type of location key value
-        JSONObject locationOneData = getAndarBidding();
-        locationOne.put("data", locationOneData);
+        JsonObject locationOne = getLocationObject("ANDAR"); // enter type of location key value
+        JsonObject locationOneData = getAndarBidding();
+        locationOne.add("data", locationOneData);
 
-        JSONObject locationTwo = getLocationObject("BAHAR"); // enter type of location key value
-        JSONObject locationTwoData = getBaharBidding();
-        locationTwo.put("data", locationTwoData);
+        JsonObject locationTwo = getLocationObject("BAHAR"); // enter type of location key value
+        JsonObject locationTwoData = getBaharBidding();
+        locationTwo.add("data", locationTwoData);
 
-        JSONObject locationThree = getLocationObject("SINGLE"); // enter type of location key value
+        JsonObject locationThree = getLocationObject("SINGLE"); // enter type of location key value
         findCalculation();
-        JSONObject locationThreeData = getSingleBidding();
-        locationThree.put("data", locationThreeData);
+        JsonObject locationThreeData = getSingleBidding();
+        locationThree.add("data", locationThreeData);
 
-        JSONObject locationFour = getLocationObject("JODI"); // enter type of location key value
-        JSONObject locationFourData = getJodiBidding();
-        locationFour.put("data", locationFourData);
+        JsonObject locationFour = getLocationObject("JODI"); // enter type of location key value
+        JsonObject locationFourData = getJodiBidding();
+        locationFour.add("data", locationFourData);
 
-        array.put(locationOne);
-        array.put(locationTwo);
-        array.put(locationThree);
-        array.put(locationFour);
+        array.add(locationOne);
+        array.add(locationTwo);
+        array.add(locationThree);
+        array.add(locationFour);
 
         // first array top heading
 
-        object.put("bids", array);
+        object.add("bids", array);
 
 
         return object;
     }
 
-    private JSONObject getLocationObject(String Name) throws JSONException {
+    private JsonObject getLocationObject(String Name) throws JsonIOException {
 
-        JSONObject arrayElementOne = new JSONObject();
-        arrayElementOne.put("type", Name);
+        JsonObject arrayElementOne = new JsonObject();
+        arrayElementOne.addProperty("type", Name);
 
         return arrayElementOne;
     }
 
-    private JSONObject getAndarBidding() throws JSONException {
-        JSONObject arrayElementOneArrayElementOne = new JSONObject();
+    private JsonObject getAndarBidding() throws JsonIOException {
+        JsonObject arrayElementOneArrayElementOne = new JsonObject();
 
         for(int i=0; i<= 10; i++){
             if (andar_hash_map.containsKey(String.valueOf(i))){
-                arrayElementOneArrayElementOne.put(String.valueOf(i), andar_hash_map.get(String.valueOf(i)));
+                arrayElementOneArrayElementOne.addProperty(String.valueOf(i), andar_hash_map.get(String.valueOf(i)));
             }
         }
 
@@ -619,25 +621,25 @@ public class PlayMatkaActivity extends BaseActivity implements PlayMatkaActivity
         return arrayElementOneArrayElementOne;
     }
 
-    private JSONObject getBaharBidding() throws JSONException {
+    private JsonObject getBaharBidding() throws JsonIOException {
 
-        JSONObject arrayElementOneArrayElementOne = new JSONObject();
+        JsonObject arrayElementOneArrayElementOne = new JsonObject();
 
         for(int i=0; i<= 10; i++){
             if (bahar_hash_map.containsKey(String.valueOf(i))){
-                arrayElementOneArrayElementOne.put(String.valueOf(i), bahar_hash_map.get(String.valueOf(i)));
+                arrayElementOneArrayElementOne.addProperty(String.valueOf(i), bahar_hash_map.get(String.valueOf(i)));
             }
         }
 
         return arrayElementOneArrayElementOne;
     }
 
-    private JSONObject getSingleBidding() throws JSONException {
+    private JsonObject getSingleBidding() throws JsonIOException {
 
-        JSONObject arrayElementOneArrayElementOne = new JSONObject();
+        JsonObject arrayElementOneArrayElementOne = new JsonObject();
 
         for(int i=0; i< single_keys.size(); i++){
-             arrayElementOneArrayElementOne.put(single_keys.get(i), single_values.get(i));
+             arrayElementOneArrayElementOne.addProperty(single_keys.get(i), single_values.get(i));
 
             }
 
@@ -646,11 +648,11 @@ public class PlayMatkaActivity extends BaseActivity implements PlayMatkaActivity
 
 
 
-    private JSONObject getJodiBidding() throws JSONException {
-        JSONObject arrayElementOneArrayElementOne = new JSONObject();
+    private JsonObject getJodiBidding() throws JsonIOException {
+        JsonObject arrayElementOneArrayElementOne = new JsonObject();
 
-        arrayElementOneArrayElementOne.put("numbers", jodiBidding);
-        arrayElementOneArrayElementOne.put("amount", combinationValue);
+        arrayElementOneArrayElementOne.add("numbers", jodiBidding);
+        arrayElementOneArrayElementOne.addProperty("amount", combinationValue);
 
         return arrayElementOneArrayElementOne;
     }
@@ -1514,7 +1516,7 @@ public class PlayMatkaActivity extends BaseActivity implements PlayMatkaActivity
 
     private void addGroupTag(int selectedGroup){
         joinComb.add(selectedGroup);
-        jodiBidding.put(selectedGroup);
+        jodiBidding.add(selectedGroup);
     }
 
     private void removeGroupTag(int selectedGroup){
@@ -1719,9 +1721,9 @@ public class PlayMatkaActivity extends BaseActivity implements PlayMatkaActivity
 }
 
 /*
-  private JSONObject getLocationBidding() throws JSONException {
+  private JsonObject getLocationBidding() throws JSONException {
 
-        JSONObject arrayElementOneArrayElementOne = new JSONObject();
+        JsonObject arrayElementOneArrayElementOne = new JsonObject();
         arrayElementOneArrayElementOne.put("1", 100);
         arrayElementOneArrayElementOne.put("2", 100);
 

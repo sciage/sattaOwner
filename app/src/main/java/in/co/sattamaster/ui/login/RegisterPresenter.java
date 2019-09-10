@@ -1,6 +1,8 @@
 package in.co.sattamaster.ui.login;
 
-import com.androidnetworking.error.ANError;
+import android.content.SharedPreferences;
+
+import com.google.gson.JsonObject;
 
 import org.json.JSONObject;
 
@@ -9,6 +11,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import in.co.sattamaster.data.DataManager;
+import in.co.sattamaster.retrofit.ANError;
 import in.co.sattamaster.ui.base.BasePresenter;
 import in.co.sattamaster.utils.rx.SchedulerProvider;
 import io.reactivex.disposables.CompositeDisposable;
@@ -26,11 +29,11 @@ public class RegisterPresenter  <V extends RegisterMvpView> extends BasePresente
     }
 
     @Override
-    public void getAllModerator() {
+    public void getAllModerator(SharedPreferences sharedPreferences) {
         //   getMvpView().showLoading();
 
         getCompositeDisposable().add(getDataManager()
-                .getAllModerator()
+                .getAllModerator(sharedPreferences)
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
                 .subscribe(new Consumer<List<AllModerators>>() {
@@ -72,9 +75,9 @@ public class RegisterPresenter  <V extends RegisterMvpView> extends BasePresente
     }
 
     @Override
-    public void registerNewUser(JSONObject login) {
+    public void registerNewUser(JsonObject login, SharedPreferences sharedPreferences) {
         getCompositeDisposable().add(getDataManager()
-                .registerUser(login)
+                .registerUser(login, sharedPreferences)
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
                 .subscribe(new Consumer<RegisterResponse>() {

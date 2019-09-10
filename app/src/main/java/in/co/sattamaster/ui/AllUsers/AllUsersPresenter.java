@@ -1,14 +1,14 @@
 package in.co.sattamaster.ui.AllUsers;
 
-
-
-import com.androidnetworking.error.ANError;
+import android.content.SharedPreferences;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
 import in.co.sattamaster.data.DataManager;
+import in.co.sattamaster.retrofit.ANError;
+import in.co.sattamaster.ui.Homepage.GetAllUsers;
 import in.co.sattamaster.ui.Homepage.ModeratorProfile;
 import in.co.sattamaster.ui.base.BasePresenter;
 import in.co.sattamaster.ui.login.UserProfile;
@@ -27,14 +27,14 @@ public class AllUsersPresenter<V extends AllUsersMvpView> extends BasePresenter<
     }
 
     @Override
-    public void getAllUsers() {
+    public void getAllUsers(SharedPreferences sharedPreferences) {
         getCompositeDisposable().add(getDataManager()
-                .getAllUsers()
+                .getAllUsers(sharedPreferences)
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
-                .subscribe(new Consumer<List<ModeratorProfile>>() {
+                .subscribe(new Consumer<GetAllUsers>() {
                     @Override
-                    public void accept(List<ModeratorProfile> response) throws Exception {
+                    public void accept(GetAllUsers response) throws Exception {
 
                         getMvpView().getAllUsers(response);
 

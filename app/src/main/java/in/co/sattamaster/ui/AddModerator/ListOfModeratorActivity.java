@@ -69,7 +69,7 @@ public class ListOfModeratorActivity extends BaseActivity implements ListOfModer
 
         try {
             progressFrame.setVisibility(View.VISIBLE);
-            mPresenter.getAllModerator();
+            mPresenter.getAllModerator(preferences);
         } catch (Exception ex){
             ex.printStackTrace();
         }

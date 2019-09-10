@@ -75,7 +75,7 @@ public class LocationPageActivity extends BaseActivity implements LocationPageMv
         view.setFocusable(false);
 
 
-        mPresenter.getLocation(MySharedPreferences.getToken(preferences));
+        mPresenter.getLocation(preferences);
     }
 
     @Override

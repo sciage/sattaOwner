@@ -17,8 +17,9 @@ package in.co.sattamaster.data;
 
 
 import android.content.Context;
+import android.content.SharedPreferences;
 
-import org.json.JSONObject;
+import com.google.gson.JsonObject;
 
 import java.util.List;
 
@@ -29,6 +30,7 @@ import in.co.sattamaster.di.ApplicationContext;
 import in.co.sattamaster.dto.Bid;
 import in.co.sattamaster.ui.AddCoins.AddModeratorCoinsResponse;
 import in.co.sattamaster.ui.AddCoins.AddUserCoinsResponse;
+import in.co.sattamaster.ui.Homepage.GetAllUsers;
 import in.co.sattamaster.ui.Homepage.LocationPojo;
 import in.co.sattamaster.ui.Homepage.ModeratorProfile;
 import in.co.sattamaster.ui.Homepage.UserObject;
@@ -71,63 +73,63 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
-    public Single<Bid> sendBidset(JSONObject bid) {
-        return mApiHelper.sendBidset(bid);
+    public Single<Bid> sendBidset(JsonObject bid, SharedPreferences sharedPreferences) {
+        return mApiHelper.sendBidset(bid, sharedPreferences);
     }
 
     @Override
-    public Single<RegisterResponse> registerUser(JSONObject bids) {
-        return mApiHelper.registerUser(bids);
+    public Single<RegisterResponse> registerUser(JsonObject bids, SharedPreferences sharedPreferences) {
+        return mApiHelper.registerUser(bids, sharedPreferences);
     }
 
     @Override
-    public Single<List<AllModerators>> getAllModerator() {
-        return mApiHelper.getAllModerator();
+    public Single<List<AllModerators>> getAllModerator(SharedPreferences sharedPreferences) {
+        return mApiHelper.getAllModerator(sharedPreferences);
     }
 
     @Override
-    public Single<LoginResponse> loginUser(JSONObject bids) {
-        return mApiHelper.loginUser(bids);
+    public Single<LoginResponse> loginUser(JsonObject bids, SharedPreferences sharedPreferences) {
+        return mApiHelper.loginUser(bids, sharedPreferences);
     }
 
     @Override
-    public Single<UserObject> getUserProfile(String token) {
-        return mApiHelper.getUserProfile(token);
+    public Single<UserObject> getUserProfile(SharedPreferences sharedPreferences) {
+        return mApiHelper.getUserProfile(sharedPreferences);
     }
 
     @Override
-    public Single<List<LocationPojo>> getCentres(String token) {
-        return mApiHelper.getCentres(token);
+    public Single<List<LocationPojo>> getCentres(SharedPreferences sharedPreferences) {
+        return mApiHelper.getCentres(sharedPreferences);
     }
 
     @Override
-    public Single<LocationStatus> newLocation(JSONObject object) {
-        return mApiHelper.newLocation(object);
+    public Single<LocationStatus> newLocation(JsonObject object, SharedPreferences sharedPreferences) {
+        return mApiHelper.newLocation(object, sharedPreferences);
     }
 
     @Override
-    public Single<List<ModeratorProfile>> getAllUsers() {
-        return mApiHelper.getAllUsers();
+    public Single<GetAllUsers> getAllUsers(SharedPreferences sharedPreferences) {
+        return mApiHelper.getAllUsers(sharedPreferences);
     }
 
     @Override
-    public Single<AddUserCoinsResponse> addUserCoin(String userId, JSONObject coinBalance) {
-        return mApiHelper.addUserCoin(userId, coinBalance);
+    public Single<AddUserCoinsResponse> addUserCoin(String userId, JsonObject coinBalance, SharedPreferences sharedPreferences) {
+        return mApiHelper.addUserCoin(userId, coinBalance, sharedPreferences);
     }
 
     @Override
-    public Single<AddModeratorCoinsResponse> addModeratorCoin(String moderator_id, JSONObject coinBalance) {
-        return mApiHelper.addModeratorCoin(moderator_id, coinBalance);
+    public Single<AddModeratorCoinsResponse> addModeratorCoin(String moderator_id, JsonObject coinBalance, SharedPreferences sharedPreferences) {
+        return mApiHelper.addModeratorCoin(moderator_id, coinBalance, sharedPreferences);
     }
 
     @Override
-    public Single<AddModeratorCoinsResponse> addOwnerCoin(JSONObject ownerCoins) {
-        return mApiHelper.addOwnerCoin(ownerCoins);
+    public Single<AddModeratorCoinsResponse> addOwnerCoin(JsonObject ownerCoins, SharedPreferences sharedPreferences) {
+        return mApiHelper.addOwnerCoin(ownerCoins, sharedPreferences);
     }
 
     @Override
-    public Single<AddModeratorCoinsResponse> addModerator(JSONObject moderator) {
-        return mApiHelper.addModerator(moderator);
+    public Single<AddModeratorCoinsResponse> addModerator(JsonObject moderator, SharedPreferences sharedPreferences) {
+        return mApiHelper.addModerator(moderator, sharedPreferences);
     }
 
  /*   @Override

@@ -1,10 +1,13 @@
 package in.co.sattamaster.ui.login;
 
-import com.androidnetworking.error.ANError;
+import android.content.SharedPreferences;
+
+import com.google.gson.JsonObject;
 
 import org.json.JSONObject;
 
 import in.co.sattamaster.data.DataManager;
+import in.co.sattamaster.retrofit.ANError;
 import in.co.sattamaster.ui.base.BasePresenter;
 import in.co.sattamaster.utils.rx.SchedulerProvider;
 
@@ -24,10 +27,10 @@ public class LoginScreenPresenter <V extends LoginScreenMvpView> extends BasePre
     }
 
     @Override
-    public void sendBidSet(JSONObject login) {
+    public void sendBidSet(JsonObject login, SharedPreferences sharedPreferences) {
 
         getCompositeDisposable().add(getDataManager()
-                .loginUser(login)
+                .loginUser(login, sharedPreferences)
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
                 .subscribe(new Consumer<LoginResponse>() {

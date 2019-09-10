@@ -1,6 +1,9 @@
 package in.co.sattamaster.ui.Location;
 
-import com.androidnetworking.error.ANError;
+
+import android.content.SharedPreferences;
+
+import com.google.gson.JsonObject;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -8,6 +11,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 
 import in.co.sattamaster.data.DataManager;
+import in.co.sattamaster.retrofit.ANError;
 import in.co.sattamaster.ui.base.BasePresenter;
 import in.co.sattamaster.utils.rx.SchedulerProvider;
 
@@ -28,9 +32,9 @@ public class AddLocationPresenter <V extends AddLocationMvpView> extends BasePre
     }
 
     @Override
-    public void sendLocation(JSONObject object) {
+    public void sendLocation(JsonObject object, SharedPreferences sharedPreferences) {
         getCompositeDisposable().add(getDataManager()
-                .newLocation(object)
+                .newLocation(object, sharedPreferences)
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
                 .subscribe(new Consumer<LocationStatus>() {

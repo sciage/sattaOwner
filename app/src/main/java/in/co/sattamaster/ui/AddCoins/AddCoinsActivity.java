@@ -10,8 +10,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.gson.JsonIOException;
+import com.google.gson.JsonObject;
+
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.List;
 
@@ -20,6 +22,7 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import in.co.sattamaster.R;
+import in.co.sattamaster.ui.Homepage.GetAllUsers;
 import in.co.sattamaster.ui.Homepage.ModeratorProfile;
 import in.co.sattamaster.ui.autocomplete.Autocomplete;
 import in.co.sattamaster.ui.autocomplete.AutocompleteCallback;
@@ -84,8 +87,8 @@ public class AddCoinsActivity extends BaseActivity implements AddCoinsMvpView, V
         send_owner_coin.setOnClickListener(this);
 
         try {
-            mPresenter.getAllUsers();
-            mPresenter.getAllModerator();
+            mPresenter.getAllUsers(preferences);
+            mPresenter.getAllModerator(preferences);
 
             progressFrame.setVisibility(View.VISIBLE);
 
@@ -98,12 +101,12 @@ public class AddCoinsActivity extends BaseActivity implements AddCoinsMvpView, V
 
     }
 
-    private void setupUserAutocomplete(List<ModeratorProfile> response) {
+    private void setupUserAutocomplete(GetAllUsers response) {
         // EditText edit = (EditText) findViewById(R.id.single);
         float elevation = 6f;
         Drawable backgroundDrawable = ResourcesCompat.getDrawable(getResources(), R.drawable.shadow, null);
 
-        AutocompletePresenter<ModeratorProfile> presenter = new UserPresenter(this, response);
+        AutocompletePresenter<ModeratorProfile> presenter = new UserPresenter(this, response.getData());
         AutocompleteCallback<ModeratorProfile> callback = new AutocompleteCallback<ModeratorProfile>() {
             @Override
             public boolean onPopupItemClicked(Editable editable, ModeratorProfile item) {
@@ -168,20 +171,20 @@ public class AddCoinsActivity extends BaseActivity implements AddCoinsMvpView, V
             case R.id.send_user_coin:
 
                 progressFrame.setVisibility(View.VISIBLE);
-                mPresenter.addUserCoin(userId, balanceJson(user_coins.getText().toString()));
+                mPresenter.addUserCoin(userId, balanceJson(user_coins.getText().toString()), preferences);
 
                 break;
             case R.id.send_moderator_coin:
 
                 progressFrame.setVisibility(View.VISIBLE);
-                mPresenter.addModeratorCoin(moderator_id, balanceJson(enter_moderator_coins.getText().toString()));
+                mPresenter.addModeratorCoin(moderator_id, balanceJson(enter_moderator_coins.getText().toString()), preferences);
 
                 break;
 
             case R.id.send_owner_coin:
 
                 progressFrame.setVisibility(View.VISIBLE);
-                mPresenter.addOwnerCoin(balanceJson(enter_moderator_coins.getText().toString()));
+                mPresenter.addOwnerCoin(balanceJson(enter_moderator_coins.getText().toString()), preferences);
 
                 break;
         }
@@ -189,7 +192,7 @@ public class AddCoinsActivity extends BaseActivity implements AddCoinsMvpView, V
     }
 
     @Override
-    public void getAllUsers(List<ModeratorProfile> response) {
+    public void getAllUsers(GetAllUsers response) {
         setupUserAutocomplete(response);
 
     }
@@ -202,12 +205,12 @@ public class AddCoinsActivity extends BaseActivity implements AddCoinsMvpView, V
 
     }
 
-    private JSONObject balanceJson(String balanceAmount){
-        JSONObject balance = new JSONObject();
+    private JsonObject balanceJson(String balanceAmount){
+        JsonObject balance = new JsonObject();
         try {
-            balance.put("amount", balanceAmount);
+            balance.addProperty("amount", balanceAmount);
 
-        } catch (JSONException e) {
+        } catch (JsonIOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
