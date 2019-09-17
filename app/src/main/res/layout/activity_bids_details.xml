@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-android:focusable="true"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-tools:context="in.co.sattamaster.ui.Withdraw.WithdrawActivity">
+android:background="@color/toolbar_color"
+tools:context="in.co.sattamaster.ui.AllBids.BidsDetailsActivity">
 
 <ScrollView
     android:layout_width="match_parent"
@@ -22,22 +22,35 @@ tools:context="in.co.sattamaster.ui.Withdraw.WithdrawActivity">
             layout="@layout/include_toolbar" />
 
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/withdraw_recyclerview"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/include_toolbar" />
+            android:layout_height="wrap_content"
+            android:id="@+id/detail_comment"
+            android:paddingBottom="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/detail_rv_messages"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:stackFromEnd="true"
+                android:layout_marginStart="4dp"
+                android:layout_marginLeft="4dp"
+                android:background="@android:color/transparent" />
+
+
+        </RelativeLayout>
 
     </LinearLayout>
 
 </ScrollView>
 
 <FrameLayout
-    android:id="@+id/withdraw_progressbar"
+    android:id="@+id/historydetails_progressbar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:visibility="gone"
     android:background="@color/white">
 
     <TextView
@@ -64,7 +77,5 @@ tools:context="in.co.sattamaster.ui.Withdraw.WithdrawActivity">
         android:layout_gravity="center"
         android:indeterminate="true" />
 </FrameLayout>
-
-
 
 </RelativeLayout>

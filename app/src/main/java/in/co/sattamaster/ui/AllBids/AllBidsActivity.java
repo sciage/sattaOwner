@@ -1,45 +1,41 @@
-package in.co.sattamaster.ui.Withdraw;
+package in.co.sattamaster.ui.AllBids;
 
 import android.os.Bundle;
-import android.view.View;
-
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import butterknife.BindView;
-import in.co.sattamaster.R;
-import in.co.sattamaster.ui.AllUsers.AllUsersAdapter;
-import in.co.sattamaster.ui.base.BaseActivity;
+import android.view.View;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
+import in.co.sattamaster.R;
+import in.co.sattamaster.ui.Homepage.GetAllUsers;
+import in.co.sattamaster.ui.base.BaseActivity;
 
-public class WithdrawActivity extends BaseActivity implements WithdrawMvpView, WithdrawAdapter.ItemClickListener {
+
+public class AllBidsActivity extends BaseActivity implements AllBidsMvpView {
 
     @Inject
-    WithdrawMvpPresenter<WithdrawMvpView> mPresenter;
+    AllBidsMvpPresenter<AllBidsMvpView> mPresenter;
 
-    private WithdrawAdapter adapter;
+    private AllBidsAdapter adapter;
 
     RecyclerView recyclerView;
 
-    @BindView(R.id.withdraw_progressbar) View progressFrame;
-
-
-
+    @BindView(R.id.allbids_progressbar) View progressFrame;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_withdraw);
+        setContentView(R.layout.activity_all_bids);
 
         getActivityComponent().inject(this);
 
         setUnBinder(ButterKnife.bind(this));
 
-        mPresenter.onAttach(WithdrawActivity.this);
-
+        mPresenter.onAttach(AllBidsActivity.this);
 
         toolbar.setNavigationIcon(R.drawable.ic_clear_black_24dp);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -48,22 +44,20 @@ public class WithdrawActivity extends BaseActivity implements WithdrawMvpView, W
                 finish();
             }
         });
-        getSupportActionBar().setTitle("Withdraw Request");
+        getSupportActionBar().setTitle("All Bids");
 
         // set up the RecyclerView
-        recyclerView = findViewById(R.id.withdraw_recyclerview);
+        recyclerView = findViewById(R.id.allbids_recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
-        adapter = new WithdrawAdapter(this);
+        adapter = new AllBidsAdapter(this);
 
         recyclerView.setAdapter(adapter);
-
-        adapter.setClickListener(this);
 
 
         try {
             progressFrame.setVisibility(View.VISIBLE);
-            mPresenter.getAllUsers(preferences);
+            mPresenter.getAllBids(preferences);
         } catch (Exception ex){
             ex.printStackTrace();
         }
@@ -75,12 +69,7 @@ public class WithdrawActivity extends BaseActivity implements WithdrawMvpView, W
     }
 
     @Override
-    public void onItemClick(View view, int position) {
-
-    }
-
-    @Override
-    public void withdraw(WithdrawPojo response) {
+    public void getAllBids(AllBidsPojo response) {
         adapter.addAll(response.getData());
 
         progressFrame.setVisibility(View.INVISIBLE);

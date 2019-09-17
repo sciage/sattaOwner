@@ -254,9 +254,9 @@ public class AddLocationActivity extends BaseActivity implements AddLocationMvpV
             case R.id.add_hourly_location:
 
 
-                if(location_daily.getText().toString().isEmpty()){
+                if(location_hour_name.getText().toString().isEmpty()){
                     Toast.makeText(this, "Please enter location name", Toast.LENGTH_SHORT).show();
-                } else if (reveal_time_daily_value == null || reveal_time_daily_last_value==null){
+                } else if (hourly_reveal_time_value == null || hourly_reveal_time_last_value==null){
                     Toast.makeText(this, "Please enter location timings", Toast.LENGTH_SHORT).show();
 
                 } else {

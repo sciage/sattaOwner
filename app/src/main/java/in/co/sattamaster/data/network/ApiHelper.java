@@ -25,12 +25,15 @@ import java.util.List;
 import in.co.sattamaster.dto.Bid;
 import in.co.sattamaster.ui.AddCoins.AddModeratorCoinsResponse;
 import in.co.sattamaster.ui.AddCoins.AddUserCoinsResponse;
+import in.co.sattamaster.ui.AllBids.AllBidsPojo;
+import in.co.sattamaster.ui.AllBids.HistoryDetailsResponse;
 import in.co.sattamaster.ui.Homepage.GetAllUsers;
 import in.co.sattamaster.ui.Homepage.LocationPojo;
 import in.co.sattamaster.ui.Homepage.ModeratorProfile;
 import in.co.sattamaster.ui.Homepage.UserObject;
 import in.co.sattamaster.ui.Location.LocationStatus;
 import in.co.sattamaster.ui.RevealNumber.RevealStatus;
+import in.co.sattamaster.ui.Withdraw.WithdrawPojo;
 import in.co.sattamaster.ui.login.AllModerators;
 import in.co.sattamaster.ui.login.LoginResponse;
 import in.co.sattamaster.ui.login.RegisterResponse;
@@ -53,12 +56,16 @@ public interface ApiHelper {
     Single<List<LocationPojo>> getCentres(SharedPreferences sharedPreferences);
     Single<LocationStatus> newLocation(JsonObject object, SharedPreferences sharedPreferences);
     Single<GetAllUsers> getAllUsers(SharedPreferences sharedPreferences);
+    Single<AllBidsPojo> getAllBids(SharedPreferences sharedPreferences);
     Single<AddUserCoinsResponse> addUserCoin(String userId, JsonObject coinBalance, SharedPreferences sharedPreferences);
     Single<AddModeratorCoinsResponse> addModeratorCoin(String moderator_id, JsonObject coinBalance, SharedPreferences sharedPreferences);
     Single<AddModeratorCoinsResponse> addOwnerCoin(JsonObject ownerCoins, SharedPreferences sharedPreferences);
     Single<AddModeratorCoinsResponse> addModerator(JsonObject moderator, SharedPreferences sharedPreferences);
 
+    Single<HistoryDetailsResponse> getBidDetails(String id, SharedPreferences sharedPreferences);
+
     Single<RevealStatus> sendRevealNumber(JsonObject revealNumber, SharedPreferences sharedPreferences);
+    Single<WithdrawPojo> withdrawRequest(SharedPreferences sharedPreferences);
 
   //  Single<List<PostsModel>> getImagePosts(String user_id, String onlyImages, String page);
 

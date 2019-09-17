@@ -37,12 +37,15 @@ import in.co.sattamaster.retrofit.NetworkClient;
 import in.co.sattamaster.retrofit.NetworkInterface;
 import in.co.sattamaster.ui.AddCoins.AddModeratorCoinsResponse;
 import in.co.sattamaster.ui.AddCoins.AddUserCoinsResponse;
+import in.co.sattamaster.ui.AllBids.AllBidsPojo;
+import in.co.sattamaster.ui.AllBids.HistoryDetailsResponse;
 import in.co.sattamaster.ui.Homepage.GetAllUsers;
 import in.co.sattamaster.ui.Homepage.LocationPojo;
 import in.co.sattamaster.ui.Homepage.ModeratorProfile;
 import in.co.sattamaster.ui.Homepage.UserObject;
 import in.co.sattamaster.ui.Location.LocationStatus;
 import in.co.sattamaster.ui.RevealNumber.RevealStatus;
+import in.co.sattamaster.ui.Withdraw.WithdrawPojo;
 import in.co.sattamaster.ui.login.AllModerators;
 import in.co.sattamaster.ui.login.LoginResponse;
 import in.co.sattamaster.ui.login.RegisterResponse;
@@ -185,6 +188,15 @@ public class AppApiHelper implements ApiHelper {
     }
 
     @Override
+    public Single<HistoryDetailsResponse> getBidDetails(String id, SharedPreferences sharedPreferences) {
+        return  NetworkClient.getRetrofit(sharedPreferences).create(NetworkInterface.class)
+                .getBidDetails(id)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+
+    }
+
+    @Override
     public Single<AddModeratorCoinsResponse> addOwnerCoin(JsonObject ownerCoins, SharedPreferences sharedPreferences) {
       /*  return Rx2AndroidNetworking.post(ApiEndPoint.ADD_OWNER_COIN)
                 .setOkHttpClient(getUnsafeOkHttpClient())
@@ -227,6 +239,14 @@ public class AppApiHelper implements ApiHelper {
     }
 
     @Override
+    public Single<AllBidsPojo> getAllBids(SharedPreferences sharedPreferences) {
+        return  NetworkClient.getRetrofit(sharedPreferences).create(NetworkInterface.class)
+                .getAllBids()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+    @Override
     public Single<UserObject> getUserProfile(SharedPreferences sharedPreferences) {
        /*  return Rx2AndroidNetworking.get(ApiEndPoint.GET_USER_PROFILE)
                 .addHeaders("Authorization", "Bearer" + " " + token)
@@ -249,6 +269,18 @@ public class AppApiHelper implements ApiHelper {
         */
         return  NetworkClient.getRetrofit(sharedPreferences).create(NetworkInterface.class)
                 .getCentres()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+    @Override
+    public Single<WithdrawPojo> withdrawRequest(SharedPreferences sharedPreferences) {
+       /* return Rx2AndroidNetworking.get(ApiEndPoint.GET_CENTRES)
+                .setOkHttpClient(getUnsafeOkHttpClient())
+                .build()
+                .getObjectListSingle(LocationPojo.class);
+        */
+        return  NetworkClient.getRetrofit(sharedPreferences).create(NetworkInterface.class)
+                .withdrawRequest()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }

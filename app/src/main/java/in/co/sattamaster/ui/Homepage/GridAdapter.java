@@ -12,11 +12,11 @@ import in.co.sattamaster.R;
 import in.co.sattamaster.SquareLayout;
 import in.co.sattamaster.ui.AddCoins.AddCoinsActivity;
 import in.co.sattamaster.ui.AddModerator.AddModeratorActivity;
+import in.co.sattamaster.ui.AllBids.AllBidsActivity;
 import in.co.sattamaster.ui.AllUsers.AllUsersActivity;
 import in.co.sattamaster.ui.Contact.ContactUsActivity;
 import in.co.sattamaster.ui.History.HistoryActivity;
 import in.co.sattamaster.ui.Location.AddLocationActivity;
-import in.co.sattamaster.ui.Result.ResultActivity;
 import in.co.sattamaster.ui.RevealNumber.RevealNumberActivity;
 import in.co.sattamaster.ui.Withdraw.WithdrawActivity;
 import in.co.sattamaster.ui.base.Constants;
@@ -57,12 +57,6 @@ public class GridAdapter extends BaseAdapter{
         mItems.add(object03);
         notifyDataSetChanged();
 
-
-        Item object04 = new Item();
-        object04.text = "Send Money";
-        mItems.add(object04);
-        notifyDataSetChanged();
-
         Item object05 = new Item();
         object05.text = "Add Location";
         mItems.add(object05);
@@ -76,6 +70,11 @@ public class GridAdapter extends BaseAdapter{
         Item object07 = new Item();
         object07.text = "Withdrawal Request";
         mItems.add(object07);
+        notifyDataSetChanged();
+
+        Item object08 = new Item();
+        object08.text = "All Bids";
+        mItems.add(object08);
         notifyDataSetChanged();
 
         mContext = context;
@@ -151,7 +150,7 @@ public class GridAdapter extends BaseAdapter{
                 box_back.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(v.getContext(), HistoryActivity.class);
+                        Intent intent = new Intent(v.getContext(), AddLocationActivity.class);
                         intent.putExtra(Constants.WALLET_BALANCE, dataSet.getUser().getProfile().getCoin_balance());
 
                         v.getContext().startActivity(intent);
@@ -163,7 +162,7 @@ public class GridAdapter extends BaseAdapter{
                 box_back.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(v.getContext(), AddLocationActivity.class);
+                        Intent intent = new Intent(v.getContext(), RevealNumberActivity.class);
                         intent.putExtra(Constants.WALLET_BALANCE, dataSet.getUser().getProfile().getCoin_balance());
 
                         v.getContext().startActivity(intent);
@@ -175,7 +174,19 @@ public class GridAdapter extends BaseAdapter{
                 box_back.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(v.getContext(), RevealNumberActivity.class);
+                        Intent intent = new Intent(v.getContext(), WithdrawActivity.class);
+                        intent.putExtra(Constants.WALLET_BALANCE, dataSet.getUser().getProfile().getCoin_balance());
+
+                        v.getContext().startActivity(intent);
+                    }
+                });
+
+                break;
+            case 6:
+                box_back.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(v.getContext(), AllBidsActivity.class);
                         intent.putExtra(Constants.WALLET_BALANCE, dataSet.getUser().getProfile().getCoin_balance());
 
                         v.getContext().startActivity(intent);

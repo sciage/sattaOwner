@@ -8,11 +8,14 @@ import in.co.sattamaster.data.network.ApiEndPoint;
 import in.co.sattamaster.dto.Bid;
 import in.co.sattamaster.ui.AddCoins.AddModeratorCoinsResponse;
 import in.co.sattamaster.ui.AddCoins.AddUserCoinsResponse;
+import in.co.sattamaster.ui.AllBids.AllBidsPojo;
+import in.co.sattamaster.ui.AllBids.HistoryDetailsResponse;
 import in.co.sattamaster.ui.Homepage.GetAllUsers;
 import in.co.sattamaster.ui.Homepage.LocationPojo;
 import in.co.sattamaster.ui.Homepage.UserObject;
 import in.co.sattamaster.ui.Location.LocationStatus;
 import in.co.sattamaster.ui.RevealNumber.RevealStatus;
+import in.co.sattamaster.ui.Withdraw.WithdrawPojo;
 import in.co.sattamaster.ui.login.AllModerators;
 import in.co.sattamaster.ui.login.LoginResponse;
 import in.co.sattamaster.ui.login.RegisterResponse;
@@ -64,6 +67,9 @@ public interface NetworkInterface {
     @POST(ApiEndPoint.REVEAL_NUMBER)
     Single<RevealStatus> sendNumberReveal(@Body JsonObject bids);
 
+    @GET(ApiEndPoint.BIDSET_ID)
+    Single<HistoryDetailsResponse> getBidDetails(@Path("id") String id);
+
 
     @GET(ApiEndPoint.GET_ALL_MODERATORS)
     Single<List<AllModerators>> getAllModerator();
@@ -79,4 +85,9 @@ public interface NetworkInterface {
     @GET(ApiEndPoint.GET_CENTRES)
     Single<List<LocationPojo>> getCentres();
 
+    @GET(ApiEndPoint.WITHDRAW_REQUEST)
+    Single<WithdrawPojo> withdrawRequest();
+
+    @GET(ApiEndPoint.GET_ALL_BIDS)
+    Single<AllBidsPojo> getAllBids();
 }

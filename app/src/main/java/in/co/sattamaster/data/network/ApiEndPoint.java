@@ -24,33 +24,40 @@ import in.co.sattamaster.BuildConfig;
 
 public final class ApiEndPoint {
 
-    public static final String TEST = BuildConfig.BASE_URL + "test02.php";
+    public static final String TEST =   "test02.php";
 
-    public static final String BIDSET = BuildConfig.BASE_URL + "bidsets";
+    public static final String BIDSET =  "bidsets";
 
-    public static final String REGISTER_USER = BuildConfig.BASE_URL + "admin/1/players";
+    public static final String REGISTER_USER =  "admin/1/players";
 
-    public static final String NEW_LOCATION = BuildConfig.BASE_URL + "centres";
+    public static final String NEW_LOCATION =   "centres";
 
-    public static final String LOGIN_USER = BuildConfig.BASE_URL + "user/login";
+    public static final String LOGIN_USER = "user/login";
 
-    public static final String GET_ALL_USERS = BuildConfig.BASE_URL + "admin/1/players";
+    public static final String GET_ALL_USERS =   "admin/1/players";
 
-    public static final String GET_ALL_MODERATORS = BuildConfig.BASE_URL + "moderators";
+    public static final String GET_ALL_MODERATORS =  "moderators";
 
-    public static final String GET_USER_PROFILE = BuildConfig.BASE_URL + "user";
+    public static final String GET_USER_PROFILE =   "user";
 
-    public static final String GET_CENTRES = BuildConfig.BASE_URL + "centres";
+    public static final String GET_CENTRES =   "centres";
 
-    public static final String ADD_USER_COIN = BuildConfig.BASE_URL + "admin/1/players/{user_id}/add-coin-balance";
+    public static final String WITHDRAW_REQUEST =   "withdrawl-requests";
 
-    public static final String ADD_MODERATOR_COIN = BuildConfig.BASE_URL + "admin/1/moderators/{moderator_id}/add-coin-balance";
+    public static final String GET_ALL_BIDS =   "bids";
 
-    public static final String ADD_OWNER_COIN = BuildConfig.BASE_URL + "admin/1/add-coin-balance";
+    public static final String ADD_USER_COIN =  "admin/1/players/{user_id}/add-coin-balance";
 
-    public static final String REVEAL_NUMBER = BuildConfig.BASE_URL + "revealed-numbers";
+    public static final String ADD_MODERATOR_COIN =  "admin/1/moderators/{moderator_id}/add-coin-balance";
 
-    public static final String ADD_MODERATOR = BuildConfig.BASE_URL + "admin/1/moderators";
+    public static final String ADD_OWNER_COIN =   "admin/1/add-coin-balance";
+
+    public static final String REVEAL_NUMBER =  "revealed-numbers";
+
+    public static final String BIDSET_ID =  "bidsets/{id}";
+
+
+    public static final String ADD_MODERATOR =  "admin/1/moderators";
 
     public static final String ENDPOINT_GOOGLE_LOGIN = BuildConfig.BASE_URL
             + "/588d14f4100000a9072d2943";

@@ -30,12 +30,15 @@ import in.co.sattamaster.di.ApplicationContext;
 import in.co.sattamaster.dto.Bid;
 import in.co.sattamaster.ui.AddCoins.AddModeratorCoinsResponse;
 import in.co.sattamaster.ui.AddCoins.AddUserCoinsResponse;
+import in.co.sattamaster.ui.AllBids.AllBidsPojo;
+import in.co.sattamaster.ui.AllBids.HistoryDetailsResponse;
 import in.co.sattamaster.ui.Homepage.GetAllUsers;
 import in.co.sattamaster.ui.Homepage.LocationPojo;
 import in.co.sattamaster.ui.Homepage.ModeratorProfile;
 import in.co.sattamaster.ui.Homepage.UserObject;
 import in.co.sattamaster.ui.Location.LocationStatus;
 import in.co.sattamaster.ui.RevealNumber.RevealStatus;
+import in.co.sattamaster.ui.Withdraw.WithdrawPojo;
 import in.co.sattamaster.ui.login.AllModerators;
 import in.co.sattamaster.ui.login.LoginResponse;
 import in.co.sattamaster.ui.login.RegisterResponse;
@@ -114,6 +117,11 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
+    public Single<AllBidsPojo> getAllBids(SharedPreferences sharedPreferences) {
+        return mApiHelper.getAllBids(sharedPreferences);
+    }
+
+    @Override
     public Single<AddUserCoinsResponse> addUserCoin(String userId, JsonObject coinBalance, SharedPreferences sharedPreferences) {
         return mApiHelper.addUserCoin(userId, coinBalance, sharedPreferences);
     }
@@ -134,8 +142,18 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
+    public Single<HistoryDetailsResponse> getBidDetails(String id, SharedPreferences sharedPreferences) {
+        return mApiHelper.getBidDetails(id, sharedPreferences);
+    }
+
+    @Override
     public Single<RevealStatus> sendRevealNumber(JsonObject revealNumber, SharedPreferences sharedPreferences) {
         return mApiHelper.sendRevealNumber(revealNumber, sharedPreferences);
+    }
+
+    @Override
+    public Single<WithdrawPojo> withdrawRequest(SharedPreferences sharedPreferences) {
+        return mApiHelper.withdrawRequest(sharedPreferences);
     }
 
  /*   @Override

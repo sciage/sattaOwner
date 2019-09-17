@@ -29,6 +29,12 @@ import in.co.sattamaster.ui.AddModerator.AddModeratorPresenter;
 import in.co.sattamaster.ui.AddModerator.ListOfModeratorMvpPresenter;
 import in.co.sattamaster.ui.AddModerator.ListOfModeratorMvpView;
 import in.co.sattamaster.ui.AddModerator.ListOfModeratorPresenter;
+import in.co.sattamaster.ui.AllBids.AllBidsMvpPresenter;
+import in.co.sattamaster.ui.AllBids.AllBidsMvpView;
+import in.co.sattamaster.ui.AllBids.AllBidsPresenter;
+import in.co.sattamaster.ui.AllBids.BidsDetailsMvpPresenter;
+import in.co.sattamaster.ui.AllBids.BidsDetailsMvpView;
+import in.co.sattamaster.ui.AllBids.BidsDetailsPresenter;
 import in.co.sattamaster.ui.AllUsers.AllUsersMvpPresenter;
 import in.co.sattamaster.ui.AllUsers.AllUsersMvpView;
 import in.co.sattamaster.ui.AllUsers.AllUsersPresenter;
@@ -53,9 +59,6 @@ import in.co.sattamaster.ui.Homepage.MainActivityPresenter;
 import in.co.sattamaster.ui.PlayMatka.PlayMatkaActivityMvpPresenter;
 import in.co.sattamaster.ui.PlayMatka.PlayMatkaActivityMvpView;
 import in.co.sattamaster.ui.PlayMatka.PlayMatkaActivityPresenter;
-import in.co.sattamaster.ui.Result.ResultActivityMvpPresenter;
-import in.co.sattamaster.ui.Result.ResultActivityMvpView;
-import in.co.sattamaster.ui.Result.ResultActivityPresenter;
 import in.co.sattamaster.ui.Withdraw.WithdrawMvpPresenter;
 import in.co.sattamaster.ui.Withdraw.WithdrawMvpView;
 import in.co.sattamaster.ui.Withdraw.WithdrawPresenter;
@@ -117,6 +120,18 @@ public class ActivityModule {
     }
 
     @Provides
+    AllBidsMvpPresenter<AllBidsMvpView> provideAllBidsMvpPresenter(
+            AllBidsPresenter<AllBidsMvpView> presenter) {
+        return presenter;
+    }
+
+    @Provides
+    BidsDetailsMvpPresenter<BidsDetailsMvpView> provideHistoryDetailsMvpPresenter(
+            BidsDetailsPresenter<BidsDetailsMvpView> presenter) {
+        return presenter;
+    }
+
+    @Provides
     LoginScreenMvpPresenter<LoginScreenMvpView> provideLoginScreenMvpPresenter(
             LoginScreenPresenter<LoginScreenMvpView> presenter) {
         return presenter;
@@ -172,12 +187,6 @@ public class ActivityModule {
     @Provides
     RegisterMvpPresenter<RegisterMvpView> provideRegisterMvpPresenter(
             RegisterPresenter<RegisterMvpView> presenter) {
-        return presenter;
-    }
-
-    @Provides
-    ResultActivityMvpPresenter<ResultActivityMvpView> provideResultMvpPresenter(
-            ResultActivityPresenter<ResultActivityMvpView> presenter) {
         return presenter;
     }
 

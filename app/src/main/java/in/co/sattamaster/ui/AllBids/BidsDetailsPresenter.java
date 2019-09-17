@@ -1,40 +1,37 @@
-package in.co.sattamaster.ui.Withdraw;
+package in.co.sattamaster.ui.AllBids;
 
 import android.content.SharedPreferences;
 
-import in.co.sattamaster.data.DataManager;
-import in.co.sattamaster.retrofit.ANError;
-import in.co.sattamaster.ui.Homepage.GetAllUsers;
-import in.co.sattamaster.ui.base.BasePresenter;
-import in.co.sattamaster.utils.rx.SchedulerProvider;
-
 import javax.inject.Inject;
 
+import in.co.sattamaster.data.DataManager;
+import in.co.sattamaster.retrofit.ANError;
+import in.co.sattamaster.ui.base.BasePresenter;
+import in.co.sattamaster.utils.rx.SchedulerProvider;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
 
-public class WithdrawPresenter <V extends WithdrawMvpView> extends BasePresenter<V>
-        implements WithdrawMvpPresenter<V> {
+public class BidsDetailsPresenter<V extends BidsDetailsMvpView> extends BasePresenter<V>
+        implements BidsDetailsMvpPresenter<V> {
 
     @Inject
-    public WithdrawPresenter(DataManager dataManager,
-                                   SchedulerProvider schedulerProvider,
-                                   CompositeDisposable compositeDisposable) {
+    public BidsDetailsPresenter(DataManager dataManager,
+                                SchedulerProvider schedulerProvider,
+                                CompositeDisposable compositeDisposable) {
         super(dataManager, schedulerProvider, compositeDisposable);
     }
 
     @Override
-    public void getAllUsers(SharedPreferences sharedPreferences) {
-
+    public void getBidDetails(String id, SharedPreferences sharedPreferences) {
         getCompositeDisposable().add(getDataManager()
-                .withdrawRequest(sharedPreferences)
+                .getBidDetails(id, sharedPreferences)
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
-                .subscribe(new Consumer<WithdrawPojo>() {
+                .subscribe(new Consumer<HistoryDetailsResponse>() {
                     @Override
-                    public void accept(WithdrawPojo response) throws Exception {
+                    public void accept(HistoryDetailsResponse response) throws Exception {
 
-                        getMvpView().withdraw(response);
+                        getMvpView().getBidDetails(response);
 
                         // todo add data and loop to get all friends list
                      /*   getDataManager().updateUserInfo(
