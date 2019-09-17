@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "183691216393",
+    "firebase_url": "https://satta-e240b.firebaseio.com",
+    "project_id": "satta-e240b",
+    "storage_bucket": "satta-e240b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:183691216393:android:a27b6704033a23bcc05ad8",
+        "android_client_info": {
+          "package_name": "in.co.sattamaster"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "183691216393-9ghjt9t905tr8lvgjj1m4mcaujbsqufv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "in.co.sattamaster",
+            "certificate_hash": "4d203d3f048e8e4b0c99ff3505561df3ad40e262"
+          }
+        },
+        {
+          "client_id": "183691216393-udinkj03rgq98e7t7jrd40ho16811fgd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6P1u_bZXssy0srZOis-lfzt3k6jjAup0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "183691216393-udinkj03rgq98e7t7jrd40ho16811fgd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

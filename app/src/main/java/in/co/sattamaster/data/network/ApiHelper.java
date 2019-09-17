@@ -55,8 +55,8 @@ public interface ApiHelper {
     Single<UserObject> getUserProfile(SharedPreferences sharedPreferences);
     Single<List<LocationPojo>> getCentres(SharedPreferences sharedPreferences);
     Single<LocationStatus> newLocation(JsonObject object, SharedPreferences sharedPreferences);
-    Single<GetAllUsers> getAllUsers(SharedPreferences sharedPreferences);
-    Single<AllBidsPojo> getAllBids(SharedPreferences sharedPreferences);
+    Single<GetAllUsers> getAllUsers(SharedPreferences sharedPreferences, String currentPage);
+    Single<AllBidsPojo> getAllBids(SharedPreferences sharedPreferences, String currentPage);
     Single<AddUserCoinsResponse> addUserCoin(String userId, JsonObject coinBalance, SharedPreferences sharedPreferences);
     Single<AddModeratorCoinsResponse> addModeratorCoin(String moderator_id, JsonObject coinBalance, SharedPreferences sharedPreferences);
     Single<AddModeratorCoinsResponse> addOwnerCoin(JsonObject ownerCoins, SharedPreferences sharedPreferences);
@@ -65,7 +65,7 @@ public interface ApiHelper {
     Single<HistoryDetailsResponse> getBidDetails(String id, SharedPreferences sharedPreferences);
 
     Single<RevealStatus> sendRevealNumber(JsonObject revealNumber, SharedPreferences sharedPreferences);
-    Single<WithdrawPojo> withdrawRequest(SharedPreferences sharedPreferences);
+    Single<WithdrawPojo> withdrawRequest(SharedPreferences sharedPreferences, String currentPage);
 
   //  Single<List<PostsModel>> getImagePosts(String user_id, String onlyImages, String page);
 

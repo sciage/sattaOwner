@@ -7,7 +7,7 @@ import in.co.sattamaster.ui.base.MvpPresenter;
 
 @PerActivity
 public interface WithdrawMvpPresenter <V extends WithdrawMvpView> extends MvpPresenter<V> {
-    void getAllUsers(SharedPreferences sharedPreferences);
+    void getAllUsers(SharedPreferences sharedPreferences, int currentPage);
 
 
 }

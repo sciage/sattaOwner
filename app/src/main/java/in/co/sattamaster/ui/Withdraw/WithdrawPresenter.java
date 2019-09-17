@@ -24,10 +24,10 @@ public class WithdrawPresenter <V extends WithdrawMvpView> extends BasePresenter
     }
 
     @Override
-    public void getAllUsers(SharedPreferences sharedPreferences) {
+    public void getAllUsers(SharedPreferences sharedPreferences, int currentPage) {
 
         getCompositeDisposable().add(getDataManager()
-                .withdrawRequest(sharedPreferences)
+                .withdrawRequest(sharedPreferences, String.valueOf(currentPage))
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
                 .subscribe(new Consumer<WithdrawPojo>() {

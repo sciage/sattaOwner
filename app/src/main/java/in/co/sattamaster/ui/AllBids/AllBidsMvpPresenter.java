@@ -9,6 +9,6 @@ import in.co.sattamaster.ui.base.MvpPresenter;
 @PerActivity
 public interface AllBidsMvpPresenter <V extends AllBidsMvpView> extends MvpPresenter<V> {
 
-    void getAllBids(SharedPreferences sharedPreferences);
+    void getAllBids(SharedPreferences sharedPreferences, int currentPage);
 
 }

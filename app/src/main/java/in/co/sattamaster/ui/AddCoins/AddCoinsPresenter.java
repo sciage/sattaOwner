@@ -31,9 +31,9 @@ public class AddCoinsPresenter<V extends AddCoinsMvpView> extends BasePresenter<
     }
 
     @Override
-    public void getAllUsers(SharedPreferences sharedPreferences) {
+    public void getAllUsers(SharedPreferences sharedPreferences, int page) {
         getCompositeDisposable().add(getDataManager()
-                .getAllUsers(sharedPreferences)
+                .getAllUsers(sharedPreferences, String.valueOf(page))
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
                 .subscribe(new Consumer<GetAllUsers>() {

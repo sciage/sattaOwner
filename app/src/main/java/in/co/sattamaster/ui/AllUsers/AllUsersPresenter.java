@@ -27,9 +27,9 @@ public class AllUsersPresenter<V extends AllUsersMvpView> extends BasePresenter<
     }
 
     @Override
-    public void getAllUsers(SharedPreferences sharedPreferences) {
+    public void getAllUsers(SharedPreferences sharedPreferences, int currentPage) {
         getCompositeDisposable().add(getDataManager()
-                .getAllUsers(sharedPreferences)
+                .getAllUsers(sharedPreferences, String.valueOf(currentPage))
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
                 .subscribe(new Consumer<GetAllUsers>() {

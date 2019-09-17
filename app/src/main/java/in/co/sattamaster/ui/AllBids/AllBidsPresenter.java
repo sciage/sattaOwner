@@ -25,9 +25,9 @@ public class AllBidsPresenter <V extends AllBidsMvpView> extends BasePresenter<V
     }
 
     @Override
-    public void getAllBids(SharedPreferences sharedPreferences) {
+    public void getAllBids(SharedPreferences sharedPreferences, int currentPage) {
         getCompositeDisposable().add(getDataManager()
-                .getAllBids(sharedPreferences)
+                .getAllBids(sharedPreferences, String.valueOf(currentPage))
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
                 .subscribe(new Consumer<AllBidsPojo>() {

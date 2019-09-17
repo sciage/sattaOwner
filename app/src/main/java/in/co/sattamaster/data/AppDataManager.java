@@ -112,13 +112,13 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
-    public Single<GetAllUsers> getAllUsers(SharedPreferences sharedPreferences) {
-        return mApiHelper.getAllUsers(sharedPreferences);
+    public Single<GetAllUsers> getAllUsers(SharedPreferences sharedPreferences, String page) {
+        return mApiHelper.getAllUsers(sharedPreferences, page);
     }
 
     @Override
-    public Single<AllBidsPojo> getAllBids(SharedPreferences sharedPreferences) {
-        return mApiHelper.getAllBids(sharedPreferences);
+    public Single<AllBidsPojo> getAllBids(SharedPreferences sharedPreferences, String page) {
+        return mApiHelper.getAllBids(sharedPreferences, page);
     }
 
     @Override
@@ -152,8 +152,8 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
-    public Single<WithdrawPojo> withdrawRequest(SharedPreferences sharedPreferences) {
-        return mApiHelper.withdrawRequest(sharedPreferences);
+    public Single<WithdrawPojo> withdrawRequest(SharedPreferences sharedPreferences, String page) {
+        return mApiHelper.withdrawRequest(sharedPreferences, page);
     }
 
  /*   @Override

@@ -226,22 +226,22 @@ public class AppApiHelper implements ApiHelper {
     }
 
     @Override
-    public Single<GetAllUsers> getAllUsers(SharedPreferences sharedPreferences) {
+    public Single<GetAllUsers> getAllUsers(SharedPreferences sharedPreferences, String getAllUsers) {
     /*    return Rx2AndroidNetworking.get(ApiEndPoint.GET_ALL_USERS)
                 .setOkHttpClient(getUnsafeOkHttpClient())
                 .build()
                 .getObjectSingle(GetAllUsers.class); */
         return  NetworkClient.getRetrofit(sharedPreferences).create(NetworkInterface.class)
-                .getAllUsers()
+                .getAllUsers(getAllUsers)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
 
     }
 
     @Override
-    public Single<AllBidsPojo> getAllBids(SharedPreferences sharedPreferences) {
+    public Single<AllBidsPojo> getAllBids(SharedPreferences sharedPreferences, String currentPage) {
         return  NetworkClient.getRetrofit(sharedPreferences).create(NetworkInterface.class)
-                .getAllBids()
+                .getAllBids(currentPage)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }
@@ -273,14 +273,14 @@ public class AppApiHelper implements ApiHelper {
                 .observeOn(AndroidSchedulers.mainThread());
     }
     @Override
-    public Single<WithdrawPojo> withdrawRequest(SharedPreferences sharedPreferences) {
+    public Single<WithdrawPojo> withdrawRequest(SharedPreferences sharedPreferences, String withdrawRequest) {
        /* return Rx2AndroidNetworking.get(ApiEndPoint.GET_CENTRES)
                 .setOkHttpClient(getUnsafeOkHttpClient())
                 .build()
                 .getObjectListSingle(LocationPojo.class);
         */
         return  NetworkClient.getRetrofit(sharedPreferences).create(NetworkInterface.class)
-                .withdrawRequest()
+                .withdrawRequest(withdrawRequest)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }

@@ -68,6 +68,10 @@ public class AddCoinsActivity extends BaseActivity implements AddCoinsMvpView, V
     private String moderator_id;
 
 
+    private static final int PAGE_START = 1;
+    private int currentPage = PAGE_START;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -100,7 +104,7 @@ public class AddCoinsActivity extends BaseActivity implements AddCoinsMvpView, V
         balance_amount_value.setText(coinBalance);
 
         try {
-            mPresenter.getAllUsers(preferences);
+            mPresenter.getAllUsers(preferences, currentPage);
             mPresenter.getAllModerator(preferences);
 
             progressFrame.setVisibility(View.VISIBLE);
@@ -269,4 +273,5 @@ public class AddCoinsActivity extends BaseActivity implements AddCoinsMvpView, V
 
 
     }
+
 }

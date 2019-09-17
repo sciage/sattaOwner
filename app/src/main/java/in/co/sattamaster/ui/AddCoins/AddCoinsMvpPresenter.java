@@ -13,7 +13,7 @@ import in.co.sattamaster.ui.base.MvpPresenter;
 @PerActivity
 public interface AddCoinsMvpPresenter<V extends AddCoinsMvpView> extends MvpPresenter<V> {
 
-    void getAllUsers(SharedPreferences sharedPreferences);
+    void getAllUsers(SharedPreferences sharedPreferences, int page);
     void getAllModerator(SharedPreferences sharedPreferences);
 
     void addUserCoin(String userId, JsonObject coinBalance, SharedPreferences sharedPreferences);

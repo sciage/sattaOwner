@@ -75,7 +75,7 @@ public interface NetworkInterface {
     Single<List<AllModerators>> getAllModerator();
 
     @GET(ApiEndPoint.GET_ALL_USERS)
-    Single<GetAllUsers> getAllUsers();
+    Single<GetAllUsers> getAllUsers(@Query("page") String page);
 
 
     @GET(ApiEndPoint.GET_USER_PROFILE)
@@ -86,8 +86,8 @@ public interface NetworkInterface {
     Single<List<LocationPojo>> getCentres();
 
     @GET(ApiEndPoint.WITHDRAW_REQUEST)
-    Single<WithdrawPojo> withdrawRequest();
+    Single<WithdrawPojo> withdrawRequest(@Query("page") String page);
 
     @GET(ApiEndPoint.GET_ALL_BIDS)
-    Single<AllBidsPojo> getAllBids();
+    Single<AllBidsPojo> getAllBids(@Query("page") String page);
 }

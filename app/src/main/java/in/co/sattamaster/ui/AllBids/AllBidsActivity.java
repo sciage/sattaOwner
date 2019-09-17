@@ -12,10 +12,12 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import in.co.sattamaster.R;
 import in.co.sattamaster.ui.Homepage.GetAllUsers;
+import in.co.sattamaster.ui.InfiniteScrollProvider;
+import in.co.sattamaster.ui.OnLoadMoreListener;
 import in.co.sattamaster.ui.base.BaseActivity;
 
 
-public class AllBidsActivity extends BaseActivity implements AllBidsMvpView {
+public class AllBidsActivity extends BaseActivity implements AllBidsMvpView, OnLoadMoreListener {
 
     @Inject
     AllBidsMvpPresenter<AllBidsMvpView> mPresenter;
@@ -23,8 +25,12 @@ public class AllBidsActivity extends BaseActivity implements AllBidsMvpView {
     private AllBidsAdapter adapter;
 
     RecyclerView recyclerView;
+    private AllBidsPojo response;
 
     @BindView(R.id.allbids_progressbar) View progressFrame;
+
+    private static final int PAGE_START = 1;
+    private int currentPage = PAGE_START;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,11 +59,13 @@ public class AllBidsActivity extends BaseActivity implements AllBidsMvpView {
         adapter = new AllBidsAdapter(this);
 
         recyclerView.setAdapter(adapter);
+        InfiniteScrollProvider infiniteScrollProvider = new InfiniteScrollProvider();
+        infiniteScrollProvider.attach(recyclerView,this);
 
 
         try {
             progressFrame.setVisibility(View.VISIBLE);
-            mPresenter.getAllBids(preferences);
+            mPresenter.getAllBids(preferences, currentPage);
         } catch (Exception ex){
             ex.printStackTrace();
         }
@@ -71,7 +79,27 @@ public class AllBidsActivity extends BaseActivity implements AllBidsMvpView {
     @Override
     public void getAllBids(AllBidsPojo response) {
         adapter.addAll(response.getData());
+        this.response = response;
 
         progressFrame.setVisibility(View.INVISIBLE);
+    }
+
+    @Override
+    public void onLoadMore() {
+        if (response.getTo().equalsIgnoreCase("20")){
+
+            try {
+                currentPage += 1;
+                progressFrame.setVisibility(View.VISIBLE);
+
+                mPresenter.getAllBids(preferences, currentPage);
+
+                //  loadNextPage();
+                //  isLoading = true;
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

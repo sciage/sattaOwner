@@ -18,10 +18,12 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import in.co.sattamaster.R;
 import in.co.sattamaster.ui.History.HistoryPojo;
+import in.co.sattamaster.ui.InfiniteScrollProvider;
+import in.co.sattamaster.ui.OnLoadMoreListener;
 import in.co.sattamaster.ui.base.BaseActivity;
 import in.co.sattamaster.ui.login.AllModerators;
 
-public class ListOfModeratorActivity extends BaseActivity implements ListOfModeratorMvpView, ListOfModeratorAdapter.ItemClickListener {
+public class ListOfModeratorActivity extends BaseActivity implements ListOfModeratorMvpView  {
 
     @Inject
     ListOfModeratorMvpPresenter<ListOfModeratorMvpView> mPresenter;
@@ -64,8 +66,6 @@ public class ListOfModeratorActivity extends BaseActivity implements ListOfModer
 
         recyclerView.setAdapter(adapter);
 
-        adapter.setClickListener(this);
-
 
         try {
             progressFrame.setVisibility(View.VISIBLE);
@@ -77,11 +77,6 @@ public class ListOfModeratorActivity extends BaseActivity implements ListOfModer
 
     @Override
     protected void setUp() {
-
-    }
-
-    @Override
-    public void onItemClick(View view, int position) {
 
     }
 
