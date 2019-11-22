@@ -12,9 +12,11 @@ import in.co.sattamaster.ui.AllBids.AllBidsPojo;
 import in.co.sattamaster.ui.AllBids.HistoryDetailsResponse;
 import in.co.sattamaster.ui.Homepage.GetAllUsers;
 import in.co.sattamaster.ui.Homepage.LocationPojo;
+import in.co.sattamaster.ui.Homepage.ModeratorProfile;
 import in.co.sattamaster.ui.Homepage.UserObject;
 import in.co.sattamaster.ui.Location.LocationStatus;
 import in.co.sattamaster.ui.RevealNumber.RevealStatus;
+import in.co.sattamaster.ui.Transactions.BaseTransaction;
 import in.co.sattamaster.ui.Withdraw.WithdrawPojo;
 import in.co.sattamaster.ui.login.AllModerators;
 import in.co.sattamaster.ui.login.LoginResponse;
@@ -38,7 +40,8 @@ public interface NetworkInterface {
     Single<Bid> sendBidset(@Body JsonObject bids);
 
     @POST(ApiEndPoint.REGISTER_USER)
-    Single<RegisterResponse> registerUser(@Body JsonObject bids);
+    Single<RegisterResponse> registerUser(@Path("owner_id") String owner_id,
+                                          @Body JsonObject bids);
 
 
     @POST(ApiEndPoint.NEW_LOCATION)
@@ -50,19 +53,23 @@ public interface NetworkInterface {
     Single<LoginResponse> loginUser(@Body JsonObject object);
 
     @POST(ApiEndPoint.ADD_USER_COIN)
-    Single<AddUserCoinsResponse> addUserCoin(@Path("user_id") String user_id,
+    Single<AddUserCoinsResponse> addUserCoin(@Path("owner_id") String owner_id,
+                                             @Path("user_id") String user_id,
                                              @Body JsonObject object);
 
     @POST(ApiEndPoint.ADD_MODERATOR_COIN)
-    Single<AddModeratorCoinsResponse> addModeratorCoin(@Path("moderator_id") String moderator_id,
+    Single<AddModeratorCoinsResponse> addModeratorCoin(@Path("owner_id") String owner_id,
+                                                       @Path("moderator_id") String moderator_id,
                                                        @Body JsonObject object);
 
     @POST(ApiEndPoint.ADD_MODERATOR)
-    Single<AddModeratorCoinsResponse> addModerator(@Body JsonObject bids);
+    Single<AddModeratorCoinsResponse> addModerator(@Path("owner_id") String owner_id,
+                                                   @Body JsonObject bids);
 
 
     @POST(ApiEndPoint.ADD_OWNER_COIN)
-    Single<AddModeratorCoinsResponse> addOwnerCoin(@Body JsonObject bids);
+    Single<AddModeratorCoinsResponse> addOwnerCoin(@Path("owner_id") String owner_id,
+                                                   @Body JsonObject bids);
 
     @POST(ApiEndPoint.REVEAL_NUMBER)
     Single<RevealStatus> sendNumberReveal(@Body JsonObject bids);
@@ -75,7 +82,8 @@ public interface NetworkInterface {
     Single<List<AllModerators>> getAllModerator();
 
     @GET(ApiEndPoint.GET_ALL_USERS)
-    Single<GetAllUsers> getAllUsers(@Query("page") String page);
+    Single<List<ModeratorProfile>> getAllUsers(@Path("owner_id") String owner_id,
+                                               @Query("page") String page);
 
 
     @GET(ApiEndPoint.GET_USER_PROFILE)
@@ -90,4 +98,8 @@ public interface NetworkInterface {
 
     @GET(ApiEndPoint.GET_ALL_BIDS)
     Single<AllBidsPojo> getAllBids(@Query("page") String page);
+
+    @GET(ApiEndPoint.TRANSACTIONS)
+    Single<BaseTransaction> getTransanctions(@Query("page") String page);
+
 }

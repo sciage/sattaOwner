@@ -77,7 +77,7 @@ public class RegisterPresenter  <V extends RegisterMvpView> extends BasePresente
     @Override
     public void registerNewUser(JsonObject login, SharedPreferences sharedPreferences) {
         getCompositeDisposable().add(getDataManager()
-                .registerUser(login, sharedPreferences)
+                .registerUser(getDataManager().getUserId(), login, sharedPreferences)
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
                 .subscribe(new Consumer<RegisterResponse>() {

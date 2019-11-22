@@ -30,10 +30,6 @@ public class MainActivity extends BaseActivity implements MainActivityMvpView{
     TextView moderator;
     View progressFrame;
 
-
-    String balance_amount_value_String;
-    String user_name_String;
-    String moderator_String;
     GridAdapter gridAdapter;
 
 

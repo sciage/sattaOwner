@@ -118,12 +118,12 @@ public class AddCoinsActivity extends BaseActivity implements AddCoinsMvpView, V
 
     }
 
-    private void setupUserAutocomplete(GetAllUsers response) {
+    private void setupUserAutocomplete(List<ModeratorProfile> response) {
         // EditText edit = (EditText) findViewById(R.id.single);
         float elevation = 6f;
         Drawable backgroundDrawable = ResourcesCompat.getDrawable(getResources(), R.drawable.shadow, null);
 
-        AutocompletePresenter<ModeratorProfile> presenter = new UserPresenter(this, response.getData());
+        AutocompletePresenter<ModeratorProfile> presenter = new UserPresenter(this, response);
         AutocompleteCallback<ModeratorProfile> callback = new AutocompleteCallback<ModeratorProfile>() {
             @Override
             public boolean onPopupItemClicked(Editable editable, ModeratorProfile item) {
@@ -209,7 +209,7 @@ public class AddCoinsActivity extends BaseActivity implements AddCoinsMvpView, V
     }
 
     @Override
-    public void getAllUsers(GetAllUsers response) {
+    public void getAllUsers(List<ModeratorProfile> response) {
         setupUserAutocomplete(response);
 
     }

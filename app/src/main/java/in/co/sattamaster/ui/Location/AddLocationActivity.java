@@ -42,6 +42,9 @@ public class AddLocationActivity extends BaseActivity implements AddLocationMvpV
     @BindView(R.id.reveal_time_hourly_last) Button reveal_time_hourly_last;
     @BindView(R.id.add_hourly_location) Button add_hourly_location;
 
+    @BindView(R.id.main_progressbar) View progressFrame;
+
+
 
     String reveal_time_daily_value;
     String reveal_time_daily_last_value;
@@ -219,6 +222,8 @@ public class AddLocationActivity extends BaseActivity implements AddLocationMvpV
                 break;
             case R.id.add_daily_number:
 
+                progressFrame.setVisibility(View.VISIBLE);
+
 
                 if(location_daily.getText().toString().isEmpty()){
                     Toast.makeText(this, "Please enter location name", Toast.LENGTH_SHORT).show();
@@ -253,6 +258,7 @@ public class AddLocationActivity extends BaseActivity implements AddLocationMvpV
                 break;
             case R.id.add_hourly_location:
 
+                progressFrame.setVisibility(View.VISIBLE);
 
                 if(location_hour_name.getText().toString().isEmpty()){
                     Toast.makeText(this, "Please enter location name", Toast.LENGTH_SHORT).show();
@@ -266,16 +272,15 @@ public class AddLocationActivity extends BaseActivity implements AddLocationMvpV
                         Toast.makeText(this, "error", Toast.LENGTH_SHORT).show();
                     }
                 }
-
                 break;
-
-
         }
 
     }
 
     @Override
     public void receiveLocation(LocationStatus response) {
+        progressFrame.setVisibility(View.INVISIBLE);
+
         if (response.getStatus()){
             Toast.makeText(this, "Successfully created location", Toast.LENGTH_SHORT).show();
         }

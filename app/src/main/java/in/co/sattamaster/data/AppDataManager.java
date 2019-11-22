@@ -16,6 +16,7 @@
 package in.co.sattamaster.data;
 
 
+import android.content.ContentUris;
 import android.content.Context;
 import android.content.SharedPreferences;
 
@@ -38,6 +39,7 @@ import in.co.sattamaster.ui.Homepage.ModeratorProfile;
 import in.co.sattamaster.ui.Homepage.UserObject;
 import in.co.sattamaster.ui.Location.LocationStatus;
 import in.co.sattamaster.ui.RevealNumber.RevealStatus;
+import in.co.sattamaster.ui.Transactions.BaseTransaction;
 import in.co.sattamaster.ui.Withdraw.WithdrawPojo;
 import in.co.sattamaster.ui.login.AllModerators;
 import in.co.sattamaster.ui.login.LoginResponse;
@@ -82,8 +84,8 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
-    public Single<RegisterResponse> registerUser(JsonObject bids, SharedPreferences sharedPreferences) {
-        return mApiHelper.registerUser(bids, sharedPreferences);
+    public Single<RegisterResponse> registerUser(String ownerId, JsonObject bids, SharedPreferences sharedPreferences) {
+        return mApiHelper.registerUser(ownerId, bids, sharedPreferences);
     }
 
     @Override
@@ -112,8 +114,8 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
-    public Single<GetAllUsers> getAllUsers(SharedPreferences sharedPreferences, String page) {
-        return mApiHelper.getAllUsers(sharedPreferences, page);
+    public Single<List<ModeratorProfile>> getAllUsers(String ownerId, SharedPreferences sharedPreferences, String page) {
+        return mApiHelper.getAllUsers(ownerId, sharedPreferences, page);
     }
 
     @Override
@@ -122,23 +124,28 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
-    public Single<AddUserCoinsResponse> addUserCoin(String userId, JsonObject coinBalance, SharedPreferences sharedPreferences) {
-        return mApiHelper.addUserCoin(userId, coinBalance, sharedPreferences);
+    public Single<AddUserCoinsResponse> addUserCoin(String ownerId, String userId, JsonObject coinBalance, SharedPreferences sharedPreferences) {
+        return mApiHelper.addUserCoin(ownerId, userId, coinBalance, sharedPreferences);
     }
 
     @Override
-    public Single<AddModeratorCoinsResponse> addModeratorCoin(String moderator_id, JsonObject coinBalance, SharedPreferences sharedPreferences) {
-        return mApiHelper.addModeratorCoin(moderator_id, coinBalance, sharedPreferences);
+    public Single<AddModeratorCoinsResponse> addModeratorCoin(String ownerId, String moderator_id, JsonObject coinBalance, SharedPreferences sharedPreferences) {
+        return mApiHelper.addModeratorCoin(ownerId, moderator_id, coinBalance, sharedPreferences);
     }
 
     @Override
-    public Single<AddModeratorCoinsResponse> addOwnerCoin(JsonObject ownerCoins, SharedPreferences sharedPreferences) {
-        return mApiHelper.addOwnerCoin(ownerCoins, sharedPreferences);
+    public Single<AddModeratorCoinsResponse> addOwnerCoin(String ownerId, JsonObject ownerCoins, SharedPreferences sharedPreferences) {
+        return mApiHelper.addOwnerCoin(ownerId, ownerCoins, sharedPreferences);
     }
 
     @Override
-    public Single<AddModeratorCoinsResponse> addModerator(JsonObject moderator, SharedPreferences sharedPreferences) {
-        return mApiHelper.addModerator(moderator, sharedPreferences);
+    public Single<AddModeratorCoinsResponse> addModerator(String ownerId, JsonObject moderator, SharedPreferences sharedPreferences) {
+        return mApiHelper.addModerator(ownerId, moderator, sharedPreferences);
+    }
+
+    @Override
+    public Single<BaseTransaction> getTransanctions(SharedPreferences sharedPreferences, String currentPage) {
+        return mApiHelper.getTransanctions(sharedPreferences, currentPage);
     }
 
     @Override

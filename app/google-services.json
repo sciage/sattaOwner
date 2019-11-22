@@ -42,6 +42,35 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:183691216393:android:9fb4db04ee1e465cc05ad8",
+        "android_client_info": {
+          "package_name": "in.co.sattamaster.owner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "183691216393-udinkj03rgq98e7t7jrd40ho16811fgd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6P1u_bZXssy0srZOis-lfzt3k6jjAup0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "183691216393-udinkj03rgq98e7t7jrd40ho16811fgd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"

@@ -28,13 +28,13 @@ public final class ApiEndPoint {
 
     public static final String BIDSET =  "bidsets";
 
-    public static final String REGISTER_USER =  "admin/1/players";
+    public static final String REGISTER_USER =  "admin/{owner_id}/players";
 
     public static final String NEW_LOCATION =   "centres";
 
     public static final String LOGIN_USER = "user/login";
 
-    public static final String GET_ALL_USERS =   "admin/1/players";
+    public static final String GET_ALL_USERS =   "admin/{owner_id}/players";
 
     public static final String GET_ALL_MODERATORS =  "moderators";
 
@@ -46,18 +46,20 @@ public final class ApiEndPoint {
 
     public static final String GET_ALL_BIDS =   "bids";
 
-    public static final String ADD_USER_COIN =  "admin/1/players/{user_id}/add-coin-balance";
+    public static final String TRANSACTIONS =   "transactions";
 
-    public static final String ADD_MODERATOR_COIN =  "admin/1/moderators/{moderator_id}/add-coin-balance";
+    public static final String ADD_USER_COIN =  "admin/{owner_id}/players/{user_id}/add-coin-balance";
 
-    public static final String ADD_OWNER_COIN =   "admin/1/add-coin-balance";
+    public static final String ADD_MODERATOR_COIN =  "admin/{owner_id}/moderators/{moderator_id}/add-coin-balance";
+
+    public static final String ADD_OWNER_COIN =   "admin/{owner_id}/add-coin-balance";
 
     public static final String REVEAL_NUMBER =  "revealed-numbers";
 
     public static final String BIDSET_ID =  "bidsets/{id}";
 
 
-    public static final String ADD_MODERATOR =  "admin/1/moderators";
+    public static final String ADD_MODERATOR =  "admin/{owner_id}/moderators";
 
     public static final String ENDPOINT_GOOGLE_LOGIN = BuildConfig.BASE_URL
             + "/588d14f4100000a9072d2943";

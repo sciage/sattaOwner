@@ -33,12 +33,12 @@ public class AddCoinsPresenter<V extends AddCoinsMvpView> extends BasePresenter<
     @Override
     public void getAllUsers(SharedPreferences sharedPreferences, int page) {
         getCompositeDisposable().add(getDataManager()
-                .getAllUsers(sharedPreferences, String.valueOf(page))
+                .getAllUsers(getDataManager().getUserId(), sharedPreferences, String.valueOf(page))
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
-                .subscribe(new Consumer<GetAllUsers>() {
+                .subscribe(new Consumer<List<ModeratorProfile>>() {
                     @Override
-                    public void accept(GetAllUsers response) throws Exception {
+                    public void accept(List<ModeratorProfile> response) throws Exception {
 
                         getMvpView().getAllUsers(response);
 
@@ -123,7 +123,7 @@ public class AddCoinsPresenter<V extends AddCoinsMvpView> extends BasePresenter<
     @Override
     public void addUserCoin(String userId, JsonObject coinBalance, SharedPreferences sharedPreferences) {
         getCompositeDisposable().add(getDataManager()
-                .addUserCoin(userId, coinBalance, sharedPreferences)
+                .addUserCoin(getDataManager().getUserId(), userId, coinBalance, sharedPreferences)
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
                 .subscribe(new Consumer<AddUserCoinsResponse>() {
@@ -167,7 +167,7 @@ public class AddCoinsPresenter<V extends AddCoinsMvpView> extends BasePresenter<
     @Override
     public void addModeratorCoin(String moderator_id, JsonObject coinBalance, SharedPreferences sharedPreferences) {
         getCompositeDisposable().add(getDataManager()
-                .addModeratorCoin(moderator_id, coinBalance, sharedPreferences)
+                .addModeratorCoin(getDataManager().getUserId(), moderator_id, coinBalance, sharedPreferences)
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
                 .subscribe(new Consumer<AddModeratorCoinsResponse>() {
@@ -211,7 +211,7 @@ public class AddCoinsPresenter<V extends AddCoinsMvpView> extends BasePresenter<
     @Override
     public void addOwnerCoin(JsonObject ownerCoins, SharedPreferences sharedPreferences) {
         getCompositeDisposable().add(getDataManager()
-                .addOwnerCoin(ownerCoins, sharedPreferences)
+                .addOwnerCoin(getDataManager().getUserId(), ownerCoins, sharedPreferences)
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
                 .subscribe(new Consumer<AddModeratorCoinsResponse>() {

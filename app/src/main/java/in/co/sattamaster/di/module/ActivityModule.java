@@ -50,6 +50,9 @@ import in.co.sattamaster.ui.Location.AddLocationPresenter;
 import in.co.sattamaster.ui.RevealNumber.RevealNumberMvpPresenter;
 import in.co.sattamaster.ui.RevealNumber.RevealNumberMvpView;
 import in.co.sattamaster.ui.RevealNumber.RevealNumberPresenter;
+import in.co.sattamaster.ui.Transactions.TransactionMvpPresenter;
+import in.co.sattamaster.ui.Transactions.TransactionMvpView;
+import in.co.sattamaster.ui.Transactions.TransactionPresenter;
 import in.co.sattamaster.ui.login.LoginScreenMvpPresenter;
 import in.co.sattamaster.ui.login.LoginScreenMvpView;
 import in.co.sattamaster.ui.login.LoginScreenPresenter;
@@ -116,6 +119,12 @@ public class ActivityModule {
     @Provides
     RevealNumberMvpPresenter<RevealNumberMvpView> provideRevealNumberMvpPresenter(
             RevealNumberPresenter<RevealNumberMvpView> presenter) {
+        return presenter;
+    }
+
+    @Provides
+    TransactionMvpPresenter<TransactionMvpView> provideTransactionMvpPresenter(
+            TransactionPresenter<TransactionMvpView> presenter) {
         return presenter;
     }
 

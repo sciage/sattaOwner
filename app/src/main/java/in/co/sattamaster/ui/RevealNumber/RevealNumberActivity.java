@@ -3,8 +3,11 @@ package in.co.sattamaster.ui.RevealNumber;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
@@ -15,8 +18,12 @@ import android.widget.Toast;
 import com.google.gson.JsonIOException;
 import com.google.gson.JsonObject;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import javax.inject.Inject;
 
@@ -31,30 +38,33 @@ import in.co.sattamaster.ui.Homepage.GetAllUsers;
 import in.co.sattamaster.ui.Homepage.LocationPojo;
 import in.co.sattamaster.ui.Homepage.ModeratorProfile;
 import in.co.sattamaster.ui.Location.AddLocationActivity;
+import in.co.sattamaster.ui.PlayMatka.PlayMatkaActivity;
 import in.co.sattamaster.ui.autocomplete.Autocomplete;
 import in.co.sattamaster.ui.autocomplete.AutocompleteCallback;
 import in.co.sattamaster.ui.autocomplete.AutocompletePresenter;
 import in.co.sattamaster.ui.autocomplete.LocationPresenter;
 import in.co.sattamaster.ui.autocomplete.UserPresenter;
 import in.co.sattamaster.ui.base.BaseActivity;
+import in.co.sattamaster.ui.base.MySharedPreferences;
 
 public class RevealNumberActivity extends BaseActivity implements RevealNumberMvpView {
 
     @BindView(R.id.enter_location_name) EditText enter_location_name;
     @BindView(R.id.enter_reveal_number) EditText enter_reveal_number;
-    @BindView(R.id.current_reveal_time) TextView current_reveal_time;
-    @BindView(R.id.last_reveal_time) TextView last_reveal_time;
-    @BindView(R.id.reveal_date) TextView reveal_date;
+    @BindView(R.id.daily_no_saved) TextView daily_no_saved;
+    @BindView(R.id.daily_time_saved) TextView daily_time_saved;
+    @BindView(R.id.hourly_no_saved) TextView hourly_no_saved;
+    @BindView(R.id.hourly_time_saved) TextView hourly_time_saved;
     @BindView(R.id.sendRevealNumber) Button sendRevealNumber;
-    @BindView(R.id.reveal_time) Button reveal_time;
+    @BindView(R.id.sendHourlyNumber) Button sendHourlyNumber;
 
     @BindView(R.id.addcoins_progressbar) View progressFrame;
 
     private Autocomplete userAutocomplete;
+
     private String centre_id;
 
-    String created_at_value;
-    String created_at_time;
+    String revealNumber;
 
     @Inject
     RevealNumberMvpPresenter<RevealNumberMvpView> mPresenter;
@@ -64,6 +74,7 @@ public class RevealNumberActivity extends BaseActivity implements RevealNumberMv
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reveal_number);
+
         getActivityComponent().inject(this);
         setUnBinder(ButterKnife.bind(this));
         mPresenter.onAttach(RevealNumberActivity.this);
@@ -78,23 +89,58 @@ public class RevealNumberActivity extends BaseActivity implements RevealNumberMv
         });
         getSupportActionBar().setTitle("Reveal Number");
 
-        reveal_time.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                reveal_time_hourly();
-
-            }
-        });
-
         sendRevealNumber.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 progressFrame.setVisibility(View.VISIBLE);
 
+                revealNumber = enter_reveal_number.getText().toString();
+
+                long now_time = System.currentTimeMillis();
+
+                String currentTime = DateFormat.getDateInstance(DateFormat.FULL).format(now_time).concat(", ").concat(DateFormat.getTimeInstance().format(now_time));
+
+                MySharedPreferences.registerDailyNumber(preferences, revealNumber);
+                MySharedPreferences.registerDailyTime(preferences, currentTime);
+
+
                 mPresenter.sendNumberReveal(createDailyBid(), preferences);
+
+
+
             }
         });
+
+        sendHourlyNumber.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                progressFrame.setVisibility(View.VISIBLE);
+
+                revealNumber = enter_reveal_number.getText().toString();
+
+                long now_time = System.currentTimeMillis();
+
+                String currentTime = DateFormat.getDateInstance(DateFormat.FULL).format(now_time).concat(", ").concat(DateFormat.getTimeInstance().format(now_time));
+
+                MySharedPreferences.registerHourlyNumber(preferences, revealNumber);
+                MySharedPreferences.registerHourlyTime(preferences, currentTime);
+
+
+                mPresenter.sendNumberReveal(createDailyBid(), preferences);
+
+            }
+        });
+
+
+        if (MySharedPreferences.getDailyNumber(preferences)!=null){
+            daily_no_saved.setText(String.valueOf("Rewari Daily No : " + MySharedPreferences.getDailyNumber(preferences)));
+            daily_time_saved.setText(MySharedPreferences.getDailyTime(preferences));
+        }
+
+        if (MySharedPreferences.getHourlyNumber(preferences)!= null){
+            hourly_no_saved.setText(String.valueOf("Rewari Hourly No : " + MySharedPreferences.getHourlyNumber(preferences)));
+            hourly_time_saved.setText(MySharedPreferences.getHourlyTime(preferences));
+        }
 
         progressFrame.setVisibility(View.VISIBLE);
 
@@ -102,31 +148,16 @@ public class RevealNumberActivity extends BaseActivity implements RevealNumberMv
 
     }
 
-    private void reveal_time_hourly() {
-
-        Pico pico = new Pico(RevealNumberActivity.this, null, Type.CALENDAR);
-        pico.setPicoListener(new PicoListener() {
-            @Override
-            public void result(Calendar calendar) {
-
-                created_at_value = Pico.formatDate(calendar);
-                created_at_time = Pico.formatTime(calendar);
-
-                reveal_date.setText(Pico.humanDate(calendar));
-               // reveal_date.setText(Pico.formatDate(calendar));
-
-            }
-        });
-        pico.show();
-    }
-
     private JsonObject createDailyBid(){
+        String date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+        String time = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());
+
         JsonObject dailyBid = new JsonObject();
         try {
             dailyBid.addProperty("centre_id", centre_id);
-            dailyBid.addProperty("number", enter_reveal_number.getText().toString());
-            dailyBid.addProperty("created_at", created_at_value);
-            dailyBid.addProperty("created_at_time", created_at_time);
+            dailyBid.addProperty("number", revealNumber);
+            dailyBid.addProperty("created_at", date);
+            dailyBid.addProperty("created_at_time", time);
 
         } catch (JsonIOException e) {
             // TODO Auto-generated catch block
@@ -148,8 +179,6 @@ public class RevealNumberActivity extends BaseActivity implements RevealNumberMv
                 editable.clear();
                 editable.append(item.getName());
                 setLocation(item.getId());
-                current_reveal_time.setText(String.valueOf("Current Time: " + item.getNumberRevealTime()));
-                last_reveal_time.setText(String.valueOf("Last Time: " + item.getLastBidTime()));
                 selectedLocation = true;
                 return true;
             }
@@ -185,7 +214,20 @@ public class RevealNumberActivity extends BaseActivity implements RevealNumberMv
 
     @Override
     public void getRevealStatus(RevealStatus response) {
-        Toast.makeText(RevealNumberActivity.this, "Reveal Number added", Toast.LENGTH_LONG).show();
+
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(RevealNumberActivity.this);
+        alertDialogBuilder.setTitle("Success Reveal No. Added");
+        alertDialogBuilder.setMessage("Reveal No added : " + revealNumber);
+        alertDialogBuilder.setCancelable(true);
+        alertDialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+
+
+            }
+        });
+        alertDialogBuilder.show();
+
+       // Toast.makeText(RevealNumberActivity.this, "Reveal Number added", Toast.LENGTH_LONG).show();
 
         progressFrame.setVisibility(View.GONE);
 

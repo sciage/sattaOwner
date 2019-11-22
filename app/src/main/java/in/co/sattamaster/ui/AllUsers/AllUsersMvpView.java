@@ -10,6 +10,6 @@ import in.co.sattamaster.ui.login.UserProfile;
 
 public interface AllUsersMvpView extends MvpView {
 
-    void getAllUsers(GetAllUsers response);
+    void getAllUsers(List<ModeratorProfile> response);
 
 }

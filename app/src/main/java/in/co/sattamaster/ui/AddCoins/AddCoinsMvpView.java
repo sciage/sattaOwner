@@ -11,7 +11,7 @@ import in.co.sattamaster.ui.login.UserProfile;
 
 public interface AddCoinsMvpView extends MvpView {
 
-    void getAllUsers(GetAllUsers response);
+    void getAllUsers(List<ModeratorProfile> response);
     void getListAllGroups(List<AllModerators> response);
     void AddUserCoinResponse(AddUserCoinsResponse response);
     void AddModeratorCoinResponse(AddModeratorCoinsResponse response);

@@ -35,7 +35,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         debug {
-            applicationIdSuffix ".debug"
+            applicationIdSuffix ".owner"
         }
     }
     compileOptions {
@@ -79,5 +79,8 @@ dependencies {
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.6.1'
     implementation 'com.squareup.retrofit2:converter-scalars:2.6.1'
 
+    implementation 'com.google.firebase:firebase-messaging:20.0.0'
+
 
 }
+apply plugin: 'com.google.gms.google-services'

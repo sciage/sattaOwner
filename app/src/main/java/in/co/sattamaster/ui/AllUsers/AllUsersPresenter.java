@@ -29,12 +29,12 @@ public class AllUsersPresenter<V extends AllUsersMvpView> extends BasePresenter<
     @Override
     public void getAllUsers(SharedPreferences sharedPreferences, int currentPage) {
         getCompositeDisposable().add(getDataManager()
-                .getAllUsers(sharedPreferences, String.valueOf(currentPage))
+                .getAllUsers(getDataManager().getUserId(), sharedPreferences, String.valueOf(currentPage))
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
-                .subscribe(new Consumer<GetAllUsers>() {
+                .subscribe(new Consumer<List<ModeratorProfile>>() {
                     @Override
-                    public void accept(GetAllUsers response) throws Exception {
+                    public void accept(List<ModeratorProfile> response) throws Exception {
 
                         getMvpView().getAllUsers(response);
 

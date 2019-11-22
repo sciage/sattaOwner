@@ -24,6 +24,7 @@ import in.co.sattamaster.di.module.ActivityModule;
 import in.co.sattamaster.di.rxbus.RxBus;
 import in.co.sattamaster.utils.NetworkUtils;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.FirebaseApp;
 
 import butterknife.Unbinder;
 
@@ -63,7 +64,10 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView,
 
         bus = application.getBus();
 
-       // android_id =
+        FirebaseApp.initializeApp(this);
+
+
+        // android_id =
 
 
      /*    open URL directly inside the app

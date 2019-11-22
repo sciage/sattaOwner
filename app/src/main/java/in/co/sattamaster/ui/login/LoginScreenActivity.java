@@ -2,11 +2,19 @@ package in.co.sattamaster.ui.login;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.gson.JsonIOException;
 import com.google.gson.JsonObject;
 
@@ -59,6 +67,11 @@ public class LoginScreenActivity extends BaseActivity implements LoginScreenMvpV
             }
         });
 
+
+        generatetoken();
+        subscribeToTopic("admin");
+
+
         registerbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,6 +79,54 @@ public class LoginScreenActivity extends BaseActivity implements LoginScreenMvpV
                 startActivity(intent);
             }
         });
+    }
+
+    private void generatetoken() {
+
+        FirebaseInstanceId.getInstance().getInstanceId()
+                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
+
+                        while(!task.isSuccessful()){
+                            generatetoken();
+
+                        }
+                        String token = task.getResult().getToken();
+
+                        // Get new Instance ID token
+                        // String token = task.getResult().generatetoken();
+
+                        // Log and toast
+                        //  String msg = getString(R.string.msg_token_fmt, token);
+                        // Log.d(TAG, msg);
+                        // Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
+    private void subscribeToTopic(String topic){
+
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                //Do something after 100ms
+                FirebaseMessaging.getInstance().subscribeToTopic(topic)
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                String msg = String.valueOf("Subscribed to topic " + topic);
+                                if (!task.isSuccessful()) {
+                                    msg = String.valueOf("Failed to Subscribed to topic " + topic);
+                                }
+                                //   Toast.makeText(PostsDetailsActivity.this, msg, Toast.LENGTH_SHORT).show();
+                            }
+                        });
+            }
+        }, 10000);
+
+
     }
 
     @Override

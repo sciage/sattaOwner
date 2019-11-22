@@ -12,7 +12,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.AllBids.BidsDetailsActivity"></activity>
+        <activity android:name=".ui.Transactions.TransactionActivity"></activity>
+        <activity android:name=".ui.AllBids.BidsDetailsActivity" />
+
+        <service
+            android:name=".notification.FCMReceiver"
+            android:exported="false"
+            android:permission="com.google.android.c2dm.permission.SEND"
+            android:stopWithTask="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </service>
+
         <activity
             android:name=".ui.AllBids.AllBidsActivity"
             android:label="@string/title_activity_all_bids"

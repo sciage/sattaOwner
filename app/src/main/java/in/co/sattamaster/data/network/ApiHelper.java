@@ -33,6 +33,7 @@ import in.co.sattamaster.ui.Homepage.ModeratorProfile;
 import in.co.sattamaster.ui.Homepage.UserObject;
 import in.co.sattamaster.ui.Location.LocationStatus;
 import in.co.sattamaster.ui.RevealNumber.RevealStatus;
+import in.co.sattamaster.ui.Transactions.BaseTransaction;
 import in.co.sattamaster.ui.Withdraw.WithdrawPojo;
 import in.co.sattamaster.ui.login.AllModerators;
 import in.co.sattamaster.ui.login.LoginResponse;
@@ -49,19 +50,20 @@ public interface ApiHelper {
     ApiHeader getApiHeader();
 
     Single<Bid> sendBidset(JsonObject bidset, SharedPreferences sharedPreferences);
-    Single<RegisterResponse> registerUser(JsonObject bids, SharedPreferences sharedPreferences);
+    Single<RegisterResponse> registerUser(String ownerId, JsonObject bids, SharedPreferences sharedPreferences);
     Single<List<AllModerators>> getAllModerator(SharedPreferences sharedPreferences);
     Single<LoginResponse> loginUser(JsonObject bids, SharedPreferences sharedPreferences);
     Single<UserObject> getUserProfile(SharedPreferences sharedPreferences);
     Single<List<LocationPojo>> getCentres(SharedPreferences sharedPreferences);
     Single<LocationStatus> newLocation(JsonObject object, SharedPreferences sharedPreferences);
-    Single<GetAllUsers> getAllUsers(SharedPreferences sharedPreferences, String currentPage);
+    Single<List<ModeratorProfile>> getAllUsers(String ownerId, SharedPreferences sharedPreferences, String currentPage);
     Single<AllBidsPojo> getAllBids(SharedPreferences sharedPreferences, String currentPage);
-    Single<AddUserCoinsResponse> addUserCoin(String userId, JsonObject coinBalance, SharedPreferences sharedPreferences);
-    Single<AddModeratorCoinsResponse> addModeratorCoin(String moderator_id, JsonObject coinBalance, SharedPreferences sharedPreferences);
-    Single<AddModeratorCoinsResponse> addOwnerCoin(JsonObject ownerCoins, SharedPreferences sharedPreferences);
-    Single<AddModeratorCoinsResponse> addModerator(JsonObject moderator, SharedPreferences sharedPreferences);
+    Single<AddUserCoinsResponse> addUserCoin(String ownerId, String userId, JsonObject coinBalance, SharedPreferences sharedPreferences);
+    Single<AddModeratorCoinsResponse> addModeratorCoin(String ownerId, String moderator_id, JsonObject coinBalance, SharedPreferences sharedPreferences);
+    Single<AddModeratorCoinsResponse> addOwnerCoin(String ownerId, JsonObject ownerCoins, SharedPreferences sharedPreferences);
+    Single<AddModeratorCoinsResponse> addModerator(String ownerId, JsonObject moderator, SharedPreferences sharedPreferences);
 
+    Single<BaseTransaction> getTransanctions(SharedPreferences sharedPreferences, String currentPage);
     Single<HistoryDetailsResponse> getBidDetails(String id, SharedPreferences sharedPreferences);
 
     Single<RevealStatus> sendRevealNumber(JsonObject revealNumber, SharedPreferences sharedPreferences);

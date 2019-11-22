@@ -26,7 +26,7 @@ import in.co.sattamaster.ui.OnLoadMoreListener;
 import in.co.sattamaster.ui.base.BaseActivity;
 import in.co.sattamaster.ui.login.UserProfile;
 
-public class AllUsersActivity extends BaseActivity implements AllUsersMvpView, AllUsersAdapter.ItemClickListener, OnLoadMoreListener {
+public class AllUsersActivity extends BaseActivity implements AllUsersMvpView, AllUsersAdapter.ItemClickListener {
 
     @Inject
     AllUsersMvpPresenter<AllUsersMvpView> mPresenter;
@@ -37,7 +37,7 @@ public class AllUsersActivity extends BaseActivity implements AllUsersMvpView, A
     RecyclerView recyclerView;
 
     @BindView(R.id.listUser_progressbar) View progressFrame;
-    private GetAllUsers response;
+    private List<ModeratorProfile> response;
 
 
 
@@ -72,8 +72,6 @@ public class AllUsersActivity extends BaseActivity implements AllUsersMvpView, A
         adapter = new AllUsersAdapter(this);
 
         recyclerView.setAdapter(adapter);
-        InfiniteScrollProvider infiniteScrollProvider = new InfiniteScrollProvider();
-        infiniteScrollProvider.attach(recyclerView,this);
 
         adapter.setClickListener(this);
 
@@ -97,31 +95,12 @@ public class AllUsersActivity extends BaseActivity implements AllUsersMvpView, A
     }
 
     @Override
-    public void getAllUsers(GetAllUsers response) {
+    public void getAllUsers(List<ModeratorProfile> response) {
         this.response = response;
 
-        adapter.addAll(response.getData());
+        adapter.addAll(response);
 
         progressFrame.setVisibility(View.INVISIBLE);
 
-    }
-
-    @Override
-    public void onLoadMore() {
-        if (response.getTo().equalsIgnoreCase("20")){
-
-            try {
-                currentPage += 1;
-                progressFrame.setVisibility(View.VISIBLE);
-
-                mPresenter.getAllUsers(preferences, currentPage);
-
-                //  loadNextPage();
-                //  isLoading = true;
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
     }
 }
